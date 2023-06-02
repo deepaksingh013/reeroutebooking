@@ -103,7 +103,7 @@ const testimonial = [
 export default function Testimonial() {
     return (
         <>
-            <Container>
+            <Container sx={{ mt: "2rem" }}>
                 <Typography sx={makeStyle.testimonial}>Testimonial</Typography>
                 <Box sx={{ display: "flex", justifyContent: "space-between", mb: "30px" }}>
                     <Typography sx={makeStyle.title}>What Our Truckers Say</Typography>
