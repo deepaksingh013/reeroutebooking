@@ -2,8 +2,8 @@ import { Box, Container, Grid, Typography } from '@mui/material'
 import React from 'react';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
-import profile1 from "../images/photo.png";
-import profile2 from "../images/Photo (1).png";
+import profile1 from "../images/photoProfile.png";
+import profile2 from "../images/photoProfile2.png";
 import star from "../images/Star 5.png";
 import icon from "../images/icon.png"
 const makeStyle = {
@@ -124,9 +124,9 @@ export default function Testimonial() {
                                         <Typography sx={makeStyle.name}>{item.name}</Typography>
                                         <Typography sx={makeStyle.companyName}>{item.companyName}</Typography>
                                     </Box>
-                                    <Box style={makeStyle.icon} >
+                                    {/* <Box style={makeStyle.icon} >
                                         <img src={item.iconImg} alt="" style={{ marginLeft: "5px", marginTop: "10px" }} />
-                                    </Box>
+                                    </Box> */}
 
                                 </Box>
                                 <Box sx={{ padding: "0 2rem 2rem 2rem", backgroundColor: index % 2 === 0 ? makeStyle.bg1 : makeStyle.bg2 }}>

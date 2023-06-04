@@ -4,14 +4,22 @@ import Testimonial from './Testimonial'
 import Footerhero from './Footerhero'
 import DownloadShipper from './DownloadShipper'
 import Banner from './Banner'
+import Slider from './Slider'
+import Counter from './Counter'
+import Faq from './Faq'
+import Navbar from './Navbar'
 
 export default function Home() {
     return (
-        <div>
+        <div style={{position:"relative"}}>
+            <Navbar/>
             <Banner />
+            <Counter/>
             <DownloadShipper />
             <Testimonial />
-            {/* <Footerhero /> */}
+            {/* <Slider/> */}
+            <Faq/>
+            <Footerhero />
             <Footer />
         </div>
     )
