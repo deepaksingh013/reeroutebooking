@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Box, Button, Container } from '@mui/material';
 import img1 from "../images/Photo (1).jpg";
@@ -39,10 +38,10 @@ const Slider = () => {
             ))}
           </div>
         </Box>
-        
-      <Box sx={{ display: "flex" }}>
-        <Button onClick={rightClickHandler}>Next Image</Button>
-      </Box>
+
+        <Box sx={{ display: "flex" }}>
+          <Button onClick={rightClickHandler}>Next Image</Button>
+        </Box>
       </Container>
 
     </>

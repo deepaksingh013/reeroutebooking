@@ -1,13 +1,20 @@
 // import logo from './logo.svg';
 import './App.css';
-import Home from './components/Home';
+import { Route, Routes } from "react-router-dom"
+import Trucker from './trucker/Trucker';
+import Navbar from './components/Navbar';
+import Shipper from './shipper/Shipper';
 
 
 function App() {
   return (
-   <>
-    <Home/>
-   </>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Shipper />} />
+        <Route path="/trucker" element={<Trucker />} />
+      </Routes>
+    </>
   );
 }
 

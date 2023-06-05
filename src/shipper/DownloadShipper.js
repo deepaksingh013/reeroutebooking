@@ -7,7 +7,7 @@ import img134 from "../images/image 134 (Traced).png"
 const makeStyle = {
     mainBox: {
         background: "#F4F4F4",
-        marginTop:"10%"
+        marginTop: "5%"
     },
     logoStyle: {
         maxWidth: "100%",
@@ -124,7 +124,7 @@ export default function DownloadShipper() {
 
                             </Box>
                             <Box >
-                                <Typography sx={makeStyle.truckers}>DOWNLOAD TRUCKER APP</Typography>
+                                <Typography sx={makeStyle.truckers}>DOWNLOAD SHIPPER APP</Typography>
                                 <Box sx={{ display: "flex" }}>
                                     <Box sx={makeStyle.Store}>
 

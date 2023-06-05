@@ -3,14 +3,17 @@ import { Box, Container, Grid, Paper, Typography, InputLabel, TextField, Button 
 import { List, ListItem, ListItemText } from '@mui/material';
 import bgImg from "../images/Photo-bg.png";
 import { Carousel } from 'react-responsive-carousel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const makeStyle = {
     mainBox: {
-        position:"absolute",
-        marginTop:"-115px",
-        paddingTop:"10%",
-        top:"0px",
-        minHeight: "100vh",
+        position: "absolute",
+        marginTop: "-115px",
+        paddingTop: "10%",
+        top: "0px",
+        minHeight: "75vh",
         position: "relative",
         backgroundImage: `linear-gradient(90.13deg,
           rgba(0, 0, 0, 0.9) 1.07%,
@@ -19,13 +22,13 @@ const makeStyle = {
         backgroundSize: "cover",
         backgroundPosition: "center",
         "@media (max-width: 1100px)": {
-            paddingTop:"15%",
+            paddingTop: "15%",
         },
         "@media (max-width: 700px)": {
-            paddingTop:"25%",
+            paddingTop: "25%",
         },
         "@media (max-width: 428px)": {
-            paddingTop:"33%",
+            paddingTop: "33%",
         },
     },
     leftContent: {
@@ -42,7 +45,7 @@ const makeStyle = {
         fontWeight: "400",
         fontFamily: "'Rubik', sans-serif",
         "@media (max-width: 488px)": {
-            display:"none"
+            display: "none"
         },
     },
     reRoute: {
@@ -65,12 +68,12 @@ const makeStyle = {
     form: {
         position: "relative",
         // height:"50%",
-        marginBottom:"2rem",
-        height: "460px",
+        marginBottom: "2rem",
+        height: "480px",
         padding: "25px 20px 20px 22px",
         borderRadius: "12px",
         "@media (max-width: 768px)": {
-           height:"400px"
+            height: "400px"
         },
     },
     title: {
@@ -84,7 +87,7 @@ const makeStyle = {
     },
     formBtn: {
         position: "abssolute",
-        bottom: "0px",
+        bottom: "0",
         width: "100%",
         background: "linear-gradient(94.06deg, #FFB629 -1.21%, #FFDA56 58.66%, #FFD7A6 116.84%)",
         color: "#000000",
@@ -93,11 +96,12 @@ const makeStyle = {
         fontSize: "10px",
         height: "42px",
         marginTop: "50px",
+        marginBottom: "50px",
         "@media (max-width: 768px)": {
             marginTop: "40px",
         },
         "@media (max-width: 488px)": {
-        marginTop: "5px",
+            marginTop: "5px",
         },
     },
     destination: {
@@ -114,7 +118,13 @@ const makeStyle = {
     }
 };
 
-export default function Banner() {
+export default function TrckerBanner() {
+    const [age, setAge] = React.useState('');
+
+    const handleChange = (event) => {
+        setAge(event.target.value);
+    };
+
     return (
         <Box sx={makeStyle.mainBox}>
             <Box>
@@ -125,38 +135,50 @@ export default function Banner() {
                                 <Box sx={makeStyle.leftContent}>
                                     <Typography sx={makeStyle.streamLine}>Streamline Your Logistics with Easy Truck Booking</Typography>
                                     <Typography sx={makeStyle.reRoute}>ReeRoute: India's Fastest Truck Booking Platform!</Typography>
-                                    {/* list items */}
-                                    <ListItem
-                                        sx={makeStyle.listItem}>
+                                    <ListItem sx={makeStyle.listItem}>
                                         Pan-India operations
                                     </ListItem>
-                                    <ListItem
-                                        sx={makeStyle.listItem}>
+                                    <ListItem sx={makeStyle.listItem}>
                                         Associated with 3,000+ SMEs/Transporters
                                     </ListItem>
-                                    <ListItem
-                                        sx={makeStyle.listItem}>
+                                    <ListItem sx={makeStyle.listItem}>
                                         Guaranteed Timely Payments
                                     </ListItem>
                                 </Box>
                             </Box>
                         </Grid>
-                        {/* rightSide content */}
                         <Grid item lg={6} xs={12}>
                             <Paper sx={makeStyle.form}>
-                                <Typography sx={makeStyle.title}>Book Your Truck</Typography>
-                                <InputLabel htmlFor="my-input" sx={makeStyle.destination}>From</InputLabel>
-                                <TextField placeholder="Enter origin city" sx={makeStyle.textField}></TextField>
-                                <InputLabel htmlFor="my-input" sx={makeStyle.destination}>To</InputLabel>
-                                <TextField placeholder='Enter destination city' sx={makeStyle.textField}></TextField>
+                                <Typography sx={makeStyle.title}>Onboard Yourself!</Typography>
+                                <InputLabel htmlFor="my-input" sx={makeStyle.destination}>Mobile Number</InputLabel>
+                                <TextField placeholder="Enter Mobile No." sx={makeStyle.textField} />
+                                <InputLabel htmlFor="my-input" sx={makeStyle.destination}>Enter no.</InputLabel>
+                                <TextField placeholder='Enter destination city' sx={makeStyle.textField} />
+                                <InputLabel htmlFor="my-input" sx={makeStyle.destination}>City</InputLabel>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                        {/* <InputLabel >City</InputLabel> */}
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={age}
+                                            label="Age"
+                                            onChange={handleChange}
+                                        >
+                                            <MenuItem value={10}>Delhi</MenuItem>
+                                            <MenuItem value={20}>Mumbai</MenuItem>
+                                            <MenuItem value={30}>Hyderabad</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Box>
                                 <Box>
-                                    <Button sx={makeStyle.formBtn}>Next</Button>
+                                    <Button sx={makeStyle.formBtn}>SUBMIT</Button>
                                 </Box>
                             </Paper>
                         </Grid>
                     </Grid>
                 </Container>
             </Box>
-        </Box >
+        </Box>
     );
 }

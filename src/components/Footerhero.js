@@ -4,6 +4,7 @@ import img1 from "../images/Photo (1).jpg"
 import img2 from "../images/Photo (2).jpg"
 import img3 from "../images/Photo (3).jpg"
 import img4 from "../images/Photo (4).jpg"
+import bgImg from "../images/Photo-bg.png";
 // vector icons
 import icon1 from "../images/Star.png"
 import icon2 from "../images/Norto.png"
@@ -17,7 +18,10 @@ const makeStyle = {
         position: "relative",
     },
     mainContainer: {
-        background: "linear-gradient(90.13deg, rgba(0, 0, 0, 0.9) 1.07%, rgba(0, 0, 0, 0.6) 99.9%)",
+        backgroundImage: `linear-gradient(90.13deg,
+            rgba(0, 0, 0, 0.9) 1.07%,
+            rgba(0, 0, 0, 0.6) 99.9%),
+            url(${bgImg})`,
         minHeight: "412px",
         display: "flex",
         flexWrap:"wrap",

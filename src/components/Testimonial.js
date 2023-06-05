@@ -106,7 +106,7 @@ export default function Testimonial() {
             <Container sx={{ mt: "2rem" }}>
                 <Typography sx={makeStyle.testimonial}>Testimonial</Typography>
                 <Box sx={{ display: "flex", justifyContent: "space-between", mb: "30px" }}>
-                    <Typography sx={makeStyle.title}>What Our Truckers Say</Typography>
+                    <Typography sx={makeStyle.title}> {window.location.pathname === "/" ? "What Our Shipper Say" : "What Our Truckers Say"}   </Typography>
                     <Box sx={{ mt: "25px" }}>
                         <ArrowCircleLeftIcon sx={makeStyle.leftIcon} />
                         <ArrowCircleRightIcon sx={makeStyle.rightIcon} />
