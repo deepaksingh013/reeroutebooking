@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from '@mui/material'
 import React from 'react'
-import bgImg from "../images/Rectangle.png"
+import bgImg from "../images/privacyImg.png"
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
@@ -23,7 +23,7 @@ const makeStyle = {
         top: "35%",
         backgroundColor: "#041C37",
         borderLeft: "4px solid #F79633",
-        width: "80px",
+        width: "100px",
         color: "#fff",
         fontWeight: "400",
         fontFamily: "'Rubik', sans-serif",
@@ -45,13 +45,13 @@ const makeStyle = {
 
 }
 
-export default function ContactBanner() {
+export default function PrivacyBanner() {
     return (
         <>
             <Box sx={makeStyle.mainBox}>
                 <Container>
-                    <Typography sx={makeStyle.contact}>Contact</Typography>
-                    <Typography sx={makeStyle.contactUs}>Contact Us</Typography>
+                    <Typography sx={makeStyle.contact}>Privacy Policy</Typography>
+                    <Typography sx={makeStyle.contactUs}>Privacy Policy</Typography>
                 </Container>
             </Box>
         </>

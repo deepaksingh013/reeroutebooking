@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from '@mui/material'
 import React from 'react'
-import bgImg from "../images/Rectangle.png"
+import bgImg from "../images/aboutImg.png"
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
@@ -15,7 +15,7 @@ const makeStyle = {
         backgroundSize: "cover",
         backgroundPosition: "center",
         marginTop: "-115px",
-        objectFit: "cover",
+        objectFit: "contain",
         width: "100%"
     },
     contact: {
@@ -45,13 +45,13 @@ const makeStyle = {
 
 }
 
-export default function ContactBanner() {
+export default function Aboutbanner() {
     return (
         <>
             <Box sx={makeStyle.mainBox}>
                 <Container>
-                    <Typography sx={makeStyle.contact}>Contact</Typography>
-                    <Typography sx={makeStyle.contactUs}>Contact Us</Typography>
+                    <Typography sx={makeStyle.contact}>About Us</Typography>
+                    <Typography sx={makeStyle.contactUs}>About ReeRoute</Typography>
                 </Container>
             </Box>
         </>

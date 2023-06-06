@@ -3,6 +3,10 @@ import { Box, Container, Typography, Grid, TextField, Button } from '@mui/materi
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const contactUs = [
     {
@@ -21,13 +25,21 @@ const contactUs = [
 
 const makeStyle = {
     contactDetail: {
+        width: "70%",
+        margin: "auto",
         border: "1px solid rgba(0, 0, 0, 0.8)",
-        borderRadius:"20px",
-        mt:"3rem",
-        mb:"3rem",
-        p:"2rem",
-        display:"flex",
-        flexDirection:"column"
+        borderRadius: "20px",
+        mt: "3rem",
+        mb: "3rem",
+        p: "2rem",
+        display: "flex",
+        flexDirection: "column",
+        "@media (max-width: 600px)": {
+            width: "80%",
+        },
+        "@media (max-width: 500px)": {
+            border:"none"
+        }
     },
     contact: {
         backgroundColor: "#E8E8E81A 80%",
@@ -64,11 +76,11 @@ const makeStyle = {
     },
     btn: {
         color: "#23212A",
-       alignItems:"center",
-       width:"194px",
-       margin:"auto",
-       mt:"30px",
-       height:"60px",
+        alignItems: "center",
+        width: "194px",
+        margin: "auto",
+        mt: "30px",
+        height: "60px",
 
         backgroundColor: "#F79633",
         '&:hover': {
@@ -77,12 +89,25 @@ const makeStyle = {
         },
 
     },
+    textField: {
+        width: "100%",
+        fontWeight: "400",
+        '& input::placeholder': {
+            color: "rgb(0, 0, 0)",
+            textTransform:"capitalize"
+        },
+    },
 
 
 }
 
 
 export default function CarrerDetail() {
+    const [department, setDepartment] = React.useState('');
+
+    const handleChange = (event) => {
+        setDepartment(event.target.value);
+    };
     return (
         <>
             <Container>
@@ -98,7 +123,7 @@ export default function CarrerDetail() {
                                     <Box sx={{ diplay: "flex", justifyContent: "center", alignItems: "center" }}>
                                         <Box sx={makeStyle.icon}>{item.icon}</Box>
                                         <Box sx={{ textAlign: "center" }}>
-                                            <Typography sx={{mt:"10px"}}>{item.data}</Typography>
+                                            <Typography sx={{ mt: "10px" }}>{item.data}</Typography>
                                         </Box>
                                     </Box>
                                 </Grid>
@@ -109,25 +134,43 @@ export default function CarrerDetail() {
 
                     {/* text field  */}
                     <Grid container spacing={2} sx={{ mt: "10px" }}>
-                        <Grid item lg={6}>
-                            <TextField sx={{ width: "100%" }} placeholder=' name'/>
+                        <Grid item lg={6} xs={12}>
+                            <TextField sx={makeStyle.textField} placeholder='Name*' />
                         </Grid>
-                        <Grid item lg={6}>
-                            <TextField sx={{ width: "100%" }} placeholder='email id'/>
+                        <Grid item lg={6} xs={12}>
+                            <TextField sx={makeStyle.textField} placeholder='email id*' />
                         </Grid>
 
                     </Grid>
                     <Grid container spacing={2} sx={{ mt: "10px" }}>
-                        <Grid item lg={6}>
-                            <TextField sx={{ width: "100%" }}  placeholder='mobile no'/>
+                        <Grid item lg={6} xs={12}>
+                            <TextField sx={makeStyle.textField} placeholder='mobile number*' />
                         </Grid>
-                        <Grid item lg={6}>
-                            <TextField sx={{ width: "100%" }} placeholder='department'/>
+                        <Grid item lg={6} xs={12}>
+                            <Box sx={{ minWidth: 120 }}>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Department*</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={department}
+                                        label="Department"
+                                        onChange={handleChange}
+                                    >
+                                        <MenuItem value={10}>Sales</MenuItem>
+                                        <MenuItem value={20}>Marketing</MenuItem>
+                                        <MenuItem value={30}>Operations</MenuItem>
+                                        <MenuItem value={40}>Technology</MenuItem>
+                                        <MenuItem value={50}>Finance</MenuItem>
+                                        <MenuItem value={60}>Others</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Box>
                         </Grid>
                     </Grid>
 
-<Button sx={makeStyle.btn}>Submit </Button>
-        
+                    <Button sx={makeStyle.btn}>Submit </Button>
+
 
                 </Box>
             </Container>

@@ -6,6 +6,9 @@ import Navbar from './components/Navbar';
 import Shipper from './shipper/Shipper';
 import Contact from './contact/Contact';
 import Carrers from './Carrers/Carrers';
+import Tc from './t&c/Tc';
+import PrivacyPolicy from './privacypolicy/PrivacyPolicy';
+import About from './about/About';
 
 
 function App() {
@@ -17,6 +20,9 @@ function App() {
         <Route path="/trucker" element={<Trucker />} />
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/carrers" element={<Carrers/>}/>
+        <Route path="/t&c" element={<Tc/>}/>
+        <Route path="/privacypolicy" element={<PrivacyPolicy/>}/>
+        <Route path="/aboutus" element={<About/>}/>
       </Routes>
     </>
   );

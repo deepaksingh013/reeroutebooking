@@ -1,8 +1,12 @@
 import React from 'react'
-import { Box, Container, Typography, Grid, TextField, Button } from '@mui/material'
+import { Box, Container, Typography, Grid, TextField, Button, TextareaAutosize } from '@mui/material'
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const contactUs = [
     {
@@ -21,13 +25,21 @@ const contactUs = [
 
 const makeStyle = {
     contactDetail: {
+        width: "70%",
+        margin: "auto",
         border: "1px solid rgba(0, 0, 0, 0.8)",
-        borderRadius:"20px",
-        mt:"3rem",
-        mb:"3rem",
-        p:"2rem",
-        display:"flex",
-        flexDirection:"column"
+        borderRadius: "20px",
+        mt: "3rem",
+        mb: "3rem",
+        p: "2rem",
+        display: "flex",
+        flexDirection: "column",
+        "@media (max-width: 600px)": {
+            width: "80%",
+        },
+        "@media (max-width: 500px)": {
+            border:"none"
+        }
     },
     contact: {
         backgroundColor: "#E8E8E81A 80%",
@@ -64,11 +76,11 @@ const makeStyle = {
     },
     btn: {
         color: "#23212A",
-       alignItems:"center",
-       width:"194px",
-       margin:"auto",
-       mt:"30px",
-       height:"60px",
+        alignItems: "center",
+        width: "194px",
+        margin: "auto",
+        mt: "30px",
+        height: "60px",
 
         backgroundColor: "#F79633",
         '&:hover': {
@@ -77,12 +89,36 @@ const makeStyle = {
         },
 
     },
+    textField: {
+        width: "100%",
+        fontWeight: "400",
+        '& input::placeholder': {
+            color: "rgb(0, 0, 0)",
+            textTransform:"capitalize"
+        },
+    },
+    textArea: {
+        height: "154px",
+        width: "98%",
+        marginTop: "30px",
+        fontSize: "20px",
+        color: "#000000",
+        paddingTop: "10px",
+        paddingLeft: "10px",
+        '&::placeholder': {
+            color: "#000000",
+        }
 
-
+    }
 }
 
 
 export default function ContactDetail() {
+    const [city, setCity] = React.useState('');
+
+    const handleChange = (event) => {
+        setCity(event.target.value);
+    };
     return (
         <>
             <Container>
@@ -98,7 +134,7 @@ export default function ContactDetail() {
                                     <Box sx={{ diplay: "flex", justifyContent: "center", alignItems: "center" }}>
                                         <Box sx={makeStyle.icon}>{item.icon}</Box>
                                         <Box sx={{ textAlign: "center" }}>
-                                            <Typography sx={{mt:"10px"}}>{item.data}</Typography>
+                                            <Typography sx={{ mt: "10px" }}>{item.data}</Typography>
                                         </Box>
                                     </Box>
                                 </Grid>
@@ -109,27 +145,41 @@ export default function ContactDetail() {
 
                     {/* text field  */}
                     <Grid container spacing={2} sx={{ mt: "10px" }}>
-                        <Grid item lg={6}>
-                            <TextField sx={{ width: "100%" }} placeholder='Your name'/>
+                        <Grid item lg={6} xs={12}>
+                            <TextField sx={makeStyle.textField} placeholder='Your name*' />
                         </Grid>
-                        <Grid item lg={6}>
-                            <TextField sx={{ width: "100%" }} placeholder='email'/>
+                        <Grid item lg={6} xs={12}>
+                            <TextField sx={makeStyle.textField} placeholder='Email*' />
                         </Grid>
 
                     </Grid>
                     <Grid container spacing={2} sx={{ mt: "10px" }}>
-                        <Grid item lg={6}>
-                            <TextField sx={{ width: "100%" }}  placeholder='phone no'/>
+                        <Grid item lg={6} xs={12}>
+                            <TextField sx={makeStyle.textField} placeholder='Phone Number*' />
                         </Grid>
-                        <Grid item lg={6}>
-                            <TextField sx={{ width: "100%" }} placeholder='city'/>
+                        <Grid item lg={6} xs={12}>
+                        <Box sx={{ minWidth: 120 }}>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">City*</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={city}
+                                        label="City"
+                                        onChange={handleChange}
+                                    >
+                                        <MenuItem value={10}>Delhi</MenuItem>
+                                        <MenuItem value={20}>Mumbai</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Box>
                         </Grid>
                     </Grid>
-                    <TextField sx={{ width: "100%", mt: "20px" }} placeholder='your message'/>
-
-<Button sx={makeStyle.btn}>Submit Message</Button>
-        
-
+                    <TextareaAutosize
+                        style={makeStyle.textArea}
+                        placeholder="Your message"
+                    />
+                    <Button sx={makeStyle.btn}>Submit Message</Button>
                 </Box>
             </Container>
         </>
