@@ -5,7 +5,8 @@ import businessman from "../images/businessman.png"
 
 const makeStyle = {
     mainBox: {
-        margin: "4rem"
+        backgroundColor: "#F4F4F4",
+        padding: "4rem"
     },
     about: {
         backgroundColor: "#E8E8E81A 80%",
@@ -78,6 +79,21 @@ const makeStyle = {
             // Add any other styles you want for the hover state
         },
     },
+    businessman: {
+        objectFit: "contain",
+        position: "absolute",
+        right: "50px",
+        bottom: "-100px",
+    
+    },
+    rerouteImg: {
+        objectFit: "contain",
+        width: "85%",
+        height: "370px",
+        "@media (max-width: 700px)": {
+            width: "100%",
+        }
+    }
 
 }
 
@@ -88,10 +104,9 @@ export default function Aboutreroute() {
                 <Grid container spacing={2}>
                     <Grid item lg={6} >
                         <Box sx={{ position: "relative" }}>
-                            <img src={rerouteImg} alt="" style={{ objectFit: "cover", width: "85%",height:"370px" }} />
-                            <img src={businessman} alt="" style={{ position: "absolute", right: "20px", bottom: "-100px" }} />
+                            <img src={rerouteImg} alt="" style={makeStyle.rerouteImg} />
+                            <img src={businessman} alt="" style={makeStyle.businessman} />
                         </Box>
-
                     </Grid>
                     <Grid item lg={6} sm={12}>
                         <Typography sx={makeStyle.about}>About us</Typography>

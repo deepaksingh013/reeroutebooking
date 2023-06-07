@@ -18,7 +18,7 @@ import Button from '@mui/material/Button';
 import webLogo from "../images/mainLogo.png"
 
 const drawerWidth = 240;
-const navItems = ['Shipper', 'Trucker', 'About',"How It Works","Contact"];
+const navItems = ['Shipper', 'Trucker', 'About', "How It Works", "Contact"];
 
 function Navbar(props) {
   const { window } = props;
@@ -30,24 +30,24 @@ function Navbar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-        <Box sx={{height:"100px"}}>
-        <img src={webLogo} alt="" style={{height:"20px",width:"20px"}}/>
-        </Box>
-        
+      <Box sx={{ height: "100px" }}>
+        <img src={webLogo} alt=""/>
+      </Box>
+
       {/* <Typography variant="h6" sx={{ my: 2 }}>
         MUI
       </Typography> */}
       <Divider />
       <Box >
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+        <List>
+          {navItems.map((item) => (
+            <ListItem key={item} disablePadding>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemText primary={item} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
       </Box>
     </Box>
   );
@@ -56,56 +56,56 @@ function Navbar(props) {
 
   return (
     <Container>
-    <Box sx={{ display: 'flex' }}>
-      {/* <CssBaseline /> */}
-      <AppBar component="nav" sx={{backgroundColor:"transparent",boxShadow:"none",marginTop:"1rem",position:"static"}}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+      <Box sx={{ display: 'flex' }}>
+        {/* <CssBaseline /> */}
+        <AppBar component="nav" sx={{ backgroundColor: "transparent", boxShadow: "none", marginTop: "1rem", position: "static" }}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: 'none' } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            >
+              <img src={webLogo} alt="" style={{ height: "80px", width: "110px" }} />
+            </Typography>
+            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              {navItems.map((item) => (
+                <Button key={item} sx={{ color: '#fff' }}>
+                  {item}
+                </Button>
+              ))}
+            </Box>
+          </Toolbar>
+        </AppBar>
+        <Box component="nav">
+          <Drawer
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: 'block', sm: 'none' },
+              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-             <img src={webLogo} alt=""  style={{height:"80px",width:"110px"}}/>
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
+            {drawer}
+          </Drawer>
+        </Box>
+        <Box component="main" sx={{ p: 3 }}>
+          {/* <Toolbar /> */}
+        </Box>
       </Box>
-      <Box component="main" sx={{ p: 3 }}>
-        {/* <Toolbar /> */}
-      </Box>
-    </Box>
     </Container>
   );
 }

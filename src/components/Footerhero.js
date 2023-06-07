@@ -16,6 +16,7 @@ import icon4 from "../images/Star.png"
 const makeStyle = {
     imgContent: {
         position: "relative",
+        width:"100%",
     },
     mainContainer: {
         backgroundImage: `linear-gradient(90.13deg,
@@ -26,7 +27,8 @@ const makeStyle = {
         display: "flex",
         flexWrap:"wrap",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+      
     },
     imgStyle: {
         height: "auto",

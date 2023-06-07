@@ -9,6 +9,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import CallIcon from '@mui/icons-material/Call';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { Link } from 'react-router-dom';
 
 const makestyle = {
     footerBox: {
@@ -22,8 +23,8 @@ const makestyle = {
     colText: {
         fontWeight: "500",
         marginBottom: "15px",
-        fontFamily: "'Krub', sans-serif"
-
+        fontFamily: "'Krub', sans-serif",
+        cursor: "pointer",
     },
     contactIcon: {
         backgroundColor: "#F79633",
@@ -74,7 +75,8 @@ export default function Footer() {
                     </Grid>
                     <Grid item lg={3} sm={6} xs={6}>
                         <Box sx={{ pt: "43px" }}>
-                            <Typography sx={makestyle.colText}>Careers</Typography>
+                            {/* link */}
+                             <Typography sx={makestyle.colText}>Careers</Typography>
                             <Typography sx={makestyle.colText}>Terms & Conditions </Typography>
                             <Typography sx={makestyle.colText}>Privacy Policy</Typography>
                         </Box>
