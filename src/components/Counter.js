@@ -8,10 +8,15 @@ const makeStyle = {
         justifyContent: "center",
         alignitem: "center",
         textAlign: "center",
-        margin: "4rem 2rem 0rem 2rem"
+        marginTop: "3rem",
+        marginLeft: "1rem",
+        "@media (max-width: 480px)": {
+            marginTop: "1rem",
+            justifyContent: "spaceBetween",
+        },
     },
     mainBox: {
-        // border: "1px solid red",
+      
         display: "flex",
         // justifyContent:"space-between",
         alignItem: "center"
@@ -23,8 +28,13 @@ const makeStyle = {
         backgroundColor: "#E57E38",
         marginRight: "10px",
         marginLeft: "10px",
+        "@media (max-width: 480px)": {
+            marginTop: "11px"
+        },
     },
     counter: {
+        textAlign: "left",
+        marginRight: "10px",
         color: "#2A4F6D",
         fontFamily: "'Rubik', sans-serif",
         fontWeight: "600",
@@ -33,7 +43,14 @@ const makeStyle = {
             fontSize: "36px",
         },
         "@media (max-width: 480px)": {
+            width: "120px",
             fontSize: "28px",
+        },
+        "@media (max-width: 365px)": {
+            fontSize: "25px",
+        },
+        "@media (max-width: 900px)": {
+            width: "150px",
         },
     },
     title: {
@@ -47,6 +64,9 @@ const makeStyle = {
         },
         "@media (max-width: 480px)": {
             fontSize: "16px",
+        },
+        "@media (max-width: 373px)": {
+            fontSize: "13px",
         },
         marginTop: "10px"
     }
@@ -79,11 +99,12 @@ export default function Counter() {
                         return <Grid item lg={3} xs={12} md={6}>
                             <Box sx={makeStyle.mainBox}>
                                 <Typography sx={makeStyle.counter}>{item.counter}</Typography>
-                                <Box sx={{ display: "flex", justifyContent: "center", textAlign: "center" }}>
+                                <Box sx={{ display: "flex", justifyContent: "spaceBetween", textAlign: "center" }}>
                                     <Box sx={makeStyle.smallBox}></Box>
                                     <Typography sx={makeStyle.title}>{item.title}</Typography>
                                 </Box>
                             </Box>
+
                         </Grid>
                     })}
                 </Grid>

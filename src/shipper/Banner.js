@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Container, Grid, Paper, Typography, InputLabel, TextField, Button } from '@mui/material';
 import { List, ListItem, ListItemText } from '@mui/material';
 import bgImg from "../images/Photo-bg.png";
-import { Carousel } from 'react-responsive-carousel';
+import success from "../images/messages.png"
+// import { Carousel } from 'react-responsive-carousel';
+// import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Forms from './Forms';
+import bullets from "../images/bullets.png"
 
 const makeStyle = {
     mainBox: {
@@ -61,102 +69,168 @@ const makeStyle = {
         fontSize: "16px",
         fontWeight: "500",
         fontFamily: "'Krub', sans-serif",
+        // mobile view
+        "@media (max-width: 450px)": {
+            display: "none"
+        },
     },
     form: {
         position: "relative",
         // height:"50%",
         marginBottom: "2rem",
-        height: "460px",
-        padding: "25px 20px 20px 22px",
+        minHeight: "460px",
+
+        // padding: "25px 10px 15px 22px",
+        paddingTop: "20px",
+        paddingBottom: "15px",
         borderRadius: "12px",
-        "@media (max-width: 768px)": {
-            height: "400px"
-        },
+        // "@media (max-width: 768px)": {
+        //     height: "400px"
+        // },
     },
-    title: {
-        textAlign: "center",
-        fontFamily: "'Rubik', sans-serif",
-        fontWeight: "500",
-        fontSize: "24px",
-        color: "#000000",
-        marginBottom: "40px"
-
-    },
-    formBtn: {
-        position: "abssolute",
-        bottom: "0",
-        width: "100%",
-        background: "linear-gradient(94.06deg, #FFB629 -1.21%, #FFDA56 58.66%, #FFD7A6 116.84%)",
-        color: "#000000",
-        // fontFamily: "'Krub', sans-serif",
-        fontWeight: "600",
-        fontSize: "10px",
-        height: "42px",
-        marginTop: "100px",
-        "@media (max-width: 768px)": {
-            marginTop: "40px",
-        },
-        "@media (max-width: 488px)": {
-            marginTop: "5px",
-        },
-    },
-    destination: {
+    bulletItems: {
         fontSize: "14px",
-        fontWeight: "400",
-        fontFamily: "'Rubik', sans-serif",
-        color: "#000000"
-
+        fontFamily: "'Krub', sans-serif",
+        fontWeight: "500",
+        marginLeft: "10px",
+        color: "#2A4F6D"
     },
-    textField: {
-        marginTop: "5px",
-        marginBottom: "40px",
-        width: "100%"
+    listItem2: {
+        marginTop: "1rem",
+        display: "none",
+        // mobile view
+        "@media (max-width: 450px)": {
+            display: "block"
+        },
     }
+
 };
 
 export default function Banner() {
+
+
+    const [formData, setFormData] = useState({});
+    const [currentForm, setCurrentForm] = useState(1);
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        // Process form data if needed
+        // Example: Send form data to server or update state
+        if (currentForm < 3) {
+            setCurrentForm(currentForm + 1);
+        }
+    };
+
+    const handleGoBack = () => {
+        if (currentForm > 1) {
+            setCurrentForm(currentForm - 1);
+        }
+    };
+
+    const handleReset = () => {
+        setFormData({});
+        setCurrentForm(1);
+    };
+
+
+
+    // const [formData, setFormData] = useState({});
+    const [showSecondForm, setShowSecondForm] = useState(false);
+    const [showThirdForm, setShowThirdForm] = useState(false);
+    const [showFirstForm, setShowFirstForm] = useState(false);
+
+    // DROPDOWN MENU STATE
+    const [department, setDepartment] = React.useState('');
+    const [length, setLength] = React.useState('');
+    const [Height, setHeight] = React.useState('');
+
+    const handleFirstFormSubmit = (e) => {
+        e.preventDefault();
+        setShowSecondForm(true);
+    };
+
+    const handleSecondFormSubmit = (e) => {
+        e.preventDefault();
+        setShowThirdForm(true);
+    };
+
+    const handleThirdFormSubmit = (e) => {
+        e.preventDefault();
+        console.log('All forms submitted!');
+    };
+
+    const handleChange = (event) => {
+        setDepartment(event.target.value);
+    };
+
+    const handleLength = (event) => {
+        setLength(event.target.value);
+    };
+    const handleHeight = (event) => {
+        setHeight(event.target.value);
+    };
+
+    const backClick = () => {
+        setShowThirdForm(true)
+    }
     return (
-        <Box sx={makeStyle.mainBox}>
-            <Box>
-                <Container>
-                    <Grid container spacing={2}>
-                        <Grid item lg={6} xs={12}>
-                            <Box>
-                                <Box sx={makeStyle.leftContent}>
-                                    <Typography sx={makeStyle.streamLine}>Streamline Your Logistics with Easy Truck Booking</Typography>
-                                    <Typography sx={makeStyle.reRoute}>ReeRoute: India's Fastest Truck Booking Platform!</Typography>
-                                    {/* list items */}
-                                    <ListItem
-                                        sx={makeStyle.listItem}>
-                                        Pan-India operations
-                                    </ListItem>
-                                    <ListItem
-                                        sx={makeStyle.listItem}>
-                                        Associated with 3,000+ SMEs/Transporters
-                                    </ListItem>
-                                    <ListItem
-                                        sx={makeStyle.listItem}>
-                                        Guaranteed Timely Payments
-                                    </ListItem>
-                                </Box>
-                            </Box>
-                        </Grid>
-                        {/* rightSide content */}
-                        <Grid item lg={6} xs={12}>
-                            <Paper sx={makeStyle.form}>
-                                <Typography sx={makeStyle.title}>Book Your Truck</Typography>
-                                <InputLabel htmlFor="my-input" sx={makeStyle.destination}>From</InputLabel>
-                                <TextField placeholder="Enter origin city" sx={makeStyle.textField}></TextField>
-                                <InputLabel htmlFor="my-input" sx={makeStyle.destination}>To</InputLabel>
-                                <TextField placeholder='Enter destination city' sx={makeStyle.textField}></TextField>
+        <>
+            <Box sx={makeStyle.mainBox}>
+                <Box>
+                    <Container>
+                        <Grid container spacing={2}>
+                            <Grid item lg={6} xs={12}>
                                 <Box>
-                                    <Button sx={makeStyle.formBtn}>Next</Button>
+                                    <Box sx={makeStyle.leftContent}>
+                                        <Typography sx={makeStyle.streamLine}>Streamline Your Logistics with Easy Truck Booking</Typography>
+                                        <Typography sx={makeStyle.reRoute}>ReeRoute: India's Fastest Truck Booking Platform!</Typography>
+                                        {/* list items */}
+                                        <ListItem
+                                            sx={makeStyle.listItem}>
+                                            Pan-India operations
+                                        </ListItem>
+                                        <ListItem
+                                            sx={makeStyle.listItem}>
+                                            Associated with 3,000+ SMEs/Transporters
+                                        </ListItem>
+                                        <ListItem
+                                            sx={makeStyle.listItem}>
+                                            Guaranteed Timely Payments
+                                        </ListItem>
+                                    </Box>
                                 </Box>
-                            </Paper>
+                            </Grid>
+                            {/* rightSide content */}
+                            <Grid item lg={6} xs={12}>
+                                <Paper sx={makeStyle.form}>
+                                    <Forms />
+                                </Paper>
+                            </Grid>
+
                         </Grid>
-                    </Grid>
-                </Container>
+                    </Container>
+                </Box>
+
+            </Box >
+            {/* mobile view */}
+            <Box sx={makeStyle.listItem2}>
+                <Box sx={{ display: "flex", ml: "15px", mb: "3px" }}>
+                    <Box><img src={bullets} alt="" sx={makeStyle.bullets} /></Box>
+                    <Typography sx={makeStyle.bulletItems}>Pan-India operations</Typography>
+                </Box>
+                <Box sx={{ display: "flex", ml: "15px", mb: "3px" }}>
+                    <Box><img src={bullets} alt="" sx={makeStyle.bullets} /></Box>
+                    <Typography sx={makeStyle.bulletItems}>Partnered with 10,000+ truckers </Typography>
+                </Box>
+                <Box sx={{ display: "flex", ml: "15px", mb: "3px" }}>
+                    <Box><img src={bullets} alt="" sx={makeStyle.bullets} /></Box>
+                    <Typography sx={makeStyle.bulletItems}>Rated 5 ⭐️ by 3,000+ clients</Typography>
+                </Box>
             </Box>
-        </Box >
+
+            {/* mobile view */}
+
+
+        </>
     );
 }

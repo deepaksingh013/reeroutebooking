@@ -5,6 +5,7 @@ import Footerhero from '../components/Footerhero'
 import DownloadShipper from './DownloadShipper'
 import Banner from './Banner'
 // import Slider from '../components/Slider'
+
 import Counter from '../components/Counter'
 import Faq from '../components/Faq'
 import Navbar from '../components/Navbar'
@@ -16,11 +17,11 @@ export default function Shipper() {
             <Banner />
             <Counter />
             <DownloadShipper />
-            <Reroute />
-            <Testimonial />
-            {/* <Slider/> */}
             <Faq />
-            <Footerhero />
+            {/* <Reroute /> */}
+            {/* <Testimonial /> */}
+            {/* <Slider/> */}
+            {/* <Footerhero /> */}
             <Footer />
         </div>
     )

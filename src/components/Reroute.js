@@ -70,7 +70,11 @@ const makeStyle = {
     fontStyle: "bold !important",
     fontSize: "20px",
     color: "#fff"
-  }
+  },
+  imgStyle: {
+    maxWidth: "100%",
+    height: "auto"
+  },
 }
 
 export default function Reroute() {
@@ -85,8 +89,8 @@ export default function Reroute() {
         <Box sx={{ mt: "3rem" }}>
           <Grid container spacing={2}>
             <Grid item lg={5}>
-              <img src={window.location.pathname === "/" ? img1 : imgA} alt="" />
-              <img src={vector20} alt="" style={makeStyle.arrow} />
+              <img src={window.location.pathname === "/" ? img1 : imgA} alt="" style={makeStyle.imgStyle} />
+              {/* <img src={vector20} alt="" style={makeStyle.arrow} /> */}
               <Typography sx={makeStyle.info}>Enter the query details including origin, destination & type of truck required.</Typography>
               <Box sx={makeStyle.orderBox} display="flex" justifyContent="center" alignItems="center">
                 <Box>
@@ -95,8 +99,8 @@ export default function Reroute() {
               </Box>
             </Grid>
             <Grid item lg={5}>
-              <img src={window.location.pathname === "/" ? img2 : imgB} alt="" />
-              <img src={vector20} alt="" style={makeStyle.arrow} />
+              <img src={window.location.pathname === "/" ? img2 : imgB} alt="" style={makeStyle.imgStyle}/>
+              {/* <img src={vector20} alt="" style={makeStyle.arrow} /> */}
               <Typography sx={makeStyle.info} width="80%">The query is shared with our 10,000+ verified partners in real-time</Typography>
               <Box sx={makeStyle.orderBox} display="flex" justifyContent="center" alignItems="center">
                 <Box>
@@ -105,7 +109,7 @@ export default function Reroute() {
               </Box>
             </Grid>
             <Grid item lg={2}>
-              <img src={window.location.pathname === "/" ? img4 : imgC} alt="" />
+              <img src={window.location.pathname === "/" ? img4 : imgC} alt="" style={makeStyle.imgStyle}/>
               <Typography sx={makeStyle.info}>Get the best quote out of all the interested partners</Typography>
               <Box sx={makeStyle.orderBox} display="flex" justifyContent="center" alignItems="center">
                 <Box>
@@ -122,10 +126,10 @@ export default function Reroute() {
             <Grid item lg={6}>
               <Box display="flex" justifyContent="center" alignItems="center">
                 <Box sx={{ position: "relative" }}>
-                  <img src={window.location.pathname === "/" ? img5 : imgE} alt="" />
+                  <img src={window.location.pathname === "/" ? img5 : imgE} alt="" style={makeStyle.imgStyle}/>
 
                   <Typography sx={makeStyle.info} marginBottom={10}>Upon trip completion, download POD from ReeRoute App.</Typography>
-                  <img src={vector27} alt="" style={{ position: 'absolute', left: '70%', right: "100px" }} />
+                  {/* <img src={vector27} alt="" style={{ position: 'absolute', left: '70%', right: "100px" }} /> */}
                   <Box sx={makeStyle.orderBox} display="flex" justifyContent="center" alignItems="center" >
                     <Box >
                       <Typography sx={makeStyle.order}>5</Typography>
@@ -146,7 +150,7 @@ export default function Reroute() {
             <Grid item lg={6}>
               <Box display="flex" justifyContent="center" alignItems="center" sx={{ position: "relative" }}>
                 <Box>
-                  <img src={window.location.pathname === "/" ? img5 : imgD} alt="" />
+                  <img src={window.location.pathname === "/" ? img5 : imgD} alt="" style={makeStyle.imgStyle}/>
                   <Typography sx={makeStyle.info} marginBottom={10}>Upon trip completion, download POD from ReeRoute App.</Typography>
                   <Box sx={makeStyle.orderBox} display="flex" justifyContent="center" alignItems="center" >
                     <Box >
@@ -155,7 +159,7 @@ export default function Reroute() {
                   </Box>
                 </Box>
                 <Box>
-                  <img src={vector22} alt="" style={{ position: "absolute", right: "0", bottom: "-10px" }} />
+                  {/* <img src={vector22} alt="" style={{ position: "absolute", right: "0", bottom: "-10px" }} /> */}
                 </Box>
               </Box>
               {/* <Box sx={makeStyle.orderBox} display="flex" justifyContent="center" alignItems="center">

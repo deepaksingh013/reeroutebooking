@@ -9,7 +9,7 @@ import Carrers from './Carrers/Carrers';
 import Tc from './t&c/Tc';
 import PrivacyPolicy from './privacypolicy/PrivacyPolicy';
 import About from './about/About';
-import Forms from './components/Forms';
+import Forms from './shipper/Forms';
 // import Slider from './components/Slider';
 
 
@@ -28,7 +28,6 @@ function App() {
         <Route path="/aboutus" element={<About />} />
       </Routes>
       {/* <Slider /> */}
-
 
     </>
   );

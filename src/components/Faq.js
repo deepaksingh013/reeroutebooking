@@ -12,12 +12,16 @@ import CallIcon from '@mui/icons-material/Call';
 
 const makeStyle = {
     mainBox: {
-        mt: "5rem",
+        // mt: "5rem",
         minHeight: "586px",
         marginLeft: "4rem",
         marginRight: "4rem",
-        marginBottom: "2rem"
+        marginBottom: "2rem",
         // border:"1px solid red"
+        "@media (max-width: 599px)": {
+            margin: "20px"
+        },
+
     },
     Faq: {
         fontWeight: "400",
@@ -28,7 +32,19 @@ const makeStyle = {
         color: "#2A4F6D",
         paddingLeft: "10px",
         backgroundColor: "rgba(232, 232, 232, 0.5)",
-        borderLeft: "4px solid #F79633"
+        borderLeft: "4px solid #F79633",
+        "@media (max-width: 700px)": {
+            marginTop: "2rem"
+        },
+        "@media (max-width: 800px)": {
+            marginTop: "34%"
+        },
+        "@media (max-width: 550px)": {
+            marginTop: "50%"
+        },
+        "@media (max-width: 369px)": {
+            marginTop: "62%"
+        },
     },
     contactIcon: {
         backgroundColor: "#F79633",
@@ -47,17 +63,34 @@ const makeStyle = {
         },
     },
     bgImg: {
-        marginLeft: "50px",
+        // marginLeft: "50px",
         height: "100%",
-        width: "80%",
-        objectFit: "cover"
+        width: "100%",
+
+        objectFit: "cover",
+        "@media (max-width: 659px)": {
+            width: "92%",
+            marginLeft: "0px",
+        },
     },
     helpBox: {
         position: "absolute",
         top: "30%",
         backgroundColor: "#2A4F6D",
         width: "35%",
-        padding: "2rem 0rem 2rem 2rem"
+        padding: "2rem 0rem 2rem 2rem",
+        "@media (max-width: 800px)": {
+            position: "absolute",
+            top: "10%",
+            width: "40%"
+        },
+        "@media (max-width: 600px)": {
+            position: "absolute",
+            top: "70%",
+            left: "65px",
+            width: "65%",
+            padding:"7px"
+        },
     },
     btn: {
         color: "#23212A",
@@ -76,7 +109,8 @@ const makeStyle = {
         fontWeight: "400",
         padding: "5px",
         width: "25%",
-        borderLeft: "4px solid #FFB629"
+        borderLeft: "4px solid #FFB629",
+
 
     },
     consultation: {
@@ -86,12 +120,24 @@ const makeStyle = {
         marginTop: "10px",
         marginBottom: "10px",
         fontSize: "20px",
+        "@media (max-width: 800px)": {
+            fontSize: "15px"
+        },
+        "@media (max-width: 600px)": {
+            fontSize: "12px"
+        },
     },
     contact: {
         fontFamily: "'Krub', sans-serif",
         fontWeight: "500",
         fontSize: '16px',
-        color: "#fff"
+        color: "#fff",
+        "@media (max-width: 800px)": {
+            fontSize: "15px"
+        },
+        "@media (max-width: 600px)": {
+            fontSize: "10px"
+        },
     }
 
 
@@ -144,7 +190,8 @@ export default function Faq() {
         <div>
 
             <Box sx={makeStyle.mainBox}>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} sx={{ '@media (max-width: 700px)': { flexDirection: 'column-reverse' } }}>
+
                     <Grid item lg={6}>
                         <Typography sx={makeStyle.Faq}>Faq</Typography>
                         <Typography sx={makeStyle.title}>Frequently Asked Questions</Typography>
