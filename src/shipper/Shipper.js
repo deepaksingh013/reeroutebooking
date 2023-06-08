@@ -18,7 +18,7 @@ export default function Shipper() {
             <Counter />
             <DownloadShipper />
             <Faq />
-            {/* <Reroute /> */}
+            <Reroute />
             {/* <Testimonial /> */}
             {/* <Slider/> */}
             {/* <Footerhero /> */}

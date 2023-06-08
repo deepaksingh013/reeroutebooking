@@ -12,7 +12,7 @@ import CallIcon from '@mui/icons-material/Call';
 
 const makeStyle = {
     mainBox: {
-        // mt: "5rem",
+        mt: "2rem",
         minHeight: "586px",
         marginLeft: "4rem",
         marginRight: "4rem",
@@ -21,7 +21,6 @@ const makeStyle = {
         "@media (max-width: 599px)": {
             margin: "20px"
         },
-
     },
     Faq: {
         fontWeight: "400",
@@ -36,9 +35,9 @@ const makeStyle = {
         "@media (max-width: 700px)": {
             marginTop: "2rem"
         },
-        "@media (max-width: 800px)": {
-            marginTop: "34%"
-        },
+        // "@media (max-width: 800px)": {
+        //     marginTop: "34%"
+        // },
         "@media (max-width: 550px)": {
             marginTop: "50%"
         },

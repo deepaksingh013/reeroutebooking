@@ -50,9 +50,17 @@ const makeStyle = {
     fontFamily: "'Krub', sans-serif",
     fontWeight: "500",
     fontSize: "20px",
+    height: "100px",
+    "@media (max-width: 1000px)": {
+      height: "80px",
+      fontSize:"16px"
+    },
   },
   arrow: {
-    marginBottom: "15%"
+    // marginBottom: "15%",
+    maxWidth: "100%",
+    height: "auto",
+    marginTop: "50px"
   },
   orderBox: {
     margin: "auto",
@@ -69,12 +77,54 @@ const makeStyle = {
     fontSize: "20px",
     fontStyle: "bold !important",
     fontSize: "20px",
-    color: "#fff"
+    color: "#fff",
+
   },
   imgStyle: {
     maxWidth: "100%",
-    height: "auto"
+    height: "auto",
+    // position:"absolute",
+    // bottom:"0"
   },
+  imgStyle2: {
+    maxWidth: "40%",
+    height: "auto",
+  },
+  rerouteContent: {
+    border: "1px solid red",
+    display: "flex",
+    height: "300px",
+    justifyContent: "space-between",
+    position: "relative",
+    "@media (max-width: 1600px)": {
+      height: "250px",
+    },
+    "@media (max-width: 1400px)": {
+      height: "200px",
+    },
+    "@media (max-width: 1200px)": {
+      height: "160px",
+    },
+    "@media (max-width: 1000px)": {
+      height: "120px",
+    },
+  },
+  mobile:{
+    border: "1px solid red",
+    height: "300px",
+    "@media (max-width: 1600px)": {
+      height: "250px",
+    },
+    "@media (max-width: 1400px)": {
+      height: "200px",
+    },
+    "@media (max-width: 1200px)": {
+      height: "160px",
+    },
+    "@media (max-width: 1000px)": {
+      height: "120px",
+    },
+  }
 }
 
 export default function Reroute() {
@@ -88,9 +138,15 @@ export default function Reroute() {
         </Box>
         <Box sx={{ mt: "3rem" }}>
           <Grid container spacing={2}>
-            <Grid item lg={5}>
-              <img src={window.location.pathname === "/" ? img1 : imgA} alt="" style={makeStyle.imgStyle} />
-              {/* <img src={vector20} alt="" style={makeStyle.arrow} /> */}
+            <Grid item lg={4} md={4} >
+              <Box sx={makeStyle.rerouteContent}>
+                <Box>
+                  <img src={window.location.pathname === "/" ? img1 : imgA} alt="" style={makeStyle.imgStyle} />
+                </Box>
+                <Box>
+                  <img src={vector20} alt="" style={makeStyle.arrow} />
+                </Box>
+              </Box>
               <Typography sx={makeStyle.info}>Enter the query details including origin, destination & type of truck required.</Typography>
               <Box sx={makeStyle.orderBox} display="flex" justifyContent="center" alignItems="center">
                 <Box>
@@ -98,9 +154,17 @@ export default function Reroute() {
                 </Box>
               </Box>
             </Grid>
-            <Grid item lg={5}>
-              <img src={window.location.pathname === "/" ? img2 : imgB} alt="" style={makeStyle.imgStyle}/>
-              {/* <img src={vector20} alt="" style={makeStyle.arrow} /> */}
+            <Grid item lg={4} md={4} sm={4}>
+              <Box sx={makeStyle.rerouteContent}>
+                <Box>
+                  <img src={window.location.pathname === "/" ? img2 : imgB} alt="" style={makeStyle.imgStyle} />
+                </Box>
+                <Box>
+                  <img src={vector20} alt="" style={makeStyle.arrow} />
+                </Box>
+              </Box>
+
+
               <Typography sx={makeStyle.info} width="80%">The query is shared with our 10,000+ verified partners in real-time</Typography>
               <Box sx={makeStyle.orderBox} display="flex" justifyContent="center" alignItems="center">
                 <Box>
@@ -108,8 +172,11 @@ export default function Reroute() {
                 </Box>
               </Box>
             </Grid>
-            <Grid item lg={2}>
-              <img src={window.location.pathname === "/" ? img4 : imgC} alt="" style={makeStyle.imgStyle}/>
+            <Grid item lg={4} md={4} sm={4}>
+              <Box sx={makeStyle.mobile}>
+                <img src={window.location.pathname === "/" ? img4 : imgC} alt="" style={makeStyle.imgStyle2} />
+
+              </Box>
               <Typography sx={makeStyle.info}>Get the best quote out of all the interested partners</Typography>
               <Box sx={makeStyle.orderBox} display="flex" justifyContent="center" alignItems="center">
                 <Box>
@@ -126,9 +193,9 @@ export default function Reroute() {
             <Grid item lg={6}>
               <Box display="flex" justifyContent="center" alignItems="center">
                 <Box sx={{ position: "relative" }}>
-                  <img src={window.location.pathname === "/" ? img5 : imgE} alt="" style={makeStyle.imgStyle}/>
+                  <img src={window.location.pathname === "/" ? img5 : imgE} alt="" style={makeStyle.imgStyle} />
 
-                  <Typography sx={makeStyle.info} marginBottom={10}>Upon trip completion, download POD from ReeRoute App.</Typography>
+                  <Typography sx={makeStyle.info} >Upon trip completion, download POD from ReeRoute App.</Typography>
                   {/* <img src={vector27} alt="" style={{ position: 'absolute', left: '70%', right: "100px" }} /> */}
                   <Box sx={makeStyle.orderBox} display="flex" justifyContent="center" alignItems="center" >
                     <Box >
@@ -150,7 +217,7 @@ export default function Reroute() {
             <Grid item lg={6}>
               <Box display="flex" justifyContent="center" alignItems="center" sx={{ position: "relative" }}>
                 <Box>
-                  <img src={window.location.pathname === "/" ? img5 : imgD} alt="" style={makeStyle.imgStyle}/>
+                  <img src={window.location.pathname === "/" ? img5 : imgD} alt="" style={makeStyle.imgStyle} />
                   <Typography sx={makeStyle.info} marginBottom={10}>Upon trip completion, download POD from ReeRoute App.</Typography>
                   <Box sx={makeStyle.orderBox} display="flex" justifyContent="center" alignItems="center" >
                     <Box >
