@@ -39,11 +39,20 @@ const makeStyle = {
         //     marginTop: "34%"
         // },
         "@media (max-width: 550px)": {
-            marginTop: "50%"
+            marginTop: "5rem"
         },
-        "@media (max-width: 369px)": {
-            marginTop: "62%"
+        "@media (max-width: 474px)": {
+            marginTop: "7rem"
         },
+        "@media (max-width: 403px)": {
+            marginTop: "9rem"
+        },
+        "@media (max-width: 340px)": {
+            marginTop: "11rem"
+        },
+        // "@media (max-width: 369px)": {
+        //     marginTop: "62%"
+        // },
     },
     contactIcon: {
         backgroundColor: "#F79633",
@@ -59,6 +68,13 @@ const makeStyle = {
         fontSize: "60px",
         "@media (max-width: 599px)": {
             fontSize: "30px",
+        },
+        "@media (max-width: 999px)": {
+            fontSize: "45px",
+        },
+        "@media (max-width: 450px)": {
+            fontSize: "25px",
+            marginBottom:"5px"
         },
     },
     bgImg: {

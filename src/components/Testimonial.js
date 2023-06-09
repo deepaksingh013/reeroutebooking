@@ -23,7 +23,13 @@ const makeStyle = {
         fontWeight: "600",
         fontSize: "50px",
         fontStyle: "normal",
-        color: "#2A4F6D"
+        color: "#2A4F6D",
+        "@media (max-width: 700px)": {
+            fontSize:"35px"
+        },
+        "@media (max-width: 400px)": {
+            fontSize:"25px"
+        }
     },
     leftIcon: {
         color: "#F79633",
@@ -78,6 +84,11 @@ const makeStyle = {
         padding: "10px",
         position: "absolute",
         right: "30px"
+    },
+    webView:{
+        "@media (max-width: 700px)": {
+           display:"none"
+        }
     }
 }
 
@@ -103,10 +114,10 @@ const testimonial = [
 export default function Testimonial() {
     return (
         <>
-            <Container sx={{ mt: "2rem" }}>
+            <Container sx={{ mt: "10rem" }}>
                 <Typography sx={makeStyle.testimonial}>Testimonial</Typography>
                 <Box sx={{ display: "flex", justifyContent: "space-between", mb: "30px" }}>
-                    <Typography sx={makeStyle.title}> {window.location.pathname === "/" ? "What Our Shipper Say" : "What Our Truckers Say"}   </Typography>
+                    <Typography sx={makeStyle.title}> {window.location.pathname === "/" ? "What Our Shipper Say" : "What Our Truckers Say"}  </Typography>
                     <Box sx={{ mt: "25px" }}>
                         <ArrowCircleLeftIcon sx={makeStyle.leftIcon} />
                         <ArrowCircleRightIcon sx={makeStyle.rightIcon} />
@@ -114,10 +125,13 @@ export default function Testimonial() {
                 </Box>
 
                 {/* testimonials */}
+                <Box sx={makeStyle.webView}>
+
+             
                 <Box sx={{ mb: "2rem" }}>
                     <Grid container spacing={0} >
                         {testimonial.map((item, index) => (
-                            <Grid item key={index} lg={6} >
+                            <Grid item key={index} lg={6} sm={6}>
                                 <Box sx={{ display: 'flex', position: "relative", padding: "2rem", backgroundColor: index % 2 === 0 ? makeStyle.bg1 : makeStyle.bg2 }}>
                                     <img src={item.profileImg} alt="" style={makeStyle.profileImg} />
                                     <Box sx={{ display: "flex", flexDirection: "column", ml: "10px", mt: "10px" }}>
@@ -138,6 +152,7 @@ export default function Testimonial() {
                             </Grid>
                         ))}
                     </Grid>
+                </Box>
                 </Box>
 
 
