@@ -9,7 +9,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import CallIcon from '@mui/icons-material/Call';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const makestyle = {
     footerBox: {
@@ -25,6 +25,9 @@ const makestyle = {
         marginBottom: "15px",
         fontFamily: "'Krub', sans-serif",
         cursor: "pointer",
+        "&:hover": {
+            color: "#F79633"
+          },
     },
     contactIcon: {
         backgroundColor: "#F79633",
@@ -43,6 +46,9 @@ const makestyle = {
     }
 }
 export default function Footer() {
+    const handleLinkClick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
     return (
         <Box sx={makestyle.footerBox}>
             <Container>
@@ -67,18 +73,18 @@ export default function Footer() {
                     </Grid>
                     <Grid item lg={3} sm={6} xs={6}>
                         <Box sx={{ pt: "43px" }}>
-                            <Typography sx={makestyle.colText}>About Us</Typography>
+                        <Link to="/aboutus" onClick={handleLinkClick} style={{textDecoration:"none",color:"#fff"}}><Typography sx={makestyle.colText}>About Us</Typography></Link> 
                             <Typography sx={makestyle.colText}> How it Works</Typography>
                             <Typography sx={makestyle.colText}> Download App</Typography>
-                            <Typography sx={makestyle.colText}>Contact</Typography>
+                            <Link to="/contact" onClick={handleLinkClick} style={{textDecoration:"none",color:"#fff"}}><Typography sx={makestyle.colText}>Contact</Typography></Link> 
                         </Box>
                     </Grid>
                     <Grid item lg={3} sm={6} xs={6}>
                         <Box sx={{ pt: "43px" }}>
                             {/* link */}
-                             <Typography sx={makestyle.colText}>Careers</Typography>
-                            <Typography sx={makestyle.colText}>Terms & Conditions </Typography>
-                            <Typography sx={makestyle.colText}>Privacy Policy</Typography>
+                       <Link to="/carrers" onClick={handleLinkClick} style={{textDecoration:"none",color:"#fff"}}><Typography sx={makestyle.colText}>Careers</Typography></Link>     
+                       <Link to="/t&c" onClick={handleLinkClick} style={{textDecoration:"none",color:"#fff"}}><Typography sx={makestyle.colText}>      Terms & Conditions </Typography></Link>   
+                       <Link to="/privacypolicy" onClick={handleLinkClick} style={{textDecoration:"none",color:"#fff"}}><Typography sx={makestyle.colText}> Privacy Policy </Typography></Link>   
                         </Box>
                     </Grid>
                     <Grid item lg={3} >

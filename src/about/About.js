@@ -12,13 +12,13 @@ import Footerhero from '../components/Footerhero'
 const makeStyles = {
     experts: {
         marginBottom: "6rem",
-        "@media (max-width: 800px)": {
+        "@media (max-width: 00px)": {
             display: "none"
         }
     },
     slider: {
         display: "none",
-        "@media (max-width: 800px)": {
+        "@media (max-width: 00px)": {
             display: "block"
         }
     }
@@ -35,7 +35,7 @@ export default function About() {
             <Box sx={makeStyles.slider}>
                 <ExpertsSlider />
             </Box>
-            {/* <Footerhero /> */}
+            <Footerhero />
             <Footer />
         </>
     )

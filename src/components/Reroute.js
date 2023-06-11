@@ -7,14 +7,13 @@ import mobile2 from "../images/164.png"
 import mobile3 from "../images/165.png"
 import img2 from "../images/2.png"
 import img4 from "../images/4.png"
-import img5 from "../images/5.png"
-import imgD from "../images/s4.png"
-import imgE from "../images/s5 (1).png"
 import mv1 from "../images/Vector 72.png"
-import img6 from "../images/3 (1).png"
-import vector2 from "../images/Vector 22 (2).png"
 import img44 from "../images/166.png"
 import img167 from "../images/167.png"
+import img5 from "../images/5.png"
+import img6 from "../images/3.png"
+import vector22 from "../images/Vector 26.png"
+import vector23 from "../images/Vector 23.png"
 
 const makeStyle = {
   mainBox: {
@@ -105,6 +104,7 @@ const makeStyle = {
     margin: "auto",
     borderRadius: "50%",
     height: "75px",
+   
     width: "75px",
     backgroundColor: "#F79633",
     marginTop: "20px",
@@ -116,7 +116,7 @@ const makeStyle = {
     fontFamily: "'Krub', sans-serif",
     fontFamily: "'Krub', sans-serif",
     fontWeight: "600",
-    fontSize: "20px",
+    fontSize: "40px",
     fontStyle: "bold !important",
     fontSize: "20px",
     color: "#fff",
@@ -221,7 +221,16 @@ const makeStyle = {
     display: "none",
     "@media (max-width: 700px)": {
       position: "absolute",
-      top: "71px",
+      top: "66px",
+      left: "0px",
+      display: "block",
+    },
+  },
+  mv2: {
+    display: "none",
+    "@media (max-width: 700px)": {
+      position: "absolute",
+      top: "66px",
       left: "0px",
       display: "block",
     },
@@ -265,6 +274,7 @@ const makeStyle = {
 
   // mobile view 
   order1: {
+    color:"#fff",
     display: "none",
     position: "absolute", top: "75px", left: "-10px", background: "#F79633", height: "25px", width: "25px", borderRadius: "50%", textAlign: "center",
     "@media (max-width: 700px)": {
@@ -272,38 +282,48 @@ const makeStyle = {
     },
   },
   smallOrder3: {
+    color:"#fff",
     display: "none",
-    position: "absolute", left: "-10px", top: "46px", background: "#F79633", height: "25px", width: "25px", borderRadius: "50%", textAlign: "center",
+    position: "absolute", left: "-10px", top: "19px", background: "#F79633", height: "25px", width: "25px", borderRadius: "50%", textAlign: "center",
     "@media (max-width: 700px)": {
       display: 'block'
     },
   },
 
   smallOrder2: {
+    color:"#fff",
     display: "none",
-    position: "absolute", top: "54px", left: "-10px", background: "#F79633", height: "25px", width: "25px", borderRadius: "50%", textAlign: "center",
+    position: "absolute", top: "40px", left: "-10px", background: "#F79633", height: "25px", width: "25px", borderRadius: "50%", textAlign: "center",
     "@media (max-width: 700px)": {
       display: 'block'
     },
   },
 
   // mobileview reroute bottom side
+  bottomSide: {
+    display: "none",
+    "@media (max-width: 700px)": {
+      display: "block"
+    },
+  },
   order4: {
+    color:"#fff",
     position: "absolute",
     background: "#F79633",
     height: "25px",
     width: "25px",
     borderRadius: "50%",
     textAlign: "center",
-    left: "22px",
-    top: "38px",
+    left: "21px",
+    top: "13px",
     "@media (max-width: 486px)": {
+      top: "13px",
       left: "6px"
     },
   },
 
   txt4: {
-    marginLeft:"10px",
+    marginLeft: "10px",
     textAlign: "center",
     // border: "1px solid red",
     color: "#666C89",
@@ -319,7 +339,7 @@ const makeStyle = {
   vector4: {
     position: "absolute",
     left: "32px",
-    top: "62px",
+    top: "38px",
     "@media (max-width: 486px)": {
       right: "50px"
     },
@@ -332,17 +352,103 @@ const makeStyle = {
     },
   },
   order5: {
+    color:"#fff",
     position: "absolute",
     background: "#F79633",
     height: "25px",
     width: "25px",
     borderRadius: "50%",
     textAlign: "center",
-    left: "52px",
+    top: "-25px",
+    left: "21px",
     "@media (max-width: 486px)": {
-      left: "37px"
+      position: "absolute",
+      left: "6px"
     },
+  },
+  mv5: {
+    display: "none",
+    "@media (max-width: 700px)": {
+      display: "block",
+      top: "45px",
+      position: "absolute",
+      left: "0px",
+
+    },
+  },
+
+
+  // styling for bottom side web view
+
+  bottomRoute: {
+    display:"block",
+    marginRight:"4rem",
+    marginLeft:"4rem",
+    // border: "1px solid red",
+    height: "380px",
+    maxWidth: "100%",
+    position: "relative",
+    display: "flex",
+    mt: "-100px",
+    "@media (max-width: 700px)": {
+      display: "none",
+    },
+  },
+  vector22img: {
+    position: "absolute",
+    right: "0rem",
+    bottom: "0px",
+    objectFit:"contain",
+    maxWidth: "17%",
+    height:"100%"
+   
+    
+  },
+  vector23img: {
+    position: "absolute",
+    right: "0",
+    maxWidth: "27%",
+    bottom: "0px",
+    left: "37%"
+  },
+  item1: {
+    // backgroundColor: "red",
+    width: "50%", 
+    height: "100%",
+     display: "flex",
+      justifyContent: "center", 
+      alignItems: "center",
+       flexDirection: "column",
+        mt: "-30px"
+  },
+  item2:{
+    width: "50%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", mt: "-30px",
+    "@media (max-width: 1000px)": {
+      marginRight:"30px"
+    },
+  },
+  info4:{
+    display: "flex", justifyContent: "center", alignItems: "center", width: "60%", textAlign: "center" , color: "#666C89",
+    fontFamily: "'Krub', sans-serif",
+    fontWeight: "500",
+    fontSize: "20px",
+    "@media (max-width: 1000px)": {
+      // height: "80px",
+      fontSize: "18px"
+    },
+
+  },
+  orderBottom:{
+    color:"#fff",
+    fontWeight:"700",
+    fontSize:"25px",
+    position: "absolute", bottom: "0", background: "#F79633",
+            height: "75px",
+            width: "75px",
+            borderRadius: "50%",
+            textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center"
   }
+
 
 
 
@@ -391,7 +497,7 @@ export default function Reroute() {
             <Grid item lg={4} md={4} sm={4}>
               <Box sx={makeStyle.rerouteContent}>
                 <Typography sx={makeStyle.smallOrder2}>2</Typography>
-                <Box sx={makeStyle.mv1}>
+                <Box sx={makeStyle.mv2}>
 
                   <img src={mv1} alt="" sx={makeStyle.im1} />
                 </Box>
@@ -422,7 +528,7 @@ export default function Reroute() {
                 <Typography sx={makeStyle.smallOrder3}>3</Typography>
                 <Box sx={makeStyle.mobile}>
 
-                  <Box sx={makeStyle.mv2}>
+                  <Box sx={makeStyle.mv5}>
                     <img src={mv1} alt="" sx={makeStyle.im1} />
                   </Box>
                   <img src={window.innerWidth > 700 ? img4 : mobile3} alt="" style={makeStyle.imgStyle2} />
@@ -448,40 +554,73 @@ export default function Reroute() {
 
 
       </Box>
+
+
+      {/* bottom side web view reroute works */}
+
+      <Box sx={makeStyle.bottomRoute}>
+        <img src={vector22} alt="" style={makeStyle.vector22img} />
+        <img src={vector23} alt="" style={makeStyle.vector23img} />
+        <Box sx={makeStyle.item1}>
+          <img src={img5} alt="" style={{ maxWidth: "80%", height: "165px" }} />
+          <Typography sx={makeStyle.info4}>Upon trip completion, download POD from ReeRoute App.</Typography>
+          <Typography sx={makeStyle.orderBottom}>5</Typography>
+
+        </Box>
+        <Box sx={ makeStyle.item2}>
+          <img src={img6} alt="" style={{ maxWidth: "80%", height: "165px" }} />
+          <Typography sx={makeStyle.info4}>Upon trip completion, download POD from ReeRoute App.</Typography>
+          <Typography sx={makeStyle.orderBottom}>4</Typography>
+        </Box>
+      </Box>
+
+
+
+
+
+
+
+
       {/* bottom side mobile view */}
-      <Box sx={{ height: "300px", width: "90%", ml: "2rem", display: "flex", justifyContent: "space-between", mt: "-40px" }}>
-        <Box sx={{ width: "30%", height: "100%", position: 'relative' }}>
-          <Typography sx={makeStyle.order4}>4</Typography>
-          <Box sx={makeStyle.vector4r}>
-            <img src={mv1} alt="" style={makeStyle.vector4} />
-          </Box>
 
+      <Box sx={makeStyle.bottomSide}>
+        <Box sx={{ height: "300px", width: "90%", ml: "2rem", display: "flex", justifyContent: "space-between", mt: "-40px" }}>
+          <Box sx={{ width: "30%", height: "100%", position: 'relative' }}>
+            <Typography sx={makeStyle.order4}>4</Typography>
+            <Box sx={makeStyle.vector4r}>
+              <img src={mv1} alt="" style={makeStyle.vector4} />
+            </Box>
+
+          </Box>
+          <Box sx={{ width: "55%", height: "100%", mt: "-30px", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+            <Box>
+              <img src={img44} alt="" style={{ margin: "auto", alignItems: "center" }} />
+            </Box>
+
+            <Typography sx={makeStyle.txt4}>Confirm the quote and your booking is confirmed.</Typography>
+          </Box>
         </Box>
-        <Box sx={{ width: "55%", height: "100%", mt: "-30px", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-          <Box>
-            <img src={img44} alt="" style={{ margin: "auto", alignItems: "center" }} />
-          </Box>
+        <Box sx={{ height: "00px", width: "90%", ml: "2rem", display: "flex", justifyContent: "space-between", position: "relative" }}>
 
-          <Typography sx={makeStyle.txt4}>Confirm the quote and your booking is confirmed.</Typography>
+          <Box sx={{ width: "60%", height: "100%" }}>
+            <Typography sx={makeStyle.order5}>5</Typography>
+          </Box>
+          <Box sx={{ mt: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
+            <Box>
+              <img src={img167} alt="" />
+
+            </Box>
+            <Box>
+              <Typography sx={makeStyle.txt4}>Upon trip completion, download POD from ReeRoute App.</Typography>
+            </Box>
+
+
+          </Box>
         </Box>
       </Box>
-      <Box sx={{height: "00px", width: "90%", ml: "2rem", display: "flex", justifyContent: "space-between", }}>
-
-        <Box sx={{  width: "60%", height: "100%" }}>
-          <Typography sx={makeStyle.order5}>5</Typography>
-        </Box>
-        <Box sx={{mt: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",textAlign:"center" }}>
-          <Box>
-            <img src={img167} alt="" />
-
-          </Box>
-          <Box>
-            <Typography sx={makeStyle.txt4}>Upon trip completion, download POD from ReeRoute App.</Typography>
-          </Box>
+      {/* bottom side mobile view end */}
 
 
-        </Box>
-      </Box>
     </div>
   )
 }

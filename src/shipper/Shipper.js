@@ -12,11 +12,23 @@ import Navbar from '../components/Navbar'
 import Reroute from '../components/Reroute'
 import { Box,  } from '@mui/material'
 import TestinomialSlider from '../mobileview/TestinomialSlider'
+import FooterHeroSlider from '../mobileview/FooterHeroSlider'
 
 const makeStyles = {
     mobileView:{
         display:"none",
         "@media (max-width: 700px)": {
+            display: "block"
+        }
+    },
+    footerHero:{
+        "@media (max-width: 600px)": {
+            display: "none"
+        }
+    },
+    FooterHeroSlider:{
+        display:"none",
+        "@media (max-width: 600px)": {
             display: "block"
         }
     }
@@ -29,21 +41,18 @@ export default function Shipper() {
             <Banner />
             <Counter />
             <DownloadShipper />
-            <Faq />
-            <Reroute />
+             <Reroute />
             <Testimonial/>
             <Box sx={makeStyles.mobileView}>
             <TestinomialSlider/>
             </Box>
-         
-        
-            {/* <Box sx={makeStyles.webTestinomial}>
-              <Testimonial />
-            </Box> */}
-           
-            {/* <TestinomialSlider/> */}
-            {/* <Slider/> */}
-            {/* <Footerhero /> */}
+            <Faq />
+            <Box sx={makeStyles.FooterHeroSlider}>
+            <FooterHeroSlider/>
+            </Box>
+            <Box sx={makeStyles.footerHero}>
+            <Footerhero />
+            </Box>
             <Footer />
         </div>
     )

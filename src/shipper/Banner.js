@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Box, Container, Grid, Paper, Typography, InputLabel, TextField, Button } from '@mui/material';
-import { List, ListItem, ListItemText } from '@mui/material';
+import { List, ListItem, ListItemText,useEf } from '@mui/material';
 import bgImg from "../images/Photo-bg.png";
 import success from "../images/messages.png"
 // import { Carousel } from 'react-responsive-carousel';
@@ -11,19 +11,25 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Forms from './Forms';
 import bullets from "../images/bullets.png"
+import bgImg1 from "../images/Pattern.png";
+import bgImg2 from "../images/truck.png";
+import bgImg3 from "../images/indian.png";
+import CircleIcon from '@mui/icons-material/Circle';
 
 const makeStyle = {
     mainBox: {
-        position: "absolute",
-        marginTop: "-115px",
-        paddingTop: "10%",
-        top: "0px",
-        minHeight: "75vh",
-        position: "relative",
-        backgroundImage: `linear-gradient(90.13deg,
-          rgba(0, 0, 0, 0.9) 1.07%,
-          rgba(0, 0, 0, 0.6) 99.9%),
-          url(${bgImg})`,
+        // position: "absolute",
+        // marginTop: "-115px",
+        // paddingTop: "10%",
+        // top: "0px",
+        // minHeight: "100vh",
+        // height:"80vh",
+        // position: "relative",
+        // backgroundImage: `linear-gradient(90.13deg,
+        //   rgba(0, 0, 0, 0.9) 1.07%,
+        //   rgba(0, 0, 0, 0.6) 99.9%),
+        //   url(${bgImg})`,
+        
         backgroundSize: "cover",
         backgroundPosition: "center",
         "@media (max-width: 1100px)": {
@@ -78,11 +84,10 @@ const makeStyle = {
         position: "relative",
         // height:"50%",
         marginBottom: "2rem",
-        minHeight: "460px",
-
+        // height:"500px",
         // padding: "25px 10px 15px 22px",
         paddingTop: "20px",
-        paddingBottom: "15px",
+        // paddingBottom: "15px",
         borderRadius: "12px",
         // "@media (max-width: 768px)": {
         //     height: "400px"
@@ -102,7 +107,200 @@ const makeStyle = {
         "@media (max-width: 450px)": {
             display: "block"
         },
-    }
+    },
+    mainBox: {
+        position: "absolute",
+        // marginTop: "-225px",
+        // paddingTop: "10%",
+        top: "0px",
+        minHeight: "75vh",
+        position: "relative",
+    //     backgroundImage: `linear-gradient(90.13deg,
+    //   rgba(0, 0, 0, 0.9) 1.07%,
+    //   rgba(0, 0, 0, 0.6) 99.9%),
+    //   url(${bgImg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        // "@media (max-width: 1100px)": {
+        //     paddingTop: "15%",
+        // },
+        // "@media (max-width: 700px)": {
+        //     paddingTop: "25%",
+        // },
+        // "@media (max-width: 428px)": {
+        //     paddingTop: "33%",
+        // },
+    },
+    leftContent: {
+        color: "#fff",
+    },
+    streamLine: {
+        width: "65%",
+        background: "#041C3780",
+        borderLeft: "4px solid #FFB629",
+        padding: "5px",
+        fontSize: "14px",
+        fontWeight: "400",
+        fontFamily: "'Rubik', sans-serif",
+        "@media (max-width: 488px)": {
+            display: "none"
+        },
+    },
+    reRoute: {
+
+        fontSize: "60px",
+        fontFamily: "'Rubik', sans-serif",
+        fontWeight: "700",
+        "@media (max-width: 768px)": {
+            fontSize: "40px"
+        },
+        "@media (max-width: 488px)": {
+            fontSize: "25px"
+        },
+    },
+    listItem: {
+        display: 'list-item',
+        fontSize: "16px",
+        fontWeight: "500",
+        fontFamily: "'Krub', sans-serif",
+        "@media (max-width: 450px)": {
+            display:"none"
+        },
+    },
+    form: {
+        padding:"20px",
+        position: "relative",
+       
+        // marginBottom: "2rem",
+        height: "460px",
+        // padding: "25px 20px 20px 22px",
+        borderRadius: "12px",
+        // "@media (max-width: 768px)": {
+        //     height: "400px"
+        // },
+    },
+    title: {
+        textAlign: "center",
+        fontFamily: "'Rubik', sans-serif",
+        fontWeight: "500",
+        fontSize: "24px",
+        color: "#000000",
+        marginBottom: "40px"
+
+    },
+    formBtn: {
+        position: "absolute",
+        bottom: "20px",
+        width:"93%",
+        background: "linear-gradient(94.06deg, #FFB629 -1.21%, #FFDA56 58.66%, #FFD7A6 116.84%)",
+        color: "#000000",
+        fontWeight: "600",
+        fontSize: "10px",
+        height: "42px",
+        // marginTop: "120px",
+        "@media (max-width: 800px)": {
+            marginTop: "90px",
+        },
+        "@media (max-width: 483px)": {
+            width:"89%"
+        },
+    
+    },
+    destination: {
+        fontSize: "14px",
+        fontWeight: "400",
+        fontFamily: "'Rubik', sans-serif",
+        color: "#000000"
+
+    },
+    textField: {
+        marginTop: "5px",
+        marginBottom: "40px",
+        width: "100%"
+    },
+    city: {
+        fontSize: "14px",
+        fontWeight: "400",
+        fontFamily: "'Rubik', sans-serif",
+        color: "#000000 60%"
+    },
+    cityDes: {
+        fontSize: "15px",
+        fontWeight: "600",
+        fontFamily: "'Rubik', sans-serif",
+        color: "#2A4F6D"
+    },
+    label: {
+        fontSize: "15px",
+        fontWeight: "500",
+        fontFamily: "'Rubik', sans-serif",
+        color: "#000",
+        marginTop: "10px",
+        marginBottom: "10px"
+    },
+    kgBtn: {
+        color: "#23212A",
+        backgroundColor: "#FFB629",
+        '&:hover': {
+            backgroundColor: "#FFB629",
+            // Add any other styles you want for the hover state
+        },
+    },
+    tons: {
+        color: "#23212A",
+        backgroundColor: "#fff",
+        '&:hover': {
+            backgroundColor: "#fff",
+            // Add any other styles you want for the hover state
+        },
+    },
+    success: {
+        display: "flex",
+        justifyContent: "center",
+        alignItem: "center",
+        flexDirection: "column"
+    },
+    successImg: {
+        height: "100px",
+        width: "100px",
+        margin: "auto",
+        marginTop: "6rem"
+    },
+    txt1: {
+        textAlign: "center",
+        fontFamily: "'Rubik', sans-serif",
+        fontWeight: "500",
+        fontSize: "24px",
+        color: "#000000",
+        marginTop: "2rem"
+    },
+    txt2: {
+        color: 'rgba(0, 0, 0, 0.5)',
+        textAlign: "center",
+        fontFamily: "'Rubik', sans-serif",
+        fontWeight: "500",
+        fontSize: "14px",
+        marginTop: "1rem"
+    },
+    arrowBack: {
+        cursor: "pointer",
+        position: "absolute",
+        top: "10px",
+        color: "#2A4F6D"
+    },
+// circle
+
+initialCircle:{
+    color:"yellow",
+    marginRight:"10px"
+},
+updateCircle:{
+    color:"#fff",
+    marginRight:"10px"
+}
+   
+   
+    
 
 };
 
@@ -112,14 +310,6 @@ export default function Banner() {
     const [formData, setFormData] = useState({});
     const [currentForm, setCurrentForm] = useState(1);
 
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        // Process form data if needed
-        // Example: Send form data to server or update state
-        if (currentForm < 3) {
-            setCurrentForm(currentForm + 1);
-        }
-    };
 
     const handleGoBack = () => {
         if (currentForm > 1) {
@@ -144,10 +334,6 @@ export default function Banner() {
     const [length, setLength] = React.useState('');
     const [Height, setHeight] = React.useState('');
 
-    const handleFirstFormSubmit = (e) => {
-        e.preventDefault();
-        setShowSecondForm(true);
-    };
 
     const handleSecondFormSubmit = (e) => {
         e.preventDefault();
@@ -173,11 +359,53 @@ export default function Banner() {
     const backClick = () => {
         setShowThirdForm(true)
     }
+
+    const [backgroundImage, setBackgroundImage] = useState("");
+    const [circle,setCircle] = useState(false)
+
+
+    
+  useEffect(() => {
+    setBackgroundImage('url(bgImg)');
+  }, []);
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        if (currentForm < 3) {
+            setCurrentForm(currentForm + 1);
+            updateBackgroundImage(currentForm + 1);
+        }
+ 
+        
+        
+    };
+
+    const updateBackgroundImage = (formNumber) => {
+        let newBackgroundImage = '';
+
+        if (formNumber === 2) {
+            newBackgroundImage = bgImg2;
+        } else if (formNumber === 3) {
+            newBackgroundImage = bgImg3;
+        }
+        setBackgroundImage(` linear-gradient(90.13deg,
+            rgba(0, 0, 0, 0.9) 1.07%,
+            rgba(0, 0, 0, 0.6) 99.9%),url(${newBackgroundImage})`);
+    };
+
+    useEffect(() => {
+        
+        setBackgroundImage(`linear-gradient(90.13deg,
+            rgba(0, 0, 0, 0.9) 1.07%,
+            rgba(0, 0, 0, 0.6) 99.9%),url(${bgImg})`);
+      }, []);
+    
     return (
         <>
             <Box sx={makeStyle.mainBox}>
-                <Box>
-                    <Container>
+            <Box sx={{ backgroundImage: backgroundImage, backgroundSize: "cover", backgroundPosition: "center", width: "100%", }}>
+
+                    <Container >
                         <Grid container spacing={2}>
                             <Grid item lg={6} xs={12}>
                                 <Box>
@@ -201,17 +429,165 @@ export default function Banner() {
                                 </Box>
                             </Grid>
                             {/* rightSide content */}
-                            <Grid item lg={6} xs={12}>
+                            <Grid item lg={6} xs={12} sx={{position:"relative"}}>
                                 <Paper sx={makeStyle.form}>
-                                    <Forms />
+                                {currentForm === 1 && (
+                <form onSubmit={handleFormSubmit}>
+                    <Typography sx={makeStyle.title}>Book Your Truck</Typography>
+                    <InputLabel htmlFor="my-input" sx={makeStyle.destination}>From</InputLabel>
+                    <TextField placeholder="Enter origin city" sx={makeStyle.textField}></TextField>
+                    <InputLabel htmlFor="my-input" sx={makeStyle.destination}>To</InputLabel>
+                    <TextField placeholder='Enter destination city' sx={makeStyle.textField}></TextField>
+                    <Box type="submit">
+                        <Button sx={makeStyle.formBtn} type="submit">Next</Button>
+                    </Box>
+
+                </form>
+            )}
+            {currentForm === 2 && (
+                <form onSubmit={handleFormSubmit}>
+
+                    <Box sx={{ position: "relative" }}>
+                        <ArrowBackIcon sx={makeStyle.arrowBack} onClick={handleReset}
+                        />
+                        <Typography sx={makeStyle.title}>Book Your Truck</Typography>
+                    </Box>
+
+                    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                        <Typography sx={makeStyle.city}>
+                            From:  <Typography variant='span' sx={makeStyle.cityDes}>Mumbai</Typography>
+                        </Typography>
+                        <Typography sx={makeStyle.city}>
+                            To: <Typography variant='span' sx={makeStyle.cityDes}>Delhi</Typography>
+                        </Typography>
+                    </Box>
+                    <Typography sx={makeStyle.label}>Material Weight</Typography>
+                    <TextField
+
+                        fullWidth
+                        InputProps={{
+                            endAdornment: (
+                                <div >
+                                    <Box sx={{ display: "flex" }}>
+                                        <Button variant="contained" color="primary" sx={makeStyle.kgBtn}>
+                                            KGs
+                                        </Button>
+                                        <Button variant="contained" color="secondary" sx={makeStyle.tons}>
+                                            Tons
+                                        </Button>
+                                    </Box>
+
+                                </div>
+                            ),
+                        }}
+                    />
+                    <Typography sx={makeStyle.label}>vehicle type</Typography>
+                    <Box sx={{ minWidth: 120 }}>
+                        <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">Vehicle Type</InputLabel>
+                            <Select
+                                // labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={department}
+                                label="Department"
+                                onChange={handleChange}
+                            >
+                                <MenuItem value={10}>Truck</MenuItem>
+                                <MenuItem value={20}>Bus</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
+                    {/*  */}
+                    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                        <Box>
+                        </Box>
+                        {/*  */}
+                        {/* <Box> */}
+                        <Box sx={{ display: "flex", flexDirection: "column", width: "50%" }}>
+                            <Box>
+                                <Typography sx={makeStyle.label}>Truck Length</Typography>
+                            </Box>
+                            <Box>
+                                <Box sx={{ width: "90%", display: "flex" }}>
+
+                                    <FormControl fullWidth>
+                                        <InputLabel id="demo-simple-select-label" >Truck length</InputLabel>
+                                        <Select
+                                            // labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={length}
+                                            label="Department"
+                                            onChange={handleLength}
+                                        >
+                                            <MenuItem value={10}>14ft</MenuItem>
+                                            <MenuItem value={20}>16ft</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+                            </Box>
+                        </Box>
+                        <Box sx={{ display: "flex", flexDirection: "column", width: "50%" }}>
+                            <Box>
+
+                                <Typography sx={makeStyle.label}>Truck Height</Typography>
+
+                            </Box>
+                            <Box>
+                                <Box sx={{ width: "100%" }}>
+                                    <FormControl fullWidth>
+
+                                        <InputLabel id="demo-simple-select-label">Truck Height</InputLabel>
+                                        <Select
+                                            // labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={Height}
+                                            label="Department"
+                                            onChange={handleHeight}
+                                        >
+                                            <MenuItem value={10}>8ft</MenuItem>
+                                            <MenuItem value={20}>10ft</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+                            </Box>
+                        </Box>
+                    </Box>
+
+                    <Button type="submit" variant="contained" color="primary" sx={makeStyle.formBtn}>
+                        Submit
+                    </Button>
+
+                </form>
+            )}
+            {currentForm === 3 && (
+                <form onSubmit={handleFormSubmit}>
+
+                    <Box sx={makeStyle.success}>
+                        <img src={success} alt="" style={makeStyle.successImg} />
+                        <Typography sx={makeStyle.txt1}>Submitted Successfully</Typography>
+                        <Typography sx={makeStyle.txt2}>Our executive will get in touch with you at the earliest.</Typography>
+                        <Button type="submit" variant="contained" color="primary" sx={makeStyle.formBtn}>
+                            Close
+                        </Button>
+                    </Box>
+                </form>
+            )}
                                 </Paper>
                             </Grid>
 
                         </Grid>
                     </Container>
+                      {/* circular icons */}
+            <Box sx={{display:"flex",justifyContent:"center",alignItems:"center",pb:"2rem",mt:"2rem"}}>
+                <CircleIcon sx={currentForm ===1 ? makeStyle.initialCircle : makeStyle.updateCircle}/>
+                <CircleIcon sx={currentForm ===2 ? makeStyle.initialCircle : makeStyle.updateCircle}/>
+                <CircleIcon sx={currentForm ===3 ? makeStyle.initialCircle : makeStyle.updateCircle}/>
+            </Box>
                 </Box>
+               
 
             </Box >
+           
             {/* mobile view */}
             <Box sx={makeStyle.listItem2}>
                 <Box sx={{ display: "flex", ml: "15px", mb: "3px" }}>
@@ -228,7 +604,7 @@ export default function Banner() {
                 </Box>
             </Box>
 
-            {/* mobile view */}
+           
 
 
         </>

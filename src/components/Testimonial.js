@@ -31,6 +31,14 @@ const makeStyle = {
             fontSize:"25px"
         }
     },
+    toogle:{
+        mt:"25px",
+        "@media (max-width: 700px)": {
+
+            display:"none" 
+            // for mobile view
+        }
+    },
     leftIcon: {
         color: "#F79633",
         height: "44px",
@@ -118,7 +126,7 @@ export default function Testimonial() {
                 <Typography sx={makeStyle.testimonial}>Testimonial</Typography>
                 <Box sx={{ display: "flex", justifyContent: "space-between", mb: "30px" }}>
                     <Typography sx={makeStyle.title}> {window.location.pathname === "/" ? "What Our Shipper Say" : "What Our Truckers Say"}  </Typography>
-                    <Box sx={{ mt: "25px" }}>
+                    <Box sx={makeStyle.toogle}>
                         <ArrowCircleLeftIcon sx={makeStyle.leftIcon} />
                         <ArrowCircleRightIcon sx={makeStyle.rightIcon} />
                     </Box>

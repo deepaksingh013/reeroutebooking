@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "../images/logo.png"
+import logo from  "../images/164.png"
 import { Box, Grid, Typography, colors, makeStyles } from '@mui/material'
 import img133 from "../images/image 133.png"
 import img134 from "../images/image 134 (Traced).png"

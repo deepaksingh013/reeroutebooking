@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
 import { Container, Typography, makeStyles } from '@mui/material'
-import TwitterIcon from '@mui/icons-material/Twitter';
-import img1 from "../images/photo (3).png"
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { IconButton, Box } from '@mui/material';
@@ -13,9 +8,6 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import profile1 from "../images/photoProfile.png";
 import star from "../images/Star 5.png";
 import profile2 from "../images/photoProfile2.png";
-// import img2 from "../images/photoProfile2.png";
-// import img4 from "../images/photoProfile.png";
-import img5 from "../images/photoProfile2.png";
 
 // import img1 from "../images/photo (3).png"
 import img2 from "../images/Photo (4).png"

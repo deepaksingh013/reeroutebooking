@@ -1,68 +1,98 @@
 import { Box, Container, Grid, Slide, Typography } from '@mui/material'
 import React from 'react'
-import img1 from "../images/Photo (1).jpg"
-import img2 from "../images/Photo (2).jpg"
-import img3 from "../images/Photo (3).jpg"
-import img4 from "../images/Photo (4).jpg"
-import bgImg from "../images/Photo-bg.png";
+import img1 from "../images/imagea.jpg"
+import img3 from "../images/imagec.jpg"
+import img4 from "../images/imaged.jpg"
+import bgImg from "../images/Image.png";
+import img8 from "../images/imagez.jpg"
 // vector icons
 import icon1 from "../images/Star.png"
 import icon2 from "../images/Norto.png"
-import icon3 from "../images/Pattern.png"
-import icon4 from "../images/Star.png"
+import icon3 from "../images/Logo.png"
+import icon4 from "../images/Out Of The Sand Box.png"
 
 
 // styling
 const makeStyle = {
-    imgContent: {
-        position: "relative",
-        width:"100%",
-    },
     mainContainer: {
         backgroundImage: `linear-gradient(90.13deg,
             rgba(0, 0, 0, 0.9) 1.07%,
             rgba(0, 0, 0, 0.6) 99.9%),
             url(${bgImg})`,
+        objectFit: "contain",
+        backgroundSize: "cover",
         minHeight: "412px",
         display: "flex",
-        flexWrap:"wrap",
         justifyContent: "center",
-        alignItems: "center",
-      
+        alignItems: "center"
     },
-    imgStyle: {
-        height: "auto",
-        maxWidth: "100%"
-    },
-    content: {
-        position: "absolute",
-        top: "38%",
+    bx1: {
+        backgroundImage: `linear-gradient(180deg, #111C54 0%, rgba(17, 28, 84, 0) 98.72%),
+            url(${img1})`,
+        objectFit: "contain",
+        backgroundSize: "cover",
+        minHeight: "234px",
         display: "flex",
-        width: "100%",
         justifyContent: "center",
         alignItems: "center",
-        textAlign: "center",
+        
     },
-    imgText1: {
-        color: "#fff",
-        letterSpacing: "7px",
-        fontFamily: "'Syne', sans-serif",
-        fontSize: "20px",
+    bx2: {
+        backgroundImage: `linear-gradient(180deg, #111C54 0%, rgba(17, 28, 84, 0) 98.72%),
+            url(${img8})`,
+        objectFit: "contain",
+        backgroundSize: "cover",
+        minHeight: "234px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+       
+    },
+    bx3: {
+        backgroundImage: `linear-gradient(180deg, #111C54 0%, rgba(17, 28, 84, 0) 98.72%),
+            url(${img3})`,
+        objectFit: "contain",
+        backgroundSize: "cover",
+        minHeight: "234px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+       
+    },
+    bx4: {
+        backgroundImage: `linear-gradient(180deg, #111C54 0%, rgba(17, 28, 84, 0) 98.72%),
+            url(${img4})`,
+        objectFit: "contain",
+        backgroundSize: "cover",
+        minHeight: "234px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    txt1:{
+        color:"#fff",
+        fontFamily: "'Syne'",
+        fontStyle: "normal",
         fontWeight: "700",
-        marginLeft: "10px"
-    },
-    imgText2: {
-        color: "#fff",
         fontSize: "20px",
-        fontFamily: "'Gideon Roman', cursive",
-        letterSpacing: "8px"
+        letterSpacing: "0.565em",
+        textTransform: "uppercase",
+        "@media (max-width: 800px)": {
+            fontSize:"10px"
+          },
     },
-    imgText3: {
-        color: "#fff",
-        fontFamily: "'Thabit', sans-serif",
+    txt4: {
+        fontFamily: "Thabit",
+        color:"#fff",
+        fontSize: "20px",
         fontWeight: "500",
-        fontSize: "20px"
+        letterSpacing: "0.565em",
+        textTransform: "uppercase",
+        "@media (max-width: 800px)": {
+            fontSize:"15px"
+          },
     }
+
 }
 
 export default function Footerhero() {
@@ -70,60 +100,43 @@ export default function Footerhero() {
         <>
             <Box sx={makeStyle.mainContainer}>
                 <Container>
-                    <Box >
-                        <Grid container spacing={0} >
-                            <Grid item lg={3} xs={12} sm={12} md={6} >
-                                <Box sx={makeStyle.imgContent}>
-                                    <img src={img1} alt="" style={makeStyle.imgStyle} />
-                                    <Box sx={makeStyle.content}>
-                                        <img src={icon4} alt="" style={makeStyle.starIcon} />
-                                        <Typography sx={makeStyle.imgText1}>STUDIO <br /> GREEN</Typography>
+                    <Box>
+                        <Grid container spacing={0}>
+                            <Grid sm={3} lg={3} md={3} >
+                                <Box sx={makeStyle.bx1}>
+                                    <img src={icon1} alt="" />
+                                    <Box sx={{display:"flex",flexDirection:"column"}}>
+                                    <Typography sx={makeStyle.txt1}>STUDIO</Typography>
+                                    <Typography sx={makeStyle.txt1}>GREEN</Typography>
                                     </Box>
                                 </Box>
                             </Grid>
-                            <Grid item lg={3} xs={12} sm={12} md={6} >
-                                <Box sx={makeStyle.imgContent}>
-                                    <img src={img2} alt="" style={makeStyle.imgStyle} />
-                                    <Box sx={makeStyle.content}>
-                                        <img src={icon2} alt="" style={{ height: "60px" }} />
-                                    </Box>
+                            <Grid sm={3} lg={3} md={3} >
+                                <Box sx={makeStyle.bx2}>
+                                    <img src={icon2} alt="" style={{maxWidth:"100%",height:"auto"}}/>
                                 </Box>
                             </Grid>
-                            <Grid item lg={3} xs={12} sm={12} md={6} >
-                                <Box sx={makeStyle.imgContent}>
-                                    <img src={img3} alt="" style={makeStyle.imgStyle} />
-                                    <Box sx={makeStyle.content}>
-                                        <img src={icon3} alt="" />
-                                        <Box sx={{ ml: "20px", display: "flex", flexDirection: "column", textAlign: "left", }}>
-                                            <Typography sx={makeStyle.imgText2}>POINTS</Typography>
-                                            <Typography sx={makeStyle.imgText2}>ONE</Typography>
-                                            <Box sx={{ position: "absolute", width: "100%", top: "36px", left: "176px" }}>
-                                                <Box sx={{ border: "2px solid #fff", mb: "2px", width: "15%" }}></Box>
-                                                <Box sx={{ border: "2px solid #fff", mb: "2px", width: "15%" }}></Box>
-                                                <Box sx={{ border: "2px solid #fff", mb: "2px", width: "15%" }}></Box>
-                                            </Box>
-
-
+                            <Grid sm={3} lg={3} md={3} >
+                                <Box sx={makeStyle.bx3}>
+                                    <img src={icon3} alt="" style={{maxWidth:"90%",height:"auto"}}/>
+                                </Box>
+                            </Grid>
+                            <Grid sm={3} lg={3} md={3} >
+                                <Box sx={makeStyle.bx4}>
+                                    <Box>
+                                        <Box>
+                                            <Typography sx={makeStyle.txt4}>OUTOFTHE</Typography>
                                         </Box>
-
-
-                                    </Box>
-                                </Box>
-                            </Grid>
-                            <Grid item lg={3} >
-                                <Box sx={makeStyle.imgContent}>
-                                    <img src={img4} alt="" style={makeStyle.imgStyle} />
-                                    <Box sx={makeStyle.content}>
-                                        <Box sx={{ display: "flex", flexDirection: "column", textAlign: "left" }}>
-                                            <Typography sx={makeStyle.imgText3}>OUT OF THE</Typography>
-                                            <Typography sx={makeStyle.imgText3}>SAND BOX</Typography>
+                                        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                            <Typography sx={makeStyle.txt4}>SAND</Typography>
+                                            <Typography sx={{ height: "10px", width: "10px", backgroundColor: "#fff",mr:"6px" }}></Typography>
+                                            <Typography sx={makeStyle.txt4}>BOX</Typography>
                                         </Box>
-
                                     </Box>
+
                                 </Box>
                             </Grid>
                         </Grid>
-
                     </Box>
                 </Container>
             </Box>
