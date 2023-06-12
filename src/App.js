@@ -17,7 +17,7 @@ import For from './components/For';
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Shipper />} />
         <Route path="/trucker" element={<Trucker />} />

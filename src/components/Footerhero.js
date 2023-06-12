@@ -8,7 +8,7 @@ import img8 from "../images/imagez.jpg"
 // vector icons
 import icon1 from "../images/Star.png"
 import icon2 from "../images/Norto.png"
-import icon3 from "../images/Logo.png"
+import icon3 from "../images/logo.png"
 import icon4 from "../images/Out Of The Sand Box.png"
 
 
