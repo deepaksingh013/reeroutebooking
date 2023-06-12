@@ -11,13 +11,20 @@ import PrivacyPolicy from './privacypolicy/PrivacyPolicy';
 import About from './about/About';
 import Forms from './shipper/Forms';
 import For from './components/For';
+import { Box } from '@mui/material';
+import Navbarr from './components/Navbarr';
 // import Slider from './components/Slider';
 
 
 function App() {
   return (
+
     <>
-      {/* <Navbar /> */}
+      <Box sx={{ position: "absolute", top: "0", zIndex: "1000", width: "100%" }}>
+        <Navbarr />
+
+      </Box>
+
       <Routes>
         <Route path="/" element={<Shipper />} />
         <Route path="/trucker" element={<Trucker />} />
@@ -27,9 +34,11 @@ function App() {
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/aboutus" element={<About />} />
       </Routes>
+
       {/* <Slider /> */}
 
       {/* <Forms/> */}
+      {/* <Navbarr/> */}
 
     </>
   );

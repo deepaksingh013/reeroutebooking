@@ -8,7 +8,7 @@ const makeStyle = {
         justifyContent: "center",
         alignitem: "center",
         textAlign: "center",
-        marginTop: "3rem",
+        marginTop: "2rem",
         marginLeft: "1rem",
         "@media (max-width: 480px)": {
             marginTop: "1rem",

@@ -14,7 +14,8 @@ const makeStyle = {
             url(${bgImg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        marginTop: "-115px",
+        paddingTop:"4rem",
+        // marginTop: "-115px",
         objectFit: "cover",
         width: "100%"
     },

@@ -10,24 +10,24 @@ import Counter from '../components/Counter'
 import Faq from '../components/Faq'
 import Navbar from '../components/Navbar'
 import Reroute from '../components/Reroute'
-import { Box,  } from '@mui/material'
+import { Box, } from '@mui/material'
 import TestinomialSlider from '../mobileview/TestinomialSlider'
 import FooterHeroSlider from '../mobileview/FooterHeroSlider'
 
 const makeStyles = {
-    mobileView:{
-        display:"none",
+    mobileView: {
+        display: "none",
         "@media (max-width: 700px)": {
             display: "block"
         }
     },
-    footerHero:{
+    footerHero: {
         "@media (max-width: 600px)": {
             display: "none"
         }
     },
-    FooterHeroSlider:{
-        display:"none",
+    FooterHeroSlider: {
+        display: "none",
         "@media (max-width: 600px)": {
             display: "block"
         }
@@ -37,21 +37,21 @@ const makeStyles = {
 export default function Shipper() {
     return (
         <div style={{ position: "relative" }}>
-        
+
             <Banner />
             <Counter />
             <DownloadShipper />
-             <Reroute />
-            <Testimonial/>
+            <Reroute />
+            <Testimonial />
             <Box sx={makeStyles.mobileView}>
-            <TestinomialSlider/>
+                <TestinomialSlider />
             </Box>
             <Faq />
             <Box sx={makeStyles.FooterHeroSlider}>
-            <FooterHeroSlider/>
+                <FooterHeroSlider />
             </Box>
             <Box sx={makeStyles.footerHero}>
-            <Footerhero />
+                <Footerhero />
             </Box>
             <Footer />
         </div>

@@ -23,13 +23,14 @@ import img3 from "../images/Photo (5).png"
 
 const ExpertsSlider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const totalSlides = 3;
 
     const handlePreviousSlide = () => {
-        setCurrentSlide((prevSlide) => (prevSlide === 0 ? 0 : prevSlide - 1));
+        setCurrentSlide((prevSlide) => (prevSlide === 0 ? totalSlides - 1 : prevSlide - 1));
     };
 
     const handleNextSlide = () => {
-        setCurrentSlide((prevSlide) => (prevSlide === 2 ? 2 : prevSlide + 1));
+        setCurrentSlide((prevSlide) => (prevSlide === totalSlides - 1 ? 0 : prevSlide + 1));
     };
 
     const makeStyle = {
