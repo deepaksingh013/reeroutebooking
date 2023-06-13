@@ -15,9 +15,9 @@ const makeStyle = {
     },
     title: {
         fontSize: "33px",
-        fontWeight: "500",
+        fontWeight: "600",
         fontFamily: "'Rubik', sans-serif",
-        color: "#2A4F6D",
+        color: "rgba(0, 0, 0, 0.6)",
         "@media (max-width: 768px)": {
             fontSize: "28px"
         },
@@ -30,13 +30,13 @@ const makeStyle = {
         fontSize: "24px",
         fontFamily: "'Krub', sans-serif",
         fontWeight: "400",
-        color: "#2A4F6D",
+        color: "rgba(0, 0, 0, 0.6)",
         marginBottom: "20px",
         "@media (max-width: 768px)": {
             fontSize: "19px"
         },
         "@media (max-width: 450px)": {
-            color: "rgba(42, 79, 109, 0.6)",
+            color: "rgba(0, 0, 0, 0.6)",
             fontSize: "15px"
         }
     },

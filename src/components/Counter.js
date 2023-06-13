@@ -16,7 +16,7 @@ const makeStyle = {
         },
     },
     mainBox: {
-      
+
         display: "flex",
         // justifyContent:"space-between",
         alignItem: "center"
@@ -55,15 +55,21 @@ const makeStyle = {
     },
     title: {
         // paddingBottom:"10px",
+        paddingTop:"4px",
+        display:"flex",
+        justifyContent:"center",
+        alignitems:"center",
         fontfamily: "'League Spartan', sans-serif",
         fontSize: "20px",
         fontWeight: "400",
         color: "#2A4F6D",
         "@media (max-width: 768px)": {
+            paddingTop:"px",
             fontSize: "20px",
         },
-        "@media (max-width: 480px)": {
+        "@media (max-width: 500px)": {
             fontSize: "16px",
+          
         },
         "@media (max-width: 373px)": {
             fontSize: "13px",
@@ -94,14 +100,14 @@ export default function Counter() {
     return (
         <>
             <Box sx={makeStyle.counterBox}>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} >
                     {counter.map((item, index) => {
                         return <Grid item lg={3} xs={12} md={6}>
                             <Box sx={makeStyle.mainBox}>
                                 <Typography sx={makeStyle.counter}>{item.counter}</Typography>
                                 <Box sx={{ display: "flex", justifyContent: "spaceBetween", textAlign: "center" }}>
                                     <Box sx={makeStyle.smallBox}></Box>
-                                    <Typography sx={makeStyle.title}>{item.title}</Typography>
+                                    <Typography sx={makeStyle.title} >{item.title}</Typography>
                                 </Box>
                             </Box>
 

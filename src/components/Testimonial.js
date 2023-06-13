@@ -25,17 +25,17 @@ const makeStyle = {
         fontStyle: "normal",
         color: "#2A4F6D",
         "@media (max-width: 700px)": {
-            fontSize:"35px"
+            fontSize: "35px"
         },
         "@media (max-width: 400px)": {
-            fontSize:"25px"
+            fontSize: "25px"
         }
     },
-    toogle:{
-        mt:"25px",
+    toogle: {
+        mt: "25px",
         "@media (max-width: 700px)": {
 
-            display:"none" 
+            display: "none"
             // for mobile view
         }
     },
@@ -93,9 +93,9 @@ const makeStyle = {
         position: "absolute",
         right: "30px"
     },
-    webView:{
+    webView: {
         "@media (max-width: 700px)": {
-           display:"none"
+            display: "none"
         }
     }
 }
@@ -135,32 +135,32 @@ export default function Testimonial() {
                 {/* testimonials */}
                 <Box sx={makeStyle.webView}>
 
-             
-                <Box sx={{ mb: "2rem" }}>
-                    <Grid container spacing={0} >
-                        {testimonial.map((item, index) => (
-                            <Grid item key={index} lg={6} sm={6}>
-                                <Box sx={{ display: 'flex', position: "relative", padding: "2rem", backgroundColor: index % 2 === 0 ? makeStyle.bg1 : makeStyle.bg2 }}>
-                                    <img src={item.profileImg} alt="" style={makeStyle.profileImg} />
-                                    <Box sx={{ display: "flex", flexDirection: "column", ml: "10px", mt: "10px" }}>
-                                        <Typography sx={makeStyle.name}>{item.name}</Typography>
-                                        <Typography sx={makeStyle.companyName}>{item.companyName}</Typography>
-                                    </Box>
-                                    {/* <Box style={makeStyle.icon} >
+
+                    <Box sx={{ mb: "2rem" }}>
+                        <Grid container spacing={0} >
+                            {testimonial.map((item, index) => (
+                                <Grid item key={index} lg={6} sm={6}>
+                                    <Box sx={{ display: 'flex', position: "relative", padding: "2rem", backgroundColor: index % 2 === 0 ? makeStyle.bg1 : makeStyle.bg2 }}>
+                                        <img src={item.profileImg} alt="" style={makeStyle.profileImg} />
+                                        <Box sx={{ display: "flex", flexDirection: "column", ml: "10px", mt: "10px" }}>
+                                            <Typography sx={makeStyle.name}>{item.name}</Typography>
+                                            <Typography sx={makeStyle.companyName}>{item.companyName}</Typography>
+                                        </Box>
+                                        {/* <Box style={makeStyle.icon} >
                                         <img src={item.iconImg} alt="" style={{ marginLeft: "5px", marginTop: "10px" }} />
                                     </Box> */}
 
-                                </Box>
-                                <Box sx={{ padding: "0 2rem 2rem 2rem", backgroundColor: index % 2 === 0 ? makeStyle.bg1 : makeStyle.bg2 }}>
-                                    <Typography sx={makeStyle.review}>{item.review}</Typography>
-                                    {Array.from({ length: 5 }).map((_, starIndex) => (
-                                        <img key={starIndex} src={item.starIcon} alt="" style={{ marginTop: "40px" }} />
-                                    ))}
-                                </Box>
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Box>
+                                    </Box>
+                                    <Box sx={{ padding: "0 2rem 2rem 2rem", backgroundColor: index % 2 === 0 ? makeStyle.bg1 : makeStyle.bg2 }}>
+                                        <Typography sx={makeStyle.review}>{item.review}</Typography>
+                                        {Array.from({ length: 5 }).map((_, starIndex) => (
+                                            <img key={starIndex} src={item.starIcon} alt="" style={{ marginTop: "40px" }} />
+                                        ))}
+                                    </Box>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
                 </Box>
 
 

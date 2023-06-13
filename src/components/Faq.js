@@ -17,17 +17,17 @@ const makeStyle = {
         marginLeft: "4rem",
         marginRight: "4rem",
         marginBottom: "2rem",
-        // border:"1px solid red"
         "@media (max-width: 599px)": {
             margin: "20px"
         },
     },
     Faq: {
+        marginTop: "3rem",
         fontWeight: "400",
         fontFamily: "'Rubik', sans-serif",
         fontSize: "14px",
         fontStyle: "normal",
-        width: "90px",
+        width: "40px",
         color: "#2A4F6D",
         paddingLeft: "10px",
         backgroundColor: "rgba(232, 232, 232, 0.5)",
@@ -35,9 +35,6 @@ const makeStyle = {
         "@media (max-width: 700px)": {
             marginTop: "2rem"
         },
-        // "@media (max-width: 800px)": {
-        //     marginTop: "34%"
-        // },
         "@media (max-width: 550px)": {
             marginTop: "5rem"
         },
@@ -50,9 +47,6 @@ const makeStyle = {
         "@media (max-width: 340px)": {
             marginTop: "11rem"
         },
-        // "@media (max-width: 369px)": {
-        //     marginTop: "62%"
-        // },
     },
     contactIcon: {
         backgroundColor: "#F79633",
@@ -60,21 +54,29 @@ const makeStyle = {
         width: "30px",
         borderRadius: "50%",
         padding: '10px',
-        color: "#000"
+        color: "#000",
+        fontSize: "40px",
+        "@media (max-width: 500px)": {
+            padding: '10px',
+            height: "25px",
+            width: "25px",
+        },
     },
     title: {
         fontWeight: "600",
         fontFamily: "'Rubik', sans-serif",
         fontSize: "60px",
+        width: "80%",
         "@media (max-width: 599px)": {
+            width: "100%",
             fontSize: "30px",
         },
-        "@media (max-width: 999px)": {
+        "@media (max-width: 1333px)": {
             fontSize: "45px",
         },
         "@media (max-width: 450px)": {
-            fontSize: "25px",
-            marginBottom:"5px"
+            fontSize: "23px",
+            marginBottom: "5px"
         },
     },
     bgImg: {
@@ -91,6 +93,7 @@ const makeStyle = {
     helpBox: {
         position: "absolute",
         top: "30%",
+        left: "0px",
         backgroundColor: "#2A4F6D",
         width: "35%",
         padding: "2rem 0rem 2rem 2rem",
@@ -104,18 +107,20 @@ const makeStyle = {
             top: "70%",
             left: "65px",
             width: "65%",
-            padding:"7px"
+            padding: "7px"
         },
     },
     btn: {
         color: "#23212A",
-
         backgroundColor: "#F79633",
         '&:hover': {
             backgroundColor: "#F79633",
-            // Add any other styles you want for the hover state
         },
-
+        "@media (max-width: 500px)": {
+            fontSize: "12px",
+            paddingLeft: '12px',
+            paddingRight: "12px"
+        },
     },
     talk: {
         backgroundColor: "#000",
@@ -123,9 +128,8 @@ const makeStyle = {
         fontFamily: "'Rubik', sans-serif",
         fontWeight: "400",
         padding: "5px",
-        width: "25%",
+        width: "62px",
         borderLeft: "4px solid #FFB629",
-
 
     },
     consultation: {
@@ -153,8 +157,14 @@ const makeStyle = {
         "@media (max-width: 600px)": {
             fontSize: "10px"
         },
+    },
+    rightContent: {
+        position: "relative",
+        paddingLeft: "3rem",
+        "@media (max-width: 600px)": {
+            paddingLeft: "0rem"
+        },
     }
-
 
 }
 
@@ -171,8 +181,8 @@ const Accordion = styled((props) => (
 }));
 
 const AccordionSummary = styled((props) => (
-    <MuiAccordionSummary
-        expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+    <MuiAccordionSummary sx={{ position: "relative" }}
+        expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '1.1rem', mr: "0px" }} />}
         {...props}
     />
 ))(({ theme }) => ({
@@ -205,39 +215,53 @@ export default function Faq() {
         <div>
 
             <Box sx={makeStyle.mainBox}>
-                <Grid container spacing={2} sx={{ '@media (max-width: 700px)': { flexDirection: 'column-reverse' } }}>
+                <Grid container spacing={2} sx={{ '@media (max-width: 700px)': { flexDirection: 'column-reverse', } }}>
 
-                    <Grid item lg={6}>
-                        <Typography sx={makeStyle.Faq}>Faq</Typography>
+                    <Grid item lg={6} xs={12}>
+                        <Typography sx={makeStyle.Faq}>FAQ</Typography>
                         <Typography sx={makeStyle.title}>Frequently Asked Questions</Typography>
-                        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                            <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                                <Typography>How can I make an online truck booking?</Typography>
+                        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ border: "none" }}>
+                            <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" sx={{ backgroundColor: "#fff", border: "none" }}>
+                                <Typography sx={{ color: "#1C1F35", fontWeight: "400", fontSize: "20px", fontFamily: "'Krub', sans-serif" }}>How can I make an online truck booking?</Typography>
                             </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
+                            <AccordionDetails sx={{ border: "none" }}>
+                                <Typography sx={{ color: "#666C89", fontSize: "20px", fontFamily: "'Krub', sans-serif" }}>
                                     Booking your truck with ReeRoute is very simple. Just add pickup and destination location. Then, select the weight of goods, type, and size of the truck.
                                     Our network of truckers will provide you the best prices with highest reliability.
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-                            <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                                <Typography>Can I place a booking with multi-point pick up and drop?</Typography>
+                        <Accordion
+                            expanded={expanded === 'panel2'}
+                            onChange={handleChange('panel2')}
+                            sx={{
+                                border: "none",
+                                "& .MuiAccordionSummary-expandIconWrapper": {
+                                    marginRight: 0, // Removes the default margin on the expand icon
+                                    marginLeft: "auto", // Positions the expand icon on the right side
+                                },
+                            }}
+                        >
+                            <AccordionSummary
+                                aria-controls="panel2d-content"
+                                id="panel2d-header"
+                                sx={{ backgroundColor: "#fff" }}
+                            >
+                                <Typography sx={{ color: "#1C1F35", fontWeight: "500", fontSize: "20px", fontFamily: "'Krub', sans-serif" }}>Can I place a booking with multi-point pick up and drop?</Typography>
                             </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
+                            <AccordionDetails sx={{ border: "none" }}>
+                                <Typography sx={{ color: "#666C89", fontSize: "20px", fontFamily: "'Krub', sans-serif" }}>
                                     Booking your truck with ReeRoute is very simple. Just add pickup and destination location. Then, select the weight of goods, type, and size of the truck.
                                     Our network of truckers will provide you the best prices with highest reliability.
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-                            <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-                                <Typography>Can I cancel my booking? Is there any cancellation fee?</Typography>
+                        <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} sx={{ border: "none" }}>
+                            <AccordionSummary aria-controls="panel3d-content" id="panel3d-header" sx={{ backgroundColor: "#fff" }}>
+                                <Typography sx={{ color: "#1C1F35", fontWeight: "500", fontSize: "20px", fontFamily: "'Krub', sans-serif" }}>Can I cancel my booking? Is there any cancellation fee?</Typography>
                             </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
+                            <AccordionDetails sx={{ border: "none" }}>
+                                <Typography sx={{ color: "#666C89", fontSize: "20px", fontFamily: "'Krub', sans-serif" }}>
                                     Booking your truck with ReeRoute is very simple
                                     Just add pickup and destination location. Then, select the weight of goods, type, and size of the truck.
                                     Our network of truckers will provide you the best prices with highest reliability.
@@ -246,7 +270,7 @@ export default function Faq() {
                         </Accordion>
                     </Grid>
                     <Grid item lg={6} xs={12}>
-                        <Box sx={{ position: "relative" }}>
+                        <Box sx={makeStyle.rightContent}>
                             <Box sx={makeStyle.helpBox}>
                                 <Typography sx={makeStyle.talk}>lets talk</Typography>
                                 <Typography sx={makeStyle.consultation}>You need any help? get free consultation</Typography>

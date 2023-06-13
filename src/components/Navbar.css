@@ -52,8 +52,10 @@ nav {
 
     header nav {
         position: fixed;
-        top: -100vh;
-        left: 0;
+        /* top: -100vh; */
+        top:0px;
+        right:-100vw;
+        /* right: 0; */
         height: 100%;
         width: 100%;
         display: flex;
@@ -61,15 +63,18 @@ nav {
         align-items: center;
         justify-content: center;
         gap: 1.5rem;
-        background-color: #E57E38;
+        background-color: #E53438;
         transition: 1s;
     }
 
     header .responsive_nav {
-        transform: translateY(100vh);
+        transform: translateX(-100vw);
     }
 
     nav .nav-close-btn {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
         position: absolute;
         top: 2rem;
         right: 2rem;

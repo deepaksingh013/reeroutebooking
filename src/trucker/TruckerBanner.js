@@ -172,12 +172,12 @@ const makeStyle = {
         position: "relative",
 
         // marginBottom: "2rem",
-        height: "460px",
+        height: "560px",
         // padding: "25px 20px 20px 22px",
         borderRadius: "12px",
-        // "@media (max-width: 768px)": {
-        //     height: "400px"
-        // },
+        "@media (max-width: 768px)": {
+            height: "490px"
+        },
     },
     title: {
         textAlign: "center",
@@ -192,20 +192,23 @@ const makeStyle = {
         position: "absolute",
         bottom: "20px",
         width: "93%",
-        background: "linear-gradient(94.06deg, #FFB629 -1.21%, #FFDA56 58.66%, #FFD7A6 116.84%)",
+        background: "#E57E38",
         color: "#000000",
         fontWeight: "600",
         fontSize: "10px",
         height: "42px",
         // marginTop: "120px",
         "@media (max-width: 800px)": {
-            marginTop: "90px",
+          marginTop: "90px",
         },
         "@media (max-width: 483px)": {
-            width: "89%"
+          width: "89%"
         },
-
-    },
+        "&:hover": {
+          background: "#E57E38", // Set the same color for hover
+        },
+      },
+      
     destination: {
         fontSize: "14px",
         fontWeight: "400",
