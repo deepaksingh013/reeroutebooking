@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from  "../images/164.png"
+import logo from "../images/mobile2.png"
 import { Box, Grid, Typography, colors, makeStyles } from '@mui/material'
 import img133 from "../images/image 133.png"
 import img134 from "../images/image 134 (Traced).png"
@@ -7,7 +7,7 @@ import img134 from "../images/image 134 (Traced).png"
 const makeStyle = {
     mainBox: {
         background: "#F4F4F4",
-        marginTop: "5%"
+        marginTop: "3rem"
     },
     logoStyle: {
         maxWidth: "100%",
@@ -21,8 +21,9 @@ const makeStyle = {
         "@media (max-width: 768px)": {
             fontSize: "28px"
         },
-        "@media (max-width: 480px)": {
-            fontSize: "24px"
+        "@media (max-width: 450px)": {
+            color: "rgba(0, 0, 0, 0.6)",
+            fontSize: "15px",
         }
     },
     content: {
@@ -34,7 +35,8 @@ const makeStyle = {
         "@media (max-width: 768px)": {
             fontSize: "19px"
         },
-        "@media (max-width: 480px)": {
+        "@media (max-width: 450px)": {
+            color: "rgba(42, 79, 109, 0.6)",
             fontSize: "15px"
         }
     },
@@ -47,7 +49,14 @@ const makeStyle = {
         color: "#fff",
         marginBottom: "10px",
         padding: "5px",
-        marginRight: "10px"
+        marginRight: "10px",
+        "@media (max-width: 450px)": {
+            margin: "auto",
+        }
+    },
+    downloadapp: {
+        display: "flex",
+        // marginLeft: "1rem"
     },
     truckers: {
         fontSize: "24px",
@@ -69,6 +78,12 @@ const makeStyle = {
         marginTop: "7px",
         marginLeft: "10px"
     },
+    appStores: {
+        ml: "1rem",
+        "@media (max-width: 450px)": {
+            textAlign: "center",
+        }
+    },
     downloadText: {
         fontFamily: "'Be Vietnam Pro', sans-serif",
         fontWeight: "500",
@@ -80,7 +95,19 @@ const makeStyle = {
         fontFamily: "'Rubik', sans-serif",
         fontWeight: "600",
         color: "#000 90%",
-        marginBottom: "10px"
+        marginBottom: "10px",
+        "@media (max-width: 450px)": {
+            textAlign: "center",
+        }
+    },
+    app: {
+
+        // mobile view
+        "@media (max-width: 400px)": {
+            display: "flex",
+            flexDirection: "column-reverse"
+        }
+
     }
 
 }
@@ -99,8 +126,7 @@ const shipperContent = [
         content: "Seamlessly manage your bookings and payment details with our interactive platform. Say goodbye to paperwork and scattered information "
     }
 ]
-
-export default function DownloadTrucker() {
+export default function DownloadShipper() {
     return (
         <>
             <Box sx={makeStyle.mainBox}>
@@ -109,10 +135,11 @@ export default function DownloadTrucker() {
                         <img src={logo} alt="" style={makeStyle.logoStyle} />
                     </Grid>
                     <Grid item lg={5}>
-                        <Box >
+                        {/*  */}
+                        <Box sx={makeStyle.app}>
                             <Box >
                                 {shipperContent.map((item, index) => {
-                                    return <Box>
+                                    return <Box sx={{ ml: "1rem", mr: "1rem" }}>
                                         <Box>
                                             <Typography sx={makeStyle.title}>{item.title}</Typography>
                                         </Box>
@@ -123,11 +150,10 @@ export default function DownloadTrucker() {
                                 })}
 
                             </Box>
-                            <Box >
+                            <Box sx={makeStyle.appStores}>
                                 <Typography sx={makeStyle.truckers}>DOWNLOAD TRUCKER APP</Typography>
-                                <Box sx={{ display: "flex" }}>
+                                <Box sx={makeStyle.downloadapp}>
                                     <Box sx={makeStyle.Store}>
-
                                         <img src={img133} alt="" style={makeStyle.downloadImg} />
                                         <Box sx={{ textAlign: "left" }}>
                                             <Typography sx={makeStyle.getIt}>GET IT ON</Typography>
@@ -156,3 +182,5 @@ export default function DownloadTrucker() {
         </>
     )
 }
+
+

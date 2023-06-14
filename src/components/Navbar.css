@@ -1,81 +1,81 @@
-*,
-*::after,
-*::before {
-  margin: 0;
-  box-sizing: border-box;
-}
-html {
-  font-size: 62.5%;
-}
-body {
-  font-size: 1.6rem;
-}
-li {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-  color: rgb(204, 204, 204);
+:root {
+    --mainColor: transparent;
+    --mainColorLight: #5767aa;
+    --secondaryColor: #db2b39;
+    --textColor: #eee;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 8vh;
-  background: rgb(0, 33, 65);
-}
-.nav__brand {
-  text-transform: uppercase;
-}
-
-.nav__menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 3rem;
-}
-.nav__toggler {
-  display: none;
-}
-.nav__toggler div {
-  width: 2.5rem;
-  height: 0.2rem;
-  margin: 0.4rem;
-  background: rgb(204, 204, 204);
-  transition: 0.3s ease-in;
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    /* padding: 0 2rem; */
+    background-color: var(--mainColor);
+    color: var(--textColor);
 }
 
-@media screen and (max-width: 768px) {
-  .nav__toggler {
-    display: block;
+nav a {
+    /* margin: 0 1rem; */
+    color: var(--textColor);
+    margin-left: 2rem;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--secondaryColor);
+}
+
+header .nav-btn {
+    padding: 5px;
     cursor: pointer;
-  }
-  .nav__menu {
-    position: fixed;
-    top: 7vh;
-    right: 0;
-    height: 93vh;
-    width: 50vw;
-    background: rgb(0, 33, 65);
-    flex-direction: column;
-    transform: translateX(100%);
-    transition: 0.5s ease-in;
-  }
-}
-/* Active Class */
-.nav__active {
-  transform: translateX(0%);
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--textColor);
+    visibility: hidden;
+    opacity: 0;
+    font-size: 1.8rem;
 }
 
-/* Toggle Icon Animation */
+header div,
+nav {
+    display: flex;
+    align-items: center;
+}
 
-.toggle .line1 {
-  transform: rotate(-45deg) translate(-4px, 5px);
-}
-.toggle .line2 {
-  opacity: 0;
-}
-.toggle .line3 {
-  transform: rotate(45deg) translate(-4px, -5px);
+@media only screen and (max-width: 1024px) {
+    header .nav-btn {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    header nav {
+        position: fixed;
+        top: -100vh;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background-color: #E57E38;
+        transition: 1s;
+    }
+
+    header .responsive_nav {
+        transform: translateY(100vh);
+    }
+
+    nav .nav-close-btn {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+    }
+
+    nav a {
+        font-size: 1.5rem;
+    }
 }

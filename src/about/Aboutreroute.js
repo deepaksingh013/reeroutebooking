@@ -1,12 +1,15 @@
 import React from 'react'
 import rerouteImg from "../images/abouttrucker.png"
-import { Box, Button, Grid, Typography } from '@mui/material'
+import { Box, Button, Container, Grid, Typography } from '@mui/material'
 import businessman from "../images/businessman.png"
 
 const makeStyle = {
     mainBox: {
         backgroundColor: "#F4F4F4",
-        padding: "4rem"
+        padding: "4rem",
+        "@media (max-width: 700px)": {
+            padding: "2rem",
+        }
     },
     about: {
         backgroundColor: "#E8E8E81A 80%",
@@ -29,7 +32,7 @@ const makeStyle = {
         fontSize: "16px",
         fontWeight: "500",
         fontFamily: "'Krub', sans-serif",
-        color: "#666C89"
+        color: "#666C89",mb:"20px"
     },
     btn1: {
         color: "#23212A",
@@ -37,9 +40,9 @@ const makeStyle = {
         fontWeight: "600",
         fontFamily: "'Krub', sans-serif",
         alignItems: "center",
-        width: "194px",
+        width: "100%",
         margin: "auto",
-        mt: "30px",
+        // mt: "30px",
         height: "60px",
         backgroundColor: "#F79633",
         '&:hover': {
@@ -53,9 +56,8 @@ const makeStyle = {
         fontFamily: "'Krub', sans-serif",
         color: "#23212A",
         alignItems: "center",
-        width: "194px",
+        width: "100%",
         margin: "auto",
-        mt: "30px",
         height: "60px",
         backgroundColor: "##F4F4F4",
         '&:hover': {
@@ -80,44 +82,50 @@ const makeStyle = {
         },
     },
     businessman: {
-        objectFit: "contain",
+        // objectFit: "contain",
+        // height:"200px",
+        width:"35%",
+
         position: "absolute",
         right: "50px",
-        bottom: "-100px",
+        bottom: "0px",
+        bottom:"-20px",
+        "@media (max-width: 700px)": {
+            width:"35%",
+        }
     
     },
     rerouteImg: {
         objectFit: "contain",
         width: "85%",
-        height: "370px",
+        height: "100%",
         "@media (max-width: 700px)": {
             width: "100%",
         }
     }
-
 }
-
 export default function Aboutreroute() {
     return (
         <>
+       
             <Box sx={makeStyle.mainBox}>
-                <Grid container spacing={2}>
-                    <Grid item lg={6} >
+                <Grid container spacing={2} >
+                    <Grid item lg={6} sm={12} >
                         <Box sx={{ position: "relative" }}>
                             <img src={rerouteImg} alt="" style={makeStyle.rerouteImg} />
                             <img src={businessman} alt="" style={makeStyle.businessman} />
                         </Box>
                     </Grid>
-                    <Grid item lg={6} sm={12}>
+                    <Grid item lg={6} sm={12} >
                         <Typography sx={makeStyle.about}>About us</Typography>
                         <Typography sx={makeStyle.aboutReroute}>About Reeroute</Typography>
                         <Typography sx={makeStyle.txt}>Welcome to ReeRoute! We specialize in providing reliable and trustworthy services for full truck loads. Our primary focus is on ensuring transparency in every aspect of our business operations. With us, you can book trucks with confidence, knowing that your cargo will be handled with utmost care and delivered on time. </Typography>
                         <Grid container spacing={2} sx={{ mb: "20px" }}>
-                            <Grid item lg={3}>
+                            <Grid item lg={4} sm={6} md={6} xs={12}>
                                 <Button sx={makeStyle.btn1}>our mission</Button>
                             </Grid>
 
-                            <Grid item lg={3}>
+                            <Grid item lg={4} sm={6} md={6} xs={12}>
                                 <Button sx={makeStyle.btn2}>our vision</Button>
                             </Grid>
 
@@ -129,7 +137,9 @@ export default function Aboutreroute() {
                         <Button sx={makeStyle.btn3}>learn more</Button>
                     </Grid>
                 </Grid>
+          
             </Box >
+  
 
         </>
     )

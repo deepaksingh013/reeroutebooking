@@ -79,12 +79,29 @@ const makeStyle = {
         alignItems: "center",
         width: "194px",
         margin: "auto",
-        mt: "30px",
+        mt: "20px",
         height: "60px",
+        textTransform:"capitalize",
 
         backgroundColor: "#F79633",
         '&:hover': {
             backgroundColor: "#F79633",
+            // Add any other styles you want for the hover state
+        },
+
+    },
+    btn2: {
+        textTransform:"capitalize",
+        color: "#23212A",
+        alignItems: "center",
+        width: "194px",
+        margin: "auto",
+        mt: "10px",
+        height: "60px",
+
+        backgroundColor: "rgba(0, 0, 0, 0.2)",
+        '&:hover': {
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
             // Add any other styles you want for the hover state
         },
 
@@ -168,8 +185,9 @@ export default function CarrerDetail() {
                             </Box>
                         </Grid>
                     </Grid>
+                    <Button sx={makeStyle.btn2}>Upload Resume</Button>
 
-                    <Button sx={makeStyle.btn}>Submit </Button>
+                    <Button sx={makeStyle.btn}>Submit Message</Button>
 
 
                 </Box>

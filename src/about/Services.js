@@ -43,7 +43,11 @@ const services = [
 const makeStyle = {
     mainBox: {
         backgroundColor: "#F4F4F4",
-        paddingBottom: "1rem"
+        paddingBottom: "1rem",
+        margin:"auto",
+        "@media (max-width: 700px)": {
+            paddingLeft: "2rem",
+        }
     },
     title: {
         backgroundColor: "#E8E8E81A 80%",
@@ -74,7 +78,8 @@ const makeStyle = {
         fontFamily: "'Rubik', sans-serif",
         fontSize: "16px",
         color: "##666C89",
-        marginBottom: "20px"
+        marginBottom: "20px",
+        width:"100%"
     },
     btn: {
         fontSize: "19px",
@@ -103,12 +108,13 @@ export default function Services() {
                         <Typography sx={makeStyle.title}>What We Do</Typography>
                         <Typography sx={makeStyle.services}>Our Logistics Services</Typography>
                     </Box>
+                    <Container >
                     <Box sx={{ mt: "20px" }}>
                         <Grid container spacing={2}>
                             {services.map((item, index) => {
-                                return <Grid lg={4} xs={12} md={6}>
+                                return <Grid lg={4} xs={12} md={6} sm={6}>
                                     <img src={item.icon} alt="" />
-                                    <Box sx={{ width: "70%" }}>
+                                    <Box sx={{ width: "100%" }}>
                                         <Typography sx={makeStyle.text1}>{item.text1}</Typography>
                                         <Typography sx={makeStyle.text2}>{item.text2}</Typography>
                                     </Box>
@@ -117,6 +123,7 @@ export default function Services() {
                             })}
                         </Grid>
                     </Box>
+                    </Container>
                     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mb: "3rem" }}>
                         <Button sx={makeStyle.btn}>More Works</Button>
                     </Box>

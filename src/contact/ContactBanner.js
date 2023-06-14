@@ -7,6 +7,7 @@ import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 const makeStyle = {
     mainBox: {
         position: "relative",
+        paddingTop:"4rem",
         minHeight: "449px",
         backgroundImage: `linear-gradient(90.13deg,
             rgba(0, 0, 0, 0.9) 1.07%,
@@ -14,7 +15,7 @@ const makeStyle = {
             url(${bgImg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        marginTop: "-115px",
+        // marginTop: "-115px",
         objectFit: "cover",
         width: "100%"
     },
