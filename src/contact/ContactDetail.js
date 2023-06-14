@@ -10,12 +10,16 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const contactUs = [
     {
-        icon: <PhoneOutlinedIcon />,
-        data: "Contact@logistics.com"
+        icon: <EmailOutlinedIcon />,
+        data: "Contact@logistics.com",
+
+
     },
     {
-        icon: <EmailOutlinedIcon />,
-        data: "(00) 112 365 489"
+        icon: <PhoneOutlinedIcon />,
+        data: "(00) 112 365 489",
+
+
     },
     {
         icon: <AccessTimeOutlinedIcon />,
@@ -31,14 +35,23 @@ const makeStyle = {
         borderRadius: "20px",
         mt: "3rem",
         mb: "3rem",
-        p: "2rem",
+        pt: "6rem",
+        pl: "4rem",
+        pr: "4rem",
+        pb: "8rem",
         display: "flex",
         flexDirection: "column",
+        "@media (max-width: 690px)": {
+            pt: "4rem",
+            pl: "2rem",
+            pr: "2rem",
+            pb: "4rem",
+        },
         "@media (max-width: 600px)": {
             width: "80%",
         },
         "@media (max-width: 500px)": {
-            border:"none"
+            border: "none"
         }
     },
     contact: {
@@ -70,9 +83,16 @@ const makeStyle = {
         height: "30px",
         width: "30px",
         borderRadius: "50%",
-        padding: '13px 10px 11px 12px',
+        // padding: '13px 10px 11px 12px',
         color: "#fff",
-        margin: "auto"
+        margin: "auto",
+        diplay: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "50px",
+        width: "50px",
+
+
     },
     btn: {
         color: "#23212A",
@@ -81,7 +101,9 @@ const makeStyle = {
         margin: "auto",
         mt: "30px",
         height: "60px",
-
+        textTransform: "none",
+        border: "none",
+        borderRadius: "0px",
         backgroundColor: "#F79633",
         '&:hover': {
             backgroundColor: "#F79633",
@@ -94,7 +116,7 @@ const makeStyle = {
         fontWeight: "400",
         '& input::placeholder': {
             color: "rgb(0, 0, 0)",
-            textTransform:"capitalize"
+            textTransform: "capitalize"
         },
     },
     textArea: {
@@ -111,6 +133,8 @@ const makeStyle = {
 
     }
 }
+
+
 
 
 export default function ContactDetail() {
@@ -131,8 +155,12 @@ export default function ContactDetail() {
                             return (
 
                                 <Grid item lg={4} xs={12} sm={6}>
-                                    <Box sx={{ diplay: "flex", justifyContent: "center", alignItems: "center" }}>
-                                        <Box sx={makeStyle.icon}>{item.icon}</Box>
+                                    <Box sx={{}}>
+                                        <Box sx={makeStyle.icon}>
+                                            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
+                                                <Typography sx={{ mt: "11px" }}>  {item.icon}</Typography>
+                                            </Box>
+                                        </Box>
                                         <Box sx={{ textAlign: "center" }}>
                                             <Typography sx={{ mt: "10px" }}>{item.data}</Typography>
                                         </Box>
@@ -158,7 +186,7 @@ export default function ContactDetail() {
                             <TextField sx={makeStyle.textField} placeholder='Phone Number*' />
                         </Grid>
                         <Grid item lg={6} xs={12}>
-                        <Box sx={{ minWidth: 120 }}>
+                            <Box sx={{ minWidth: 120 }}>
                                 <FormControl fullWidth>
                                     <InputLabel id="demo-simple-select-label">City*</InputLabel>
                                     <Select
@@ -180,6 +208,7 @@ export default function ContactDetail() {
                         placeholder="Your message"
                     />
                     <Button sx={makeStyle.btn}>Submit Message</Button>
+
                 </Box>
             </Container>
         </>

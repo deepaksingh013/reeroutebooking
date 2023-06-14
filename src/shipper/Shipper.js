@@ -13,6 +13,7 @@ import Reroute from '../components/Reroute'
 import { Box, } from '@mui/material'
 import TestinomialSlider from '../mobileview/TestinomialSlider'
 import FooterHeroSlider from '../mobileview/FooterHeroSlider'
+import Reroute2 from '../components/Reroute2'
 
 const makeStyles = {
     mobileView: {
@@ -42,6 +43,7 @@ export default function Shipper() {
             <Counter />
             <DownloadShipper />
             <Reroute />
+            {/* <Reroute2/> */}
             <Testimonial />
             <Box sx={makeStyles.mobileView}>
                 <TestinomialSlider />

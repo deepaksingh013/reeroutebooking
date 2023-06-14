@@ -9,10 +9,11 @@ import { Grid, Box, Container, Button } from '@mui/material';
 import bgImg from "../images/Photo (1).png";
 import truckImg from "../images/scvi-email 1.png";
 import CallIcon from '@mui/icons-material/Call';
-
+import contactIcon from "../images/Vector (1).svg";
+import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 const makeStyle = {
     mainBox: {
-        mt: "2rem",
+        mt: "4rem",
         minHeight: "586px",
         marginLeft: "4rem",
         marginRight: "4rem",
@@ -95,7 +96,7 @@ const makeStyle = {
         top: "30%",
         left: "0px",
         backgroundColor: "#2A4F6D",
-        width: "35%",
+        width: "40%",
         padding: "2rem 0rem 2rem 2rem",
         "@media (max-width: 800px)": {
             position: "absolute",
@@ -112,6 +113,10 @@ const makeStyle = {
     },
     btn: {
         color: "#23212A",
+        textTransform: "none",
+        borderRadius: "0px",
+        paddingLeft: "15px",
+        paddingRight: "15px",
         backgroundColor: "#F79633",
         '&:hover': {
             backgroundColor: "#F79633",
@@ -140,15 +145,14 @@ const makeStyle = {
         marginBottom: "10px",
         fontSize: "20px",
         "@media (max-width: 800px)": {
-            fontSize: "15px"
+            fontSize: "17px"
         },
         "@media (max-width: 600px)": {
-            fontSize: "12px"
+            fontSize: "15px"
         },
     },
     contact: {
         fontFamily: "'Krub', sans-serif",
-        fontWeight: "500",
         fontSize: '16px',
         color: "#fff",
         "@media (max-width: 800px)": {
@@ -212,10 +216,10 @@ export default function Faq() {
     };
 
     return (
-        <div>
+        <div style={{ marginBottom: "6rem" }}>
 
             <Box sx={makeStyle.mainBox}>
-                <Grid container spacing={2} sx={{ '@media (max-width: 700px)': { flexDirection: 'column-reverse', } }}>
+                <Grid container spacing={2} sx={{ '@media (max-width: 1200px)': { flexDirection: 'column-reverse',pl:"0.7rem" }, pl: "4rem" }}>
 
                     <Grid item lg={6} xs={12}>
                         <Typography sx={makeStyle.Faq}>FAQ</Typography>
@@ -275,13 +279,15 @@ export default function Faq() {
                                 <Typography sx={makeStyle.talk}>lets talk</Typography>
                                 <Typography sx={makeStyle.consultation}>You need any help? get free consultation</Typography>
                                 <Box sx={{ display: "flex", mb: "15px" }}>
-                                    <CallIcon sx={makeStyle.contactIcon} />
+                                    {/* <img src={contactIcon} alt="" style={makeStyle.contactIcon}/> */}
+
+                                    <CallOutlinedIcon sx={makeStyle.contactIcon} />
                                     <Box sx={{ ml: "20px", fontFamily: "'Krub', sans-serif" }}>
                                         <Typography sx={makeStyle.contact}>Have Any Questions </Typography>
                                         <Typography sx={makeStyle.contact}>(00) 112 365 489 </Typography>
                                     </Box>
                                 </Box>
-                                <Button sx={makeStyle.btn}>Contact Us</Button>
+                                <Button sx={makeStyle.btn} variant="contained">Contact Us</Button>
                             </Box>
                             <img src={window.location.pathname === "/" ? bgImg : truckImg} alt="" style={makeStyle.bgImg} />
                         </Box>

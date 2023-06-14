@@ -51,7 +51,7 @@ export default function Carrerbanner() {
         <>
             <Box sx={makeStyle.mainBox}>
                 <Container>
-                    <Typography sx={makeStyle.contact}>Carrers</Typography>
+                    <Typography sx={makeStyle.contact}>Careers</Typography>
                     <Typography sx={makeStyle.contactUs}>Join our Team</Typography>
                 </Container>
             </Box>

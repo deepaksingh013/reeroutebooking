@@ -10,11 +10,11 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const contactUs = [
     {
-        icon: <PhoneOutlinedIcon />,
+        icon: <EmailOutlinedIcon />,
         data: "Contact@logistics.com"
     },
     {
-        icon: <EmailOutlinedIcon />,
+        icon: <PhoneOutlinedIcon />,
         data: "(00) 112 365 489"
     },
     {
@@ -31,14 +31,17 @@ const makeStyle = {
         borderRadius: "20px",
         mt: "3rem",
         mb: "3rem",
-        p: "2rem",
+        pt: "4rem",
+        pl: "3rem",
+        pr: "3rem",
+        pb: "6rem",
         display: "flex",
         flexDirection: "column",
         "@media (max-width: 600px)": {
             width: "80%",
         },
         "@media (max-width: 500px)": {
-            border:"none"
+            border: "none"
         }
     },
     contact: {
@@ -66,58 +69,54 @@ const makeStyle = {
         color: "#000000"
     },
     icon: {
+        display:"flex",
+        justifyContent:"center",
+        alignItems:'center',
         backgroundColor: "#000000",
         height: "30px",
         width: "30px",
         borderRadius: "50%",
-        padding: '13px 10px 11px 12px',
         color: "#fff",
-        margin: "auto"
+        margin: "auto",
+        padding:"10px"
     },
     btn: {
         color: "#23212A",
         alignItems: "center",
+
         width: "194px",
         margin: "auto",
         mt: "20px",
         height: "60px",
-        textTransform:"capitalize",
-
+        textTransform: "capitalize",
         backgroundColor: "#F79633",
         '&:hover': {
             backgroundColor: "#F79633",
-            // Add any other styles you want for the hover state
         },
-
     },
     btn2: {
-        textTransform:"capitalize",
+        textTransform: "capitalize",
         color: "#23212A",
         alignItems: "center",
         width: "194px",
         margin: "auto",
         mt: "10px",
         height: "60px",
-
         backgroundColor: "rgba(0, 0, 0, 0.2)",
         '&:hover': {
             backgroundColor: "rgba(0, 0, 0, 0.2)",
             // Add any other styles you want for the hover state
         },
-
     },
     textField: {
         width: "100%",
         fontWeight: "400",
         '& input::placeholder': {
             color: "rgb(0, 0, 0)",
-            textTransform:"capitalize"
+            textTransform: "capitalize"
         },
     },
-
-
 }
-
 
 export default function CarrerDetail() {
     const [department, setDepartment] = React.useState('');
@@ -129,7 +128,7 @@ export default function CarrerDetail() {
         <>
             <Container>
                 <Box sx={makeStyle.contactDetail}>
-                    <Typography sx={makeStyle.contact}>Carrers</Typography>
+                    <Typography sx={makeStyle.contact}>Careers</Typography>
                     <Typography sx={makeStyle.touch}>Join our Team</Typography>
                     <Typography sx={makeStyle.content}>Join Our Team: Unlock Your Potential and Build a Fulfilling Career in the Dynamic World of Logistics!</Typography>
                     <Grid container spacing={2} sx={{ mt: "10px" }}>
@@ -138,7 +137,11 @@ export default function CarrerDetail() {
 
                                 <Grid item lg={4} xs={12} sm={6}>
                                     <Box sx={{ diplay: "flex", justifyContent: "center", alignItems: "center" }}>
-                                        <Box sx={makeStyle.icon}>{item.icon}</Box>
+                                        <Box sx={makeStyle.icon}>
+                                            <Box sx={{display:"flex",justifyContent:"center",alignItems:"center",}}>
+                                                {item.icon}
+                                            </Box>
+                                        </Box>
                                         <Box sx={{ textAlign: "center" }}>
                                             <Typography sx={{ mt: "10px" }}>{item.data}</Typography>
                                         </Box>

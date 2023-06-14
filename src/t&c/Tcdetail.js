@@ -102,8 +102,8 @@ const makeStyle = {
 export default function Tcdetail() {
     return (
         <>
-            <Box sx={{ mt: "3rem", mb: "8rem" }}>
-                <Container>
+            <Box sx={{ mt: "3rem", mb:"4rem"}}>
+                <Container sx={{mb:"10rem",pb:"4rem"}}>
                     <Typography sx={makeStyle.text}>
                         Welcome to Reeroute. These terms and conditions govern your use of our logistics services. By engaging with our services, you agree to comply with these terms and conditions. Please read them carefully.
                     </Typography>

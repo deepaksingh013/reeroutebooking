@@ -7,7 +7,8 @@ import img134 from "../images/image 134 (Traced).png"
 const makeStyle = {
     mainBox: {
         background: "#F4F4F4",
-        marginTop: "3rem"
+        marginTop: "3rem",
+        paddingTop:"2rem"
     },
     logoStyle: {
         maxWidth: "100%",
@@ -48,7 +49,8 @@ const makeStyle = {
         backgroundColor: "#000",
         color: "#fff",
         marginBottom: "10px",
-        padding: "5px",
+        paddingLeft:"12px",
+        paddingTop:"5px",
         marginRight: "10px",
         "@media (max-width: 450px)": {
             margin: "auto",
@@ -60,15 +62,16 @@ const makeStyle = {
     },
     truckers: {
         fontSize: "24px",
-        fontWeight: "500",
+        fontWeight: "600",
         fontFamily: "'Rubik', sans-serif",
         fontSize: "24px",
-        marginBottom: "10px"
+        marginBottom: "10px",
+        marginTop:"4rem"
 
     },
     downloadImg: {
-        height: "18px",
-        width: "18px",
+        height: "20px",
+        width: "20px",
         marginTop: "15px"
     },
     getIt: {
@@ -151,7 +154,7 @@ export default function DownloadShipper() {
 
                             </Box>
                             <Box sx={makeStyle.appStores}>
-                                <Typography sx={makeStyle.truckers}>DOWNLOAD TRUCKER APP</Typography>
+                                <Typography sx={makeStyle.truckers}>Download Trucker App</Typography>
                                 <Box sx={makeStyle.downloadapp}>
                                     <Box sx={makeStyle.Store}>
                                         <img src={img133} alt="" style={makeStyle.downloadImg} />

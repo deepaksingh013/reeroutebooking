@@ -11,9 +11,9 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Forms from './Forms';
 import bullets from "../images/bullets.png"
-import bgImg1 from "../images/Pattern.png";
-import bgImg2 from "../images/truck.png";
-import bgImg3 from "../images/indian.png";
+import truckImg1 from "../images/Photo-bg.png";
+import truckImg2 from "../images/truck.png";
+import truckImg3 from "../images/indian.png";
 import CircleIcon from '@mui/icons-material/Circle';
 
 const makeStyle = {
@@ -179,16 +179,16 @@ const makeStyle = {
         height: "42px",
         // marginTop: "120px",
         "@media (max-width: 800px)": {
-          marginTop: "90px",
+            marginTop: "90px",
         },
         "@media (max-width: 483px)": {
-          width: "89%"
+            width: "89%"
         },
         "&:hover": {
-          background: "#E57E38", // Set the same color for hover
+            background: "#E57E38", // Set the same color for hover
         },
-      },
-      
+    },
+
     destination: {
         fontSize: "14px",
         fontWeight: "400",
@@ -287,6 +287,23 @@ const makeStyle = {
 
 };
 
+
+const initialStyle = {
+    height: "20px",
+    width: "20px",
+    backgroundColor: "#fff",
+    marginBottom: "10px",
+    borderRadius:"50%"
+};
+
+const updateStyle = {
+    height: "20px",
+    width: "20px",
+    backgroundColor: "#E57E38",
+    marginBottom: "10px",
+    borderRadius:"50%"
+};
+
 export default function Banner() {
 
 
@@ -304,6 +321,38 @@ export default function Banner() {
         setFormData({});
         setCurrentForm(1);
     };
+
+    // banner carosal state
+    const [currentBackground, setCurrentBackground] = useState(0);
+    const backgrounds = [truckImg1, truckImg2, truckImg3];
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentBackground((prevBackground) => (prevBackground + 1) % backgrounds.length);
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const [circleStyles, setCircleStyles] = useState([
+        initialStyle,
+        initialStyle,
+        initialStyle
+    ]);
+
+    useEffect(() => {
+        const updatedStyles = circleStyles.map((style, index) => {
+            if (index === currentBackground) {
+                return updateStyle;
+            } else {
+                return initialStyle;
+            }
+        });
+
+        setCircleStyles(updatedStyles);
+    }, [currentBackground]);
+
+
+
 
 
 
@@ -348,41 +397,41 @@ export default function Banner() {
 
 
 
-    useEffect(() => {
-        setBackgroundImage('url(bgImg)');
-    }, []);
+    // useEffect(() => {
+    //     setBackgroundImage('url(bgImg)');
+    // }, []);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
         if (currentForm < 3) {
             setCurrentForm(currentForm + 1);
-            updateBackgroundImage(currentForm + 1);
+            // updateBackgroundImage(currentForm + 1);
         }
 
 
 
     };
 
-    const updateBackgroundImage = (formNumber) => {
-        let newBackgroundImage = '';
+    // const updateBackgroundImage = (formNumber) => {
+    //     let newBackgroundImage = '';
 
-        if (formNumber === 2) {
-            newBackgroundImage = bgImg2;
-        } else if (formNumber === 3) {
-            newBackgroundImage = bgImg3;
-        }
-        setBackgroundImage(` linear-gradient(90.13deg,
-            rgba(0, 0, 0, 0.9) 1.07%,
-            rgba(0, 0, 0, 0.6) 99.9%),url(${newBackgroundImage})`);
-    };
+    //     if (formNumber === 2) {
+    //         newBackgroundImage = bgImg2;
+    //     } else if (formNumber === 3) {
+    //         newBackgroundImage = bgImg3;
+    //     }
+    //     setBackgroundImage(` linear-gradient(90.13deg,
+    //         rgba(0, 0, 0, 0.9) 1.07%,
+    //         rgba(0, 0, 0, 0.6) 99.9%),url(${newBackgroundImage})`);
+    // };
 
-    useEffect(() => {
-        setBackgroundImage(`linear-gradient(90.13deg,
-            rgba(0, 0, 0, 0.9) 1.07%,
-            rgba(0, 0, 0, 0.6) 99.9%),url(${bgImg})`);
-    }, []);
+    // useEffect(() => {
+    //     setBackgroundImage(`linear-gradient(90.13deg,
+    //         rgba(0, 0, 0, 0.9) 1.07%,
+    //         rgba(0, 0, 0, 0.6) 99.9%),url(${bgImg})`);
+    // }, []);
 
-     const closeHandler = ()=>{
+    const closeHandler = () => {
         if (currentForm > 2) {
             setCurrentForm(currentForm - 2);
         }
@@ -390,7 +439,11 @@ export default function Banner() {
     return (
         <>
             <Box sx={makeStyle.mainBox}>
-                <Box sx={{ backgroundImage: backgroundImage, backgroundSize: "cover", backgroundPosition: "center", width: "100%", pt: "6rem" }}>
+                <Box sx={{
+                    backgroundImage: `linear-gradient(90.13deg,
+          rgba(0, 0, 0, 0.9) 1.07%,
+          rgba(0, 0, 0, 0.6) 99.9%),url(${backgrounds[currentBackground]})`, backgroundSize: "cover", backgroundPosition: "center", width: "100%", pt: "8rem",pb:"1rem"
+                }}>
 
                     <Container >
                         <Grid container spacing={2} >
@@ -565,10 +618,15 @@ export default function Banner() {
                         </Grid>
                     </Container>
                     {/* circular icons */}
-                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", pb: "2rem", mt: "2rem" }}>
+                    {/* <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", pb: "2rem", mt: "2rem" }}>
                         <CircleIcon sx={currentForm === 1 ? makeStyle.initialCircle : makeStyle.updateCircle} />
                         <CircleIcon sx={currentForm === 2 ? makeStyle.initialCircle : makeStyle.updateCircle} />
                         <CircleIcon sx={currentForm === 3 ? makeStyle.initialCircle : makeStyle.updateCircle} />
+                    </Box> */}
+                    <Box sx={{display:"flex", justifyContent: "center", alignItems: "center",mt:"4rem",mb:"2rem"}}>
+                        <Box style={circleStyles[0]} marginRight={2}/>
+                        <Box style={circleStyles[1]} marginRight={2}/>
+                        <Box style={circleStyles[2]} marginRight={2}/>
                     </Box>
                 </Box>
 

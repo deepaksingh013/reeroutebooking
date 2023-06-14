@@ -13,6 +13,8 @@ import Forms from './shipper/Forms';
 import For from './components/For';
 import { Box } from '@mui/material';
 import Navbarr from './components/Navbarr';
+import Reroute2 from './components/Reroute2';
+import Background from './components/Background';
 // import Slider from './components/Slider';
 
 
@@ -34,11 +36,13 @@ function App() {
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/aboutus" element={<About />} />
       </Routes>
+      {/* <Reroute2/> */}
 
       {/* <Slider /> */}
 
       {/* <Forms/> */}
       {/* <Navbarr/> */}
+      {/* <Background/> */}
 
     </>
   );

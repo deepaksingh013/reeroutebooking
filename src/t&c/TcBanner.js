@@ -24,7 +24,7 @@ const makeStyle = {
         top: "35%",
         backgroundColor: "#041C37",
         borderLeft: "4px solid #F79633",
-        width: "130px",
+        width: "35px",
         color: "#fff",
         fontWeight: "400",
         fontFamily: "'Rubik', sans-serif",
@@ -54,7 +54,7 @@ export default function TcBanner() {
         <>
             <Box sx={makeStyle.mainBox}>
                 <Container>
-                    <Typography sx={makeStyle.contact}>Terms & Conditions</Typography>
+                    <Typography sx={makeStyle.contact}>T&C</Typography>
                     <Typography sx={makeStyle.contactUs}>Terms & Conditions</Typography>
                 </Container>
             </Box>
