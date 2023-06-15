@@ -15,6 +15,8 @@ import { Box } from '@mui/material';
 import Navbarr from './components/Navbarr';
 import Reroute2 from './components/Reroute2';
 import Background from './components/Background';
+import Validate from './components/Validate';
+// import Validation from './components/validation';
 // import Slider from './components/Slider';
 
 
@@ -43,6 +45,9 @@ function App() {
       {/* <Forms/> */}
       {/* <Navbarr/> */}
       {/* <Background/> */}
+      {/* <Validation /> */}
+      {/* <Validate /> */}
+
 
     </>
   );

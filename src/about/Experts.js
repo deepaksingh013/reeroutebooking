@@ -64,7 +64,8 @@ const makeStyle = {
         fontWeight: "600",
         fontFamily: "'Rubik', sans-serif",
         fontSize: "35px",
-        color: "#000000"
+        color: "#000000",
+        
     },
 }
 
