@@ -29,7 +29,6 @@ const TestinomialSlider = () => {
     };
 
     const makeStyle = {
-
         mainBox: {
             mr: "10px", position: "relative", height: "500px", width: "300px", margin: "auto"
         },
@@ -55,7 +54,7 @@ const TestinomialSlider = () => {
             minHeight: "120px",
             fontStyle: "italic",
             fontWeight: "350",
-            color:"#fff"
+            color: "#fff"
         },
         name: {
             fontFamily: "'Rubik', sans-serif",
@@ -71,13 +70,8 @@ const TestinomialSlider = () => {
         }
 
     }
-
-
     return (
         <>
-
-
-
             <div style={{ position: "relative" }}>
                 <Carousel selectedItem={currentSlide} showThumbs={false} showStatus={false} showIndicators={false}>
                     <div>
@@ -86,7 +80,7 @@ const TestinomialSlider = () => {
                                 <Box>
                                     <img src={profile1} alt="" style={makeStyle.profile} />
                                 </Box>
-                                <Box sx={{marginLeft:"20px"}}>
+                                <Box sx={{ marginLeft: "20px" }}>
                                     <Typography sx={makeStyle.name}>Varun Trivedi</Typography>
                                     <Typography sx={makeStyle.company}>Fuel Company</Typography>
                                 </Box>
@@ -105,12 +99,12 @@ const TestinomialSlider = () => {
                         </Box>
                     </div>
                     <div>
-                    <Box sx={makeStyle.mainBox}>
+                        <Box sx={makeStyle.mainBox}>
                             <Box sx={{ display: "flex", background: "#2A4F6D", p: "20px" }}>
                                 <Box>
                                     <img src={profile2} alt="" style={makeStyle.profile} />
                                 </Box>
-                                <Box sx={{marginLeft:"20px"}}>
+                                <Box sx={{ marginLeft: "20px" }}>
                                     <Typography sx={makeStyle.name}>Vijay Nagar</Typography>
                                     <Typography sx={makeStyle.company}>Fuel Company</Typography>
                                 </Box>

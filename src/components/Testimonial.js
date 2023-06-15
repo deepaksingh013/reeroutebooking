@@ -6,6 +6,8 @@ import profile1 from "../images/photoProfile.png";
 import profile2 from "../images/photoProfile2.png";
 import star from "../images/Star 5.png";
 import icon from "../images/icon.png"
+
+import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
 const makeStyle = {
 
     testimonial: {
@@ -18,7 +20,7 @@ const makeStyle = {
         paddingLeft: "10px",
         backgroundColor: "rgba(232, 232, 232, 0.5)",
         borderLeft: "4px solid #F79633",
-        
+
     },
     title: {
         fontFamily: "'Rubik', sans-serif",
@@ -27,7 +29,7 @@ const makeStyle = {
         fontStyle: "normal",
         color: "#2A4F6D",
         "@media (max-width: 700px)": {
-           
+
             fontSize: "35px"
         },
         "@media (max-width: 400px)": {
@@ -132,55 +134,55 @@ const testimonial = [
 export default function Testimonial() {
     return (
         <>
-        <Box sx={makeStyle.mainBox}>
+            <Box sx={makeStyle.mainBox}>
 
-      
-            <Container sx={{ mt: "8rem" }}>
-                <Typography sx={makeStyle.testimonial}>Testimonial</Typography>
-                <Box sx={{ display: "flex", justifyContent: "space-between", mb: "30px" }}>
-                    <Typography sx={makeStyle.title}> {window.location.pathname === "/" ? "What Our Shipper Say" : "What Our Truckers Say"}  </Typography>
-                    <Box sx={makeStyle.toogle}>
-                        <ArrowCircleLeftIcon sx={makeStyle.leftIcon} />
-                        <ArrowCircleRightIcon sx={makeStyle.rightIcon} />
+
+                <Container sx={{ mt: "8rem" }}>
+                    <Typography sx={makeStyle.testimonial}>Testimonial</Typography>
+                    <Box sx={{ display: "flex", justifyContent: "space-between", mb: "30px" }}>
+                        <Typography sx={makeStyle.title}> {window.location.pathname === "/" ? "What Our Shipper Say" : "What Our Truckers Say"}  </Typography>
+                        <Box sx={makeStyle.toogle}>
+                            <ArrowCircleLeftIcon sx={makeStyle.leftIcon} />
+                            <ArrowCircleRightIcon sx={makeStyle.rightIcon} />
+                        </Box>
                     </Box>
-                </Box>
 
-                {/* testimonials */}
-                <Box sx={makeStyle.webView}>
+                    {/* testimonials */}
+                    <Box sx={makeStyle.webView}>
 
 
-                    <Box sx={{ mb: "2rem" }}>
-                        <Grid container spacing={0} >
-                            {testimonial.map((item, index) => (
-                                <Grid item key={index} lg={6} sm={6}>
-                                    <Box sx={{ display: 'flex', position: "relative", padding: "2rem", backgroundColor: index % 2 === 0 ? makeStyle.bg1 : makeStyle.bg2 }}>
-                                        <img src={item.profileImg} alt="" style={makeStyle.profileImg} />
-                                        <Box sx={{ display: "flex", flexDirection: "column", ml: "10px", mt: "10px" }}>
-                                            <Typography sx={{ color: index % 2 === 0 ? makeStyle.name : makeStyle.name2 }}>{item.name}</Typography>
-                                            <Typography sx={makeStyle.companyName}>{item.companyName}</Typography>
-                                        </Box>
-                                        <Box sx={{ height: "45px", width: "45px", backgroundColor: "#FFB629", borderRadius: "50%", display: "flex", justifyContent: "center", alignItems: "center", p: "8px",position:"absolute",right:"40px" }}>
-                                            <Box>
-                                                <img src={item.iconImg} alt="" />
+                        <Box sx={{ mb: "2rem" }}>
+                            <Grid container spacing={0} >
+                                {testimonial.map((item, index) => (
+                                    <Grid item key={index} lg={6} sm={6}>
+                                        <Box sx={{ display: 'flex', position: "relative", padding: "2rem", backgroundColor: index % 2 === 0 ? makeStyle.bg1 : makeStyle.bg2 }}>
+                                            <img src={item.profileImg} alt="" style={makeStyle.profileImg} />
+                                            <Box sx={{ display: "flex", flexDirection: "column", ml: "10px", mt: "10px" }}>
+                                                <Typography sx={{ color: index % 2 === 0 ? makeStyle.name : makeStyle.name2 }}>{item.name}</Typography>
+                                                <Typography sx={makeStyle.companyName}>{item.companyName}</Typography>
+                                            </Box>
+                                            <Box sx={{ height: "45px", width: "45px", backgroundColor: "#FFB629", borderRadius: "50%", display: "flex", justifyContent: "center", alignItems: "center", p: "8px", position: "absolute", right: "40px" }}>
+                                                <Box>
+                                                    <img src={item.iconImg} alt="" />
+                                                </Box>
+
                                             </Box>
 
                                         </Box>
-
-                                    </Box>
-                                    <Box sx={{ padding: "0 2rem 2rem 2rem", backgroundColor: index % 2 === 0 ? makeStyle.bg1 : makeStyle.bg2 }}>
-                                        <Typography sx={makeStyle.review}>{item.review}</Typography>
-                                        {Array.from({ length: 5 }).map((_, starIndex) => (
-                                            <img key={starIndex} src={item.starIcon} alt="" style={{ marginTop: "40px" }} />
-                                        ))}
-                                    </Box>
-                                </Grid>
-                            ))}
-                        </Grid>
+                                        <Box sx={{ padding: "0 2rem 2rem 2rem", backgroundColor: index % 2 === 0 ? makeStyle.bg1 : makeStyle.bg2 }}>
+                                            <Typography sx={makeStyle.review}>{item.review}</Typography>
+                                            {Array.from({ length: 5 }).map((_, starIndex) => (
+                                                <img key={starIndex} src={item.starIcon} alt="" style={{ marginTop: "40px" }} />
+                                            ))}
+                                        </Box>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </Box>
                     </Box>
-                </Box>
 
 
-            </Container>
+                </Container>
             </Box>
         </>
     )

@@ -35,21 +35,21 @@ const ExpertsSlider = () => {
 
     const makeStyle = {
         title: {
-            backgroundColor: "#E8E8E81A 80%",
+            backgroundColor: "rgba(232, 232, 232, 0.8)",
             borderLeft: "4px solid #F79633",
-            width: "200px",
+            width: "130px",
             color: "#000",
             fontWeight: "400",
             fontFamily: "'Rubik', sans-serif",
             fontSize: "14px",
+            // paddingRight:"5px",
             padding: "2px 0px 2px 10px",
         },
         expert: {
-            marginTop: "10px",
             marginBottom: "30px",
             fontWeight: "600",
             fontFamily: "'Rubik', sans-serif",
-            fontSize: "35px",
+            fontSize: "24px",
             color: "#000000"
         },
         socialMedia: {
@@ -103,7 +103,7 @@ const ExpertsSlider = () => {
 
     return (
         <>
-            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: "2rem" }}>
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: "2rem",mr:"24%" }}>
                 <Box>
                     <Typography sx={makeStyle.title}>The Transporters</Typography>
                     <Typography sx={makeStyle.expert}>Meet Expert Team</Typography>

@@ -3,8 +3,6 @@ import { Box, Container, Grid, Paper, Typography, InputLabel, TextField, Button 
 import { List, ListItem, ListItemText, useEf } from '@mui/material';
 import bgImg from "../images/Photo-bg.png";
 import success from "../images/messages.png"
-// import { Carousel } from 'react-responsive-carousel';
-// import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -15,6 +13,9 @@ import truckImg1 from "../images/Photo-bg.png";
 import truckImg2 from "../images/truck.png";
 import truckImg3 from "../images/indian.png";
 import CircleIcon from '@mui/icons-material/Circle';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
 
 const makeStyle = {
     mainBox: {
@@ -156,7 +157,7 @@ const makeStyle = {
         // padding: "25px 20px 20px 22px",
         borderRadius: "12px",
         "@media (max-width: 768px)": {
-            height: "490px"
+            height: "530px"
         },
     },
     title: {
@@ -196,11 +197,20 @@ const makeStyle = {
         color: "#000000"
 
     },
+    destination2: {
+        fontSize: "14px",
+        fontWeight: "400",
+        fontFamily: "'Rubik', sans-serif",
+        color: "#000000",
+        marginTop: "3rem"
+
+    },
     textField: {
         marginTop: "5px",
-        marginBottom: "40px",
+        marginBottom: "10px",
         width: "100%"
     },
+
     city: {
         fontSize: "14px",
         fontWeight: "400",
@@ -281,30 +291,30 @@ const makeStyle = {
         color: "#fff",
         marginRight: "10px"
     }
-
-
-
-
 };
-
 
 const initialStyle = {
     height: "20px",
     width: "20px",
     backgroundColor: "#fff",
     marginBottom: "10px",
-    borderRadius:"50%"
+    borderRadius: "50%"
 };
-
 const updateStyle = {
     height: "20px",
     width: "20px",
     backgroundColor: "#E57E38",
     marginBottom: "10px",
-    borderRadius:"50%"
+    borderRadius: "50%"
 };
 
+
+
+
 export default function Banner() {
+
+
+
 
 
     const [formData, setFormData] = useState({});
@@ -351,11 +361,6 @@ export default function Banner() {
         setCircleStyles(updatedStyles);
     }, [currentBackground]);
 
-
-
-
-
-
     // const [formData, setFormData] = useState({});
     const [showSecondForm, setShowSecondForm] = useState(false);
     const [showThirdForm, setShowThirdForm] = useState(false);
@@ -377,15 +382,25 @@ export default function Banner() {
         console.log('All forms submitted!');
     };
 
-    const handleChange = (event) => {
-        setDepartment(event.target.value);
+    const handleVehicleType = (event) => {
+        setVehicleType(event.target.value);
+        if (errors.department) {
+            setErrors((prevErrors) => ({ ...prevErrors, to: '' }));
+        }
     };
+    console.log(department)
 
     const handleLength = (event) => {
         setLength(event.target.value);
+        if (errors.length) {
+            setErrors((prevErrors) => ({ ...prevErrors, to: '' }));
+        }
     };
     const handleHeight = (event) => {
         setHeight(event.target.value);
+        if (errors.Height) {
+            setErrors((prevErrors) => ({ ...prevErrors, to: '' }));
+        }
     };
 
     const backClick = () => {
@@ -395,54 +410,150 @@ export default function Banner() {
     const [backgroundImage, setBackgroundImage] = useState("");
     const [circle, setCircle] = useState(false)
 
-
-
-    // useEffect(() => {
-    //     setBackgroundImage('url(bgImg)');
-    // }, []);
-
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        if (currentForm < 3) {
-            setCurrentForm(currentForm + 1);
-            // updateBackgroundImage(currentForm + 1);
-        }
-
-
-
-    };
-
-    // const updateBackgroundImage = (formNumber) => {
-    //     let newBackgroundImage = '';
-
-    //     if (formNumber === 2) {
-    //         newBackgroundImage = bgImg2;
-    //     } else if (formNumber === 3) {
-    //         newBackgroundImage = bgImg3;
+    // const handleFormSubmit = (e) => {
+    //     e.preventDefault();
+    //     if (currentForm < 3) {
+    //         setCurrentForm(currentForm + 1);
     //     }
-    //     setBackgroundImage(` linear-gradient(90.13deg,
-    //         rgba(0, 0, 0, 0.9) 1.07%,
-    //         rgba(0, 0, 0, 0.6) 99.9%),url(${newBackgroundImage})`);
-    // };
 
-    // useEffect(() => {
-    //     setBackgroundImage(`linear-gradient(90.13deg,
-    //         rgba(0, 0, 0, 0.9) 1.07%,
-    //         rgba(0, 0, 0, 0.6) 99.9%),url(${bgImg})`);
-    // }, []);
+    // };
 
     const closeHandler = () => {
         if (currentForm > 2) {
             setCurrentForm(currentForm - 2);
         }
     }
+
+
+    // validation firstform
+
+    const validationSchema = Yup.object({
+        from: Yup.string().required('Required.'),
+        to: Yup.string().required('Required.'),
+        // weight:Yup.string().required('Required.'),
+
+    });
+    const validationSchema2 = Yup.object({
+        weight: Yup.string().required('Required.'),
+        vehicleType: Yup.string().required('Required.'),
+        length: Yup.string().required('Required.'),
+        Height: Yup.string().required('Required.'),
+    });
+    const [from, setFrom] = useState('');
+    const [to, setTo] = useState('');
+    const [errors, setErrors] = useState({});
+
+    const [weight, setWeight] = useState("");
+    const [vehicleType, setVehicleType] = useState("")
+    const [truckLength, setTruckLength] = useState("")
+    const [truckHeight, setTruckHeight] = useState("")
+
+
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const formData = { from, to };
+        validationSchema
+            .validate(formData, { abortEarly: false })
+            .then(() => {
+                // Form data is valid, do something with it
+                axios.post('http://localhost:8002/api/bookTruck', { from, to })
+                    .then(response => {
+                        console.log('saved');
+                        console.log(response.data); // Handle the login response data
+                    })
+                    .catch(error => {
+                        console.error('error');
+                        console.error(error); // Handle the error
+
+                    });
+                if (currentForm < 2) {
+                    setCurrentForm(currentForm + 1);
+                }
+                console.log(formData);
+            })
+            .catch((error) => {
+                const validationErrors = {};
+                error.inner.forEach((err) => {
+                    validationErrors[err.path] = err.message;
+                });
+                setErrors(validationErrors);
+            });
+
+    };
+
+    const handleFormSubmit2 = (e) => {
+        e.preventDefault();
+
+        const formData = { weight, vehicleType, length, Height };
+
+        validationSchema2
+            .validate(formData, { abortEarly: false })
+            .then(() => {
+                axios.post('http://localhost:8002/api/bookingDetail', { weight, vehicleType, length, Height })
+                    .then(response => {
+                        console.log('saved');
+                        console.log(response.data); // Handle the login response data
+                    })
+                    .catch(error => {
+                        console.error('error');
+                        console.error(error); // Handle the error
+
+                    });
+                // Form data is valid, do something with it
+                console.log(formData);
+            })
+            .catch((error) => {
+                const validationErrors = {};
+                error.inner.forEach((err) => {
+                    validationErrors[err.path] = err.message;
+                });
+                setErrors(validationErrors);
+            });
+    };
+
+    const handleFromChange = (e) => {
+        setFrom(e.target.value);
+        if (errors.from) {
+            setErrors((prevErrors) => ({ ...prevErrors, from: '' }));
+        }
+    };
+
+    const handleToChange = (e) => {
+        setTo(e.target.value);
+        if (errors.to) {
+            setErrors((prevErrors) => ({ ...prevErrors, to: '' }));
+        }
+    };
+    const handleWeightChange = (e) => {
+        setWeight(e.target.value);
+        if (errors.weight) {
+            setErrors((prevErrors) => ({ ...prevErrors, weight: '' }));
+        }
+    };
+    const handleVehicleChange = (e) => {
+        setVehicleType(e.target.value);
+        if (errors.weight) {
+            setErrors((prevErrors) => ({ ...prevErrors, to: '' }));
+        }
+    };
+
+
+    // api integration
+
+
+
+
+
     return (
+
+
         <>
             <Box sx={makeStyle.mainBox}>
                 <Box sx={{
                     backgroundImage: `linear-gradient(90.13deg,
           rgba(0, 0, 0, 0.9) 1.07%,
-          rgba(0, 0, 0, 0.6) 99.9%),url(${backgrounds[currentBackground]})`, backgroundSize: "cover", backgroundPosition: "center", width: "100%", pt: "8rem",pb:"1rem"
+          rgba(0, 0, 0, 0.6) 99.9%),url(${backgrounds[currentBackground]})`, backgroundSize: "cover", backgroundPosition: "center", width: "100%", pt: "8rem", pb: "1rem"
                 }}>
 
                     <Container >
@@ -475,9 +586,11 @@ export default function Banner() {
                                         <form onSubmit={handleFormSubmit}>
                                             <Typography sx={makeStyle.title}>Book Your Truck</Typography>
                                             <InputLabel htmlFor="my-input" sx={makeStyle.destination}>From</InputLabel>
-                                            <TextField placeholder="Enter origin city" sx={makeStyle.textField}></TextField>
-                                            <InputLabel htmlFor="my-input" sx={makeStyle.destination}>To</InputLabel>
-                                            <TextField placeholder='Enter destination city' sx={makeStyle.textField}></TextField>
+                                            <TextField placeholder="Enter origin city" onChange={handleFromChange} sx={makeStyle.textField}></TextField>
+                                            {errors.from && <div style={{ color: "red", marginBottom: "2rem" }}>{errors.from}</div>}
+                                            <InputLabel htmlFor="my-input" sx={makeStyle.destination2}>To</InputLabel>
+                                            <TextField placeholder='Enter destination city' onChange={handleToChange} sx={makeStyle.textField}></TextField>
+                                            {errors.to && <div style={{ color: "red" }}>{errors.to}</div>}
                                             <Box type="submit">
                                                 <Button sx={makeStyle.formBtn} type="submit">Next</Button>
                                             </Box>
@@ -485,8 +598,7 @@ export default function Banner() {
                                         </form>
                                     )}
                                     {currentForm === 2 && (
-                                        <form onSubmit={handleFormSubmit}>
-
+                                        <form onSubmit={handleFormSubmit2}>
                                             <Box sx={{ position: "relative" }}>
                                                 <ArrowBackIcon sx={makeStyle.arrowBack} onClick={handleReset}
                                                 />
@@ -495,10 +607,11 @@ export default function Banner() {
 
                                             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                                                 <Typography sx={makeStyle.city}>
-                                                    From:  <Typography variant='span' sx={makeStyle.cityDes}>Mumbai</Typography>
+                                                    From:  <Typography variant='span' sx={makeStyle.cityDes}>{from}</Typography>
                                                 </Typography>
+
                                                 <Typography sx={makeStyle.city}>
-                                                    To: <Typography variant='span' sx={makeStyle.cityDes}>Delhi</Typography>
+                                                    To: <Typography variant='span' sx={makeStyle.cityDes}>{to}</Typography>
                                                 </Typography>
                                             </Box>
                                             <Typography sx={makeStyle.label}>Material Weight</Typography>
@@ -520,22 +633,26 @@ export default function Banner() {
                                                         </div>
                                                     ),
                                                 }}
+                                                onChange={handleWeightChange}
                                             />
-                                            <Typography sx={makeStyle.label}>vehicle type</Typography>
+                                            {errors.weight && <div style={{ color: "red" }}>{errors.weight}</div>}
+                                            <Typography sx={makeStyle.label}>Vehicle type</Typography>
                                             <Box sx={{ minWidth: 120 }}>
                                                 <FormControl fullWidth>
                                                     <InputLabel id="demo-simple-select-label">Vehicle Type</InputLabel>
                                                     <Select
                                                         // labelId="demo-simple-select-label"
                                                         id="demo-simple-select"
-                                                        value={department}
-                                                        label="Department"
-                                                        onChange={handleChange}
+                                                        value={vehicleType}
+                                                        label="vehicleType"
+                                                        onChange={handleVehicleType}
                                                     >
-                                                        <MenuItem value={10}>Truck</MenuItem>
-                                                        <MenuItem value={20}>Bus</MenuItem>
+                                                        <MenuItem value="truck">Truck</MenuItem>
+                                                        <MenuItem value="bus">Bus</MenuItem>
                                                     </Select>
                                                 </FormControl>
+                                                {errors.vehicleType && <div style={{ color: "red" }}>{errors.vehicleType}</div>}
+
                                             </Box>
                                             {/*  */}
                                             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -559,11 +676,13 @@ export default function Banner() {
                                                                     label="Department"
                                                                     onChange={handleLength}
                                                                 >
-                                                                    <MenuItem value={10}>14ft</MenuItem>
-                                                                    <MenuItem value={20}>16ft</MenuItem>
+                                                                    <MenuItem value="14ft">14ft</MenuItem>
+                                                                    <MenuItem value="16ft">16ft</MenuItem>
                                                                 </Select>
                                                             </FormControl>
+
                                                         </Box>
+                                                        {errors.length && <div style={{ color: "red" }}>{errors.length}</div>}
                                                     </Box>
                                                 </Box>
                                                 <Box sx={{ display: "flex", flexDirection: "column", width: "50%" }}>
@@ -584,10 +703,11 @@ export default function Banner() {
                                                                     label="Department"
                                                                     onChange={handleHeight}
                                                                 >
-                                                                    <MenuItem value={10}>8ft</MenuItem>
-                                                                    <MenuItem value={20}>10ft</MenuItem>
+                                                                    <MenuItem value="8ft">8ft</MenuItem>
+                                                                    <MenuItem value="10ft">10ft</MenuItem>
                                                                 </Select>
                                                             </FormControl>
+                                                            {errors.Height && <div style={{ color: "red" }}>{errors.Height}</div>}
                                                         </Box>
                                                     </Box>
                                                 </Box>
@@ -606,7 +726,7 @@ export default function Banner() {
                                                 <img src={success} alt="" style={makeStyle.successImg} />
                                                 <Typography sx={makeStyle.txt1}>Submitted Successfully</Typography>
                                                 <Typography sx={makeStyle.txt2}>Our executive will get in touch with you at the earliest.</Typography>
-                                                <Button type="submit" variant="contained" color="primary" sx={makeStyle.formBtn} onClick={closeHandler}>
+                                                <Button type="submit" variant="contained" color="primary" onClick={closeHandler} sx={makeStyle.formBtn} >
                                                     Close
                                                 </Button>
                                             </Box>
@@ -617,16 +737,10 @@ export default function Banner() {
 
                         </Grid>
                     </Container>
-                    {/* circular icons */}
-                    {/* <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", pb: "2rem", mt: "2rem" }}>
-                        <CircleIcon sx={currentForm === 1 ? makeStyle.initialCircle : makeStyle.updateCircle} />
-                        <CircleIcon sx={currentForm === 2 ? makeStyle.initialCircle : makeStyle.updateCircle} />
-                        <CircleIcon sx={currentForm === 3 ? makeStyle.initialCircle : makeStyle.updateCircle} />
-                    </Box> */}
-                    <Box sx={{display:"flex", justifyContent: "center", alignItems: "center",mt:"4rem",mb:"2rem"}}>
-                        <Box style={circleStyles[0]} marginRight={2}/>
-                        <Box style={circleStyles[1]} marginRight={2}/>
-                        <Box style={circleStyles[2]} marginRight={2}/>
+                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: "4rem", mb: "2rem" }}>
+                        <Box style={circleStyles[0]} marginRight={2} />
+                        <Box style={circleStyles[1]} marginRight={2} />
+                        <Box style={circleStyles[2]} marginRight={2} />
                     </Box>
                 </Box>
 
