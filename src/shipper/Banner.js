@@ -157,7 +157,7 @@ const makeStyle = {
         // padding: "25px 20px 20px 22px",
         borderRadius: "12px",
         "@media (max-width: 768px)": {
-            height: "490px"
+            height: "530px"
         },
     },
     title: {
@@ -382,22 +382,23 @@ export default function Banner() {
         console.log('All forms submitted!');
     };
 
-    const handleChange = (event) => {
-        setDepartment(event.target.value);
-        if (errors.weight) {
+    const handleVehicleType = (event) => {
+        setVehicleType(event.target.value);
+        if (errors.department) {
             setErrors((prevErrors) => ({ ...prevErrors, to: '' }));
         }
     };
+    console.log(department)
 
     const handleLength = (event) => {
         setLength(event.target.value);
-        if (errors.truckLength) {
+        if (errors.length) {
             setErrors((prevErrors) => ({ ...prevErrors, to: '' }));
         }
     };
     const handleHeight = (event) => {
         setHeight(event.target.value);
-        if (errors.truckHeight) {
+        if (errors.Height) {
             setErrors((prevErrors) => ({ ...prevErrors, to: '' }));
         }
     };
@@ -434,10 +435,9 @@ export default function Banner() {
     });
     const validationSchema2 = Yup.object({
         weight: Yup.string().required('Required.'),
-        vehicleType:Yup.string().required('Required.'),
-        truckLength:Yup.string().required('Required.'),
-        truckHeight:Yup.string().required('Required.'),
-
+        vehicleType: Yup.string().required('Required.'),
+        length: Yup.string().required('Required.'),
+        Height: Yup.string().required('Required.'),
     });
     const [from, setFrom] = useState('');
     const [to, setTo] = useState('');
@@ -445,8 +445,8 @@ export default function Banner() {
 
     const [weight, setWeight] = useState("");
     const [vehicleType, setVehicleType] = useState("")
-    const [truckLength,setTruckLength] = useState("")
-    const [truckHeight,setTruckHeight] = useState("")
+    const [truckLength, setTruckLength] = useState("")
+    const [truckHeight, setTruckHeight] = useState("")
 
 
 
@@ -485,11 +485,21 @@ export default function Banner() {
     const handleFormSubmit2 = (e) => {
         e.preventDefault();
 
-        const formData = {weight, vehicleType};
+        const formData = { weight, vehicleType, length, Height };
 
         validationSchema2
             .validate(formData, { abortEarly: false })
             .then(() => {
+                axios.post('http://localhost:8002/api/bookingDetail', { weight, vehicleType, length, Height })
+                    .then(response => {
+                        console.log('saved');
+                        console.log(response.data); // Handle the login response data
+                    })
+                    .catch(error => {
+                        console.error('error');
+                        console.error(error); // Handle the error
+
+                    });
                 // Form data is valid, do something with it
                 console.log(formData);
             })
@@ -518,7 +528,7 @@ export default function Banner() {
     const handleWeightChange = (e) => {
         setWeight(e.target.value);
         if (errors.weight) {
-            setErrors((prevErrors) => ({ ...prevErrors, to: '' }));
+            setErrors((prevErrors) => ({ ...prevErrors, weight: '' }));
         }
     };
     const handleVehicleChange = (e) => {
@@ -589,7 +599,6 @@ export default function Banner() {
                                     )}
                                     {currentForm === 2 && (
                                         <form onSubmit={handleFormSubmit2}>
-
                                             <Box sx={{ position: "relative" }}>
                                                 <ArrowBackIcon sx={makeStyle.arrowBack} onClick={handleReset}
                                                 />
@@ -600,14 +609,14 @@ export default function Banner() {
                                                 <Typography sx={makeStyle.city}>
                                                     From:  <Typography variant='span' sx={makeStyle.cityDes}>{from}</Typography>
                                                 </Typography>
-                                              
+
                                                 <Typography sx={makeStyle.city}>
                                                     To: <Typography variant='span' sx={makeStyle.cityDes}>{to}</Typography>
                                                 </Typography>
                                             </Box>
                                             <Typography sx={makeStyle.label}>Material Weight</Typography>
                                             <TextField
-                                                onChange={handleWeightChange}
+
                                                 fullWidth
                                                 InputProps={{
                                                     endAdornment: (
@@ -624,24 +633,26 @@ export default function Banner() {
                                                         </div>
                                                     ),
                                                 }}
+                                                onChange={handleWeightChange}
                                             />
-                                              {errors.weight && <div style={{ color: "red"}}>{errors.weight}</div>}
-                                            <Typography sx={makeStyle.label}>vehicle type</Typography>
+                                            {errors.weight && <div style={{ color: "red" }}>{errors.weight}</div>}
+                                            <Typography sx={makeStyle.label}>Vehicle type</Typography>
                                             <Box sx={{ minWidth: 120 }}>
                                                 <FormControl fullWidth>
                                                     <InputLabel id="demo-simple-select-label">Vehicle Type</InputLabel>
                                                     <Select
                                                         // labelId="demo-simple-select-label"
                                                         id="demo-simple-select"
-                                                        value={department}
-                                                        label="Department"
-                                                        onChange={handleChange}
+                                                        value={vehicleType}
+                                                        label="vehicleType"
+                                                        onChange={handleVehicleType}
                                                     >
-                                                        <MenuItem value={10}>Truck</MenuItem>
-                                                        <MenuItem value={20}>Bus</MenuItem>
+                                                        <MenuItem value="truck">Truck</MenuItem>
+                                                        <MenuItem value="bus">Bus</MenuItem>
                                                     </Select>
                                                 </FormControl>
-                                                {errors.weight && <div style={{color: "red" }}>{errors.weight}</div>}
+                                                {errors.vehicleType && <div style={{ color: "red" }}>{errors.vehicleType}</div>}
+
                                             </Box>
                                             {/*  */}
                                             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -665,13 +676,13 @@ export default function Banner() {
                                                                     label="Department"
                                                                     onChange={handleLength}
                                                                 >
-                                                                    <MenuItem value={10}>14ft</MenuItem>
-                                                                    <MenuItem value={20}>16ft</MenuItem>
+                                                                    <MenuItem value="14ft">14ft</MenuItem>
+                                                                    <MenuItem value="16ft">16ft</MenuItem>
                                                                 </Select>
                                                             </FormControl>
-                                                           
+
                                                         </Box>
-                                                        {errors.truckLength && <div style={{color: "red" }}>{errors.truckLength}</div>}
+                                                        {errors.length && <div style={{ color: "red" }}>{errors.length}</div>}
                                                     </Box>
                                                 </Box>
                                                 <Box sx={{ display: "flex", flexDirection: "column", width: "50%" }}>
@@ -692,11 +703,11 @@ export default function Banner() {
                                                                     label="Department"
                                                                     onChange={handleHeight}
                                                                 >
-                                                                    <MenuItem value={10}>8ft</MenuItem>
-                                                                    <MenuItem value={20}>10ft</MenuItem>
+                                                                    <MenuItem value="8ft">8ft</MenuItem>
+                                                                    <MenuItem value="10ft">10ft</MenuItem>
                                                                 </Select>
                                                             </FormControl>
-                                                            {errors.truckHeight && <div style={{color: "red" }}>{errors.truckHeight}</div>}
+                                                            {errors.Height && <div style={{ color: "red" }}>{errors.Height}</div>}
                                                         </Box>
                                                     </Box>
                                                 </Box>
