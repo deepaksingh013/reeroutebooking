@@ -414,7 +414,7 @@ export default function TruckerBanner() {
             .validate(formData, { abortEarly: false })
             .then(() => {
                 console.log("something?")
-                axios.post('http://localhost:8002/api/trucker/createrequest', 
+                axios.post('http://18.143.242.23:8002/api/trucker/createrequest', 
                 {   
                     "mobile" : mobile,
                     "noOfTrucks" : noOfTrucks,

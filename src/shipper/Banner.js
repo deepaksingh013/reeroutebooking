@@ -491,7 +491,7 @@ export default function Banner() {
         validationSchema2
             .validate(formData, { abortEarly: false })
             .then(() => {
-                axios.post('http://localhost:8002/api/shipper/createrequest', 
+                axios.post('http://18.143.242.23:8002/api/shipper/createrequest', 
                 {   
                     "from" : from,
                     "to" : to,
