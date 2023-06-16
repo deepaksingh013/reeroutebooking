@@ -15,6 +15,8 @@ import truckImg1 from "../images/Photo-bg.png";
 import truckImg2 from "../images/truck.png";
 import truckImg3 from "../images/indian.png";
 import CircleIcon from '@mui/icons-material/Circle';
+import * as Yup from 'yup';
+import axios from 'axios';
 
 const makeStyle = {
     mainBox: {
@@ -326,20 +328,8 @@ const updateStyle = {
 export default function TruckerBanner() {
 
 
-    const [formData, setFormData] = useState({});
     const [currentForm, setCurrentForm] = useState(1);
-
-
-    const handleGoBack = () => {
-        if (currentForm > 1) {
-            setCurrentForm(currentForm - 1);
-        }
-    };
-
-    const handleReset = () => {
-        setFormData({});
-        setCurrentForm(1);
-    };
+    const [errors, setErrors] = useState({});
 
     // banner carosal state
     const [currentBackground, setCurrentBackground] = useState(0);
@@ -371,82 +361,91 @@ export default function TruckerBanner() {
     }, [currentBackground]);
 
 
-
-    // const [formData, setFormData] = useState({});
-    const [showSecondForm, setShowSecondForm] = useState(false);
-    const [showThirdForm, setShowThirdForm] = useState(false);
-    const [showFirstForm, setShowFirstForm] = useState(false);
-
     // DROPDOWN MENU STATE
     const [department, setDepartment] = React.useState('');
-    const [length, setLength] = React.useState('');
-    const [Height, setHeight] = React.useState('');
+    const [mobile, setmobile] = React.useState('');
+    const [noOfTrucks, setnoOfTrucks] = React.useState('');
 
 
-    const handleSecondFormSubmit = (e) => {
-        e.preventDefault();
-        setShowThirdForm(true);
-    };
-
-    const handleThirdFormSubmit = (e) => {
-        e.preventDefault();
-        console.log('All forms submitted!');
-    };
-
-    const handleChange = (event) => {
-        setDepartment(event.target.value);
-    };
-
-    const handleLength = (event) => {
-        setLength(event.target.value);
-    };
-    const handleHeight = (event) => {
-        setHeight(event.target.value);
-    };
-
-    const backClick = () => {
-        setShowThirdForm(true)
-    }
-
-    // const [backgroundImage, setBackgroundImage] = useState("");
-    const [circle, setCircle] = useState(false)
-
-
-
-    // useEffect(() => {
-    //     setBackgroundImage('url(bgImg)');
-    // }, []);
-
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        if (currentForm < 3) {
-            setCurrentForm(currentForm + 1);
-            // updateBackgroundImage(currentForm + 1);
-        }
-
-
-
-    };
-
-    // const updateBackgroundImage = (formNumber) => {
-    //     let newBackgroundImage = '';
-
-    //     if (formNumber === 2) {
-    //         newBackgroundImage = bgImg2;
-    //     } else if (formNumber === 3) {
-    //         newBackgroundImage = bgImg3;
-    //     }
-    //     setBackgroundImage(` linear-gradient(90.13deg,
-    //         rgba(0, 0, 0, 0.9) 1.07%,
-    //         rgba(0, 0, 0, 0.6) 99.9%),url(${newBackgroundImage})`);
+    // const handleSecondFormSubmit = (e) => {
+    //     e.preventDefault();
+    //     setShowThirdForm(true);
     // };
 
-    // useEffect(() => {
+    // const handleThirdFormSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log('All forms submitted!');
+    // };
 
-    //     setBackgroundImage(`linear-gradient(90.13deg,
-    //         rgba(0, 0, 0, 0.9) 1.07%,
-    //         rgba(0, 0, 0, 0.6) 99.9%),url(${bgImg})`);
-    // }, []);
+    const handleDepartChange = (event) => {
+        setDepartment(event.target.value);
+        if (errors.department) {
+            setErrors((prevErrors) => ({ ...prevErrors, department: '' }));
+        }
+    };
+
+    const handleMobileChange = (event) => {
+        setmobile(event.target.value);
+        if (errors.mobile) {
+            setErrors((prevErrors) => ({ ...prevErrors, mobile: '' }));
+        }
+    };
+    const handleTrucksChange = (event) => {
+        setnoOfTrucks(event.target.value);
+        if (errors.noOfTrucks) {
+            setErrors((prevErrors) => ({ ...prevErrors, noOfTrucks: '' }));
+        }
+    };
+
+    const validationSchema = Yup.object({
+        mobile: Yup.number().required('Required.'),
+        noOfTrucks: Yup.number().required('Required.'),
+        department: Yup.string().required('Required.')
+    });
+
+   const handleTruckerSubmit = (e) => {
+    console.log("yooooo");
+        e.preventDefault();
+
+        const formData = { mobile, noOfTrucks, department };
+        console.log(formData);
+    
+        validationSchema
+            .validate(formData, { abortEarly: false })
+            .then(() => {
+                console.log("something?")
+                axios.post('http://localhost:8002/api/trucker/createrequest', 
+                {   
+                    "mobile" : mobile,
+                    "noOfTrucks" : noOfTrucks,
+                    "city" : department
+                })
+                .then(response => {
+                    console.log('saved');
+                    console.log(response.data); // Handle the login response data
+                    // if (currentForm < 2) {
+                        setCurrentForm(2);
+                    // }
+                })
+                .catch(error => {
+                    console.error('error');
+                    console.error(error); // Handle the error
+
+                });
+                // Form data is valid, do something with it
+                console.log(formData);
+            })
+            .catch((error) => {
+                console.log(error);
+
+                const validationErrors = {};
+                error.inner.forEach((err) => {
+                    validationErrors[err.path] = err.message;
+                });
+                setErrors(validationErrors);
+            });
+    };
+
 
     return (
         <>
@@ -483,12 +482,15 @@ export default function TruckerBanner() {
                             <Grid item lg={6} xs={12} sx={{ position: "relative" }}>
                                 <Paper sx={makeStyle.form}>
                                     {currentForm === 1 && (
-                                        <form onSubmit={handleFormSubmit}>
+                                        <form onSubmit={handleTruckerSubmit}>
                                             <Typography sx={makeStyle.title}>Onboard Yourself!</Typography>
                                             <InputLabel htmlFor="my-input" sx={makeStyle.destination}>Enter Mobile No.</InputLabel>
-                                            <TextField placeholder="Enter Mobile No." sx={makeStyle.textField}></TextField>
+                                            <TextField placeholder="Enter Mobile No." onChange={handleMobileChange} sx={makeStyle.textField}></TextField>
+
+                                            {errors.mobile && <div style={{ color: "red", marginBottom: "2rem" }}>{errors.mobile}</div>}
                                             <InputLabel htmlFor="my-input" sx={makeStyle.destination}>No. Of Trucks</InputLabel>
-                                            <TextField placeholder='No. Of Trucks' sx={makeStyle.textField}></TextField>
+                                            <TextField placeholder='No. Of Trucks' onChange={handleTrucksChange} sx={makeStyle.textField}></TextField>
+                                            {errors.noOfTrucks && <div style={{ color: "red", marginBottom: "2rem" }}>{errors.noOfTrucks}</div>}
                                             <Typography sx={makeStyle.label}>City</Typography>
                                             <Box sx={{ minWidth: 120, mt: "15px" }}>
                                                 <FormControl fullWidth>
@@ -498,33 +500,21 @@ export default function TruckerBanner() {
                                                         id="demo-simple-select"
                                                         value={department}
                                                         label="Department"
-                                                        onChange={handleChange}
+                                                        onChange={handleDepartChange}
                                                     >
-                                                        <MenuItem value={10}>Mumbai</MenuItem>
-                                                        <MenuItem value={20}>Delhi</MenuItem>
+                                                        <MenuItem value="Mumbai">Mumbai</MenuItem>
+                                                        <MenuItem value="Delhi">Delhi</MenuItem>
                                                     </Select>
                                                 </FormControl>
                                             </Box>
+                                            {errors.department && <div style={{ color: "red", marginBottom: "2rem" }}>{errors.department}</div>}
                                             <Box type="submit">
                                                 <Button sx={makeStyle.formBtn} type="submit">Next</Button>
                                             </Box>
                                         </form>
                                     )}
                                     {currentForm === 2 && (
-                                        <form onSubmit={handleFormSubmit}>
-
-                                            <Box sx={makeStyle.success}>
-                                                <img src={success} alt="" style={makeStyle.successImg} />
-                                                <Typography sx={makeStyle.txt1}>Submitted Successfully</Typography>
-                                                <Typography sx={makeStyle.txt2}>Our executive will get in touch with you at the earliest.</Typography>
-                                                <Button type="submit" variant="contained" color="primary" sx={makeStyle.formBtn}>
-                                                    Close
-                                                </Button>
-                                            </Box>
-                                        </form>
-                                    )}
-                                    {currentForm === 3 && (
-                                        <form onSubmit={handleFormSubmit}>
+                                        <form >
 
                                             <Box sx={makeStyle.success}>
                                                 <img src={success} alt="" style={makeStyle.successImg} />

@@ -457,19 +457,20 @@ export default function Banner() {
             .validate(formData, { abortEarly: false })
             .then(() => {
                 // Form data is valid, do something with it
-                axios.post('http://localhost:8002/api/bookTruck', { from, to })
-                    .then(response => {
-                        console.log('saved');
-                        console.log(response.data); // Handle the login response data
-                    })
-                    .catch(error => {
-                        console.error('error');
-                        console.error(error); // Handle the error
+                // axios.post('http://localhost:8002/shipper/createrequest', 
+                // { "from" : from, "to": to })
+                //     .then(response => {
+                //         console.log('saved');
+                //         console.log(response.data); // Handle the login response data
+                //     })
+                //     .catch(error => {
+                //         console.error('error');
+                //         console.error(error); // Handle the error
 
-                    });
-                if (currentForm < 2) {
-                    setCurrentForm(currentForm + 1);
-                }
+                //     });
+                // if (currentForm < 2) {
+                    setCurrentForm(2);
+                // }
                 console.log(formData);
             })
             .catch((error) => {
@@ -490,16 +491,27 @@ export default function Banner() {
         validationSchema2
             .validate(formData, { abortEarly: false })
             .then(() => {
-                axios.post('http://localhost:8002/api/bookingDetail', { weight, vehicleType, length, Height })
-                    .then(response => {
-                        console.log('saved');
-                        console.log(response.data); // Handle the login response data
-                    })
-                    .catch(error => {
-                        console.error('error');
-                        console.error(error); // Handle the error
+                axios.post('http://localhost:8002/api/shipper/createrequest', 
+                {   
+                    "from" : from,
+                    "to" : to,
+                    "materialWeight" : weight,
+                    "vehicleType" : vehicleType,
+                    "truckLength": length,
+                    "truckHeight": Height
+                })
+                .then(response => {
+                    console.log('saved');
+                    console.log(response.data); // Handle the login response data
+                    // if (currentForm < 2) {
+                        setCurrentForm(3);
+                    // }
+                })
+                .catch(error => {
+                    console.error('error');
+                    console.error(error); // Handle the error
 
-                    });
+                });
                 // Form data is valid, do something with it
                 console.log(formData);
             })
@@ -647,8 +659,8 @@ export default function Banner() {
                                                         label="vehicleType"
                                                         onChange={handleVehicleType}
                                                     >
-                                                        <MenuItem value="truck">Truck</MenuItem>
-                                                        <MenuItem value="bus">Bus</MenuItem>
+                                                        <MenuItem value="Truck">Truck</MenuItem>
+                                                        <MenuItem value="Bus">Bus</MenuItem>
                                                     </Select>
                                                 </FormControl>
                                                 {errors.vehicleType && <div style={{ color: "red" }}>{errors.vehicleType}</div>}
@@ -720,7 +732,7 @@ export default function Banner() {
                                         </form>
                                     )}
                                     {currentForm === 3 && (
-                                        <form onSubmit={handleFormSubmit}>
+                                        <form >
 
                                             <Box sx={makeStyle.success}>
                                                 <img src={success} alt="" style={makeStyle.successImg} />
