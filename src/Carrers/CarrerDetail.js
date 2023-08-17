@@ -30,18 +30,24 @@ const makeStyle = {
         border: "1px solid rgba(0, 0, 0, 0.8)",
         borderRadius: "20px",
         mt: "3rem",
-        mb: "3rem",
+        mb: "6rem",
         pt: "4rem",
         pl: "3rem",
         pr: "3rem",
-        pb: "6rem",
+        pb: "4rem",
         display: "flex",
         flexDirection: "column",
         "@media (max-width: 600px)": {
             width: "80%",
         },
         "@media (max-width: 500px)": {
-            border: "none"
+            mb: "2rem",
+            pb: "5rem",
+            width: "90%",
+            border: "none",
+            mt: "0rem",
+            pl: "0rem",
+            pr: "0rem",
         }
     },
     contact: {
@@ -53,6 +59,7 @@ const makeStyle = {
         fontFamily: "'Rubik', sans-serif",
         fontSize: "14px",
         padding: "2px 0px 2px 10px",
+
     },
     touch: {
         marginTop: "10px",
@@ -100,7 +107,7 @@ const makeStyle = {
         alignItems: "center",
         width: "194px",
         margin: "auto",
-        mt: "10px",
+        mt: "30px",
         height: "60px",
         backgroundColor: "rgba(0, 0, 0, 0.2)",
         '&:hover': {

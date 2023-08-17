@@ -3,17 +3,16 @@ import { Box, Container, Grid, Paper, Typography, InputLabel, TextField, Button 
 import { List, ListItem, ListItemText, useEf } from '@mui/material';
 import bgImg from "../images/Photo-bg.png";
 import success from "../images/messages.png"
-// import { Carousel } from 'react-responsive-carousel';
-// import InputLabel from '@mui/material/InputLabel';
+import Swal from 'sweetalert2'
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 // import Forms from './Forms';
 import bullets from "../images/bullets.png"
-import truckImg1 from "../images/Photo-bg.png";
-import truckImg2 from "../images/truck.png";
-import truckImg3 from "../images/indian.png";
+import truckImg2 from "../images/truck-4276755.jpg";
+import truckImg1 from "../images/volvo-4396552.jpg";
+import truckImg3 from "../images/woman-1845572.jpg";
 import CircleIcon from '@mui/icons-material/Circle';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -377,6 +376,7 @@ export default function TruckerBanner() {
     //     console.log('All forms submitted!');
     // };
 
+  
     const handleDepartChange = (event) => {
         setDepartment(event.target.value);
         if (errors.department) {
@@ -413,6 +413,11 @@ export default function TruckerBanner() {
         validationSchema
             .validate(formData, { abortEarly: false })
             .then(() => {
+                Swal.fire(
+                    'Great!',
+                    'Form Has Been Submitted!',
+                    'success'
+                );
                 console.log("something?")
                 axios.post('http://18.143.242.23:8002/api/trucker/createrequest', 
                 {   
@@ -531,12 +536,7 @@ export default function TruckerBanner() {
 
                         </Grid>
                     </Container>
-                    {/* circular icons */}
-                    {/* <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", pb: "2rem", mt: "2rem" }}>
-                        <CircleIcon sx={currentForm === 1 ? makeStyle.initialCircle : makeStyle.updateCircle} />
-                        <CircleIcon sx={currentForm === 2 ? makeStyle.initialCircle : makeStyle.updateCircle} />
-                        <CircleIcon sx={currentForm === 3 ? makeStyle.initialCircle : makeStyle.updateCircle} />
-                    </Box> */}
+                   
                     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: "4rem", mb: "2rem" }}>
                         <Box style={circleStyles[0]} marginRight={2} />
                         <Box style={circleStyles[1]} marginRight={2} />
@@ -563,10 +563,6 @@ export default function TruckerBanner() {
                     <Typography sx={makeStyle.bulletItems}>Rated 5 ⭐️ by 3,000+ clients</Typography>
                 </Box>
             </Box>
-
-
-
-
         </>
     );
 }

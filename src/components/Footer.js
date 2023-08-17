@@ -77,8 +77,9 @@ export default function Footer() {
                     <Grid item lg={3} sm={6} xs={6}>
                         <Box sx={{ pt: "43px" }}>
                             <Link to="/aboutus" onClick={handleLinkClick} style={{ textDecoration: "none", color: "#fff" }}><Typography sx={makestyle.colText}>About Us</Typography></Link>
-                            <Typography sx={makestyle.colText}> How it Works</Typography>
-                            <Typography sx={makestyle.colText}> Download App</Typography>
+                            <Link to="/t&c" onClick={handleLinkClick} style={{ textDecoration: "none", color: "#fff" }}><Typography sx={makestyle.colText}>      Terms & Conditions </Typography></Link>
+                            
+                            <Link to="/tucker" onClick={handleLinkClick} style={{ textDecoration: "none", color: "#fff" }}><Typography sx={makestyle.colText}>Trucker</Typography></Link>
                             <Link to="/contact" onClick={handleLinkClick} style={{ textDecoration: "none", color: "#fff" }}><Typography sx={makestyle.colText}>Contact</Typography></Link>
                         </Box>
                     </Grid>
@@ -86,7 +87,7 @@ export default function Footer() {
                         <Box sx={{ pt: "43px" }}>
                             {/* link */}
                             <Link to="/carrers" onClick={handleLinkClick} style={{ textDecoration: "none", color: "#fff" }}><Typography sx={makestyle.colText}>Careers</Typography></Link>
-                            <Link to="/t&c" onClick={handleLinkClick} style={{ textDecoration: "none", color: "#fff" }}><Typography sx={makestyle.colText}>      Terms & Conditions </Typography></Link>
+                            <Link to="/" onClick={handleLinkClick} style={{ textDecoration: "none", color: "#fff" }}><Typography sx={makestyle.colText}>Shipper</Typography></Link>
                             <Link to="/privacypolicy" onClick={handleLinkClick} style={{ textDecoration: "none", color: "#fff" }}><Typography sx={makestyle.colText}> Privacy Policy </Typography></Link>
                         </Box>
                     </Grid>

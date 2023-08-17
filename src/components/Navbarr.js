@@ -59,8 +59,8 @@ function Navbarr() {
         <Link to="/aboutus" onClick={hideNavbar}>
           <Typography sx={location.pathname === "/aboutus" ? linkText : linkText2}>About</Typography>
         </Link>
-        <Link onClick={hideNavbar} style={{ whiteSpace: 'nowrap' }}>
-          <Typography sx={linkText2}>How It Works</Typography>
+        <Link to="/carrers" onClick={hideNavbar} style={{ whiteSpace: 'nowrap' }}>
+          <Typography sx={location.pathname === "/carrers" ? linkText : linkText2}>Careers</Typography>
         </Link>
         <Link to="/contact" onClick={hideNavbar}>
           <Typography sx={location.pathname === "/contact" ? linkText : linkText2}>Contact</Typography>

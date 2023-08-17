@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from '@mui/material'
 import React from 'react'
-import bgImg from "../images/aboutImg.png"
+import bgImg from "../images/truck-2920533.jpg"
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
@@ -17,7 +17,10 @@ const makeStyle = {
         paddingTop:"4rem",
         // marginTop: "-115px",
         objectFit: "contain",
-        width: "100%"
+        width: "100%",
+        "@media(max-width:425px)":{
+            minHeight: "330px",
+        }
     },
     contact: {
         position: "absolute",
@@ -39,6 +42,11 @@ const makeStyle = {
         fontWeight: "700",
         fontFamily: "'Rubik', sans-serif",
         fontSize: "60px",
+        "@media(max-width:425px)":{
+            fontSize:"50px",
+            marginTop:"20px",
+            lineHeight:"60px"
+        }
     },
     contactDetail: {
         border: "1px solid #000000CC"

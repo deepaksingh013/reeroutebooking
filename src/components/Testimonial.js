@@ -141,10 +141,10 @@ export default function Testimonial() {
                     <Typography sx={makeStyle.testimonial}>Testimonial</Typography>
                     <Box sx={{ display: "flex", justifyContent: "space-between", mb: "30px" }}>
                         <Typography sx={makeStyle.title}> {window.location.pathname === "/" ? "What Our Shipper Say" : "What Our Truckers Say"}  </Typography>
-                        <Box sx={makeStyle.toogle}>
+                        {/* <Box sx={makeStyle.toogle}>
                             <ArrowCircleLeftIcon sx={makeStyle.leftIcon} />
                             <ArrowCircleRightIcon sx={makeStyle.rightIcon} />
-                        </Box>
+                        </Box> */}
                     </Box>
 
                     {/* testimonials */}

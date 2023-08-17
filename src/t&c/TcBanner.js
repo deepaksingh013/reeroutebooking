@@ -17,7 +17,10 @@ const makeStyle = {
         paddingTop:"4rem",
         // marginTop: "-115px",
         objectFit: "cover",
-        width: "100%"
+        width: "100%",
+        "@media(max-width:425px)": {
+            minHeight: "330px",
+        }
     },
     contact: {
         position: "absolute",
@@ -42,6 +45,11 @@ const makeStyle = {
         "@media (max-width: 600px)": {
             fontSize: "50px"
         },
+        "@media(max-width:425px)": {
+            minHeight: "50px",
+            lineHeight:"60px",
+            marginTop:"20px"
+        }
     },
     contactDetail: {
         border: "1px solid #000000CC"

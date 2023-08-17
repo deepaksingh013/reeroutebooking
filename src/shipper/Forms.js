@@ -6,6 +6,7 @@ import success from "../images/messages.png"
 import MenuItem from '@mui/material/MenuItem';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Swal from 'sweetalert2';
 import FormControl from '@mui/material/FormControl';
 import bullets from "../images/bullets.png";
 import bgImg1 from "../images/Pattern.png";
@@ -101,7 +102,7 @@ const makeStyle = {
         "@media (max-width: 800px)": {
             marginTop: "90px",
         },
-    
+
     },
     destination: {
         fontSize: "14px",
@@ -195,8 +196,15 @@ export default function Forms() {
     const [length, setLength] = React.useState('');
     const [Height, setHeight] = React.useState('');
     const [department, setDepartment] = React.useState('');
-    
 
+
+    const clickHandle = () =>{
+        Swal.fire(
+            'Great!',
+            'Form Has Been Submitted!',
+            'success'
+        )
+    }
 
 
     const handleChange = (event) => {
@@ -223,7 +231,7 @@ export default function Forms() {
     };
 
     const [backgroundImage, setBackgroundImage] = useState("");
-    const [circle,setCircle] = useState(false)
+    const [circle, setCircle] = useState(false)
 
 
     // useEffect(() => {
@@ -237,10 +245,11 @@ export default function Forms() {
             setCurrentForm(currentForm + 1);
             updateBackgroundImage(currentForm + 1);
         }
-        if(currentForm === 1){
+        if (currentForm === 1) {
             setCircle(true)
         }
-        
+
+
     };
 
     const updateBackgroundImage = (formNumber) => {
@@ -258,160 +267,161 @@ export default function Forms() {
 
 
 
+
+
     return (
-        <Box sx={{backgroundImage : backgroundImage}}>
+        <Box sx={{ backgroundImage: backgroundImage }}>
 
-    
-        <Container>
-            <Grid container spacing = {2} >
-                <Grid item lg={6}> <Banner/> </Grid>
-                <Grid item lg={6}>
-            <div>
-            {currentForm === 1 && (
-                <form onSubmit={handleFormSubmit}>
-                    <Typography sx={makeStyle.title}>Book Your Truck</Typography>
-                    <InputLabel htmlFor="my-input" sx={makeStyle.destination}>From</InputLabel>
-                    <TextField placeholder="Enter origin city" sx={makeStyle.textField}></TextField>
-                    <InputLabel htmlFor="my-input" sx={makeStyle.destination}>To</InputLabel>
-                    <TextField placeholder='Enter destination city' sx={makeStyle.textField}></TextField>
-                    <Box type="submit">
-                        <Button sx={makeStyle.formBtn} type="submit">Next</Button>
-                    </Box>
 
-                </form>
-            )}
-            {currentForm === 2 && (
-                <form onSubmit={handleFormSubmit}>
-
-                    <Box sx={{ position: "relative" }}>
-                        <ArrowBackIcon sx={makeStyle.arrowBack} onClick={handleReset}
-                        />
-                        <Typography sx={makeStyle.title}>Book Your Truck</Typography>
-                    </Box>
-
-                    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                        <Typography sx={makeStyle.city}>
-                            From:  <Typography variant='span' sx={makeStyle.cityDes}>Mumbai</Typography>
-                        </Typography>
-                        <Typography sx={makeStyle.city}>
-                            To: <Typography variant='span' sx={makeStyle.cityDes}>Delhi</Typography>
-                        </Typography>
-                    </Box>
-                    <Typography sx={makeStyle.label}>Material Weight</Typography>
-                    <TextField
-
-                        fullWidth
-                        InputProps={{
-                            endAdornment: (
-                                <div >
-                                    <Box sx={{ display: "flex" }}>
-                                        <Button variant="contained" color="primary" sx={makeStyle.kgBtn}>
-                                            KGs
-                                        </Button>
-                                        <Button variant="contained" color="secondary" sx={makeStyle.tons}>
-                                            Tons
-                                        </Button>
+            <Container>
+                <Grid container spacing={2} >
+                    <Grid item lg={6}> <Banner /> </Grid>
+                    <Grid item lg={6}>
+                        <div>
+                            {currentForm === 1 && (
+                                <form onSubmit={handleFormSubmit}>
+                                    <Typography sx={makeStyle.title}>Book Your Truck</Typography>
+                                    <InputLabel htmlFor="my-input" sx={makeStyle.destination}>From</InputLabel>
+                                    <TextField placeholder="Enter origin city" sx={makeStyle.textField}></TextField>
+                                    <InputLabel htmlFor="my-input" sx={makeStyle.destination}>To</InputLabel>
+                                    <TextField placeholder='Enter destination city' sx={makeStyle.textField}></TextField>
+                                    <Box type="submit">
+                                        <Button sx={makeStyle.formBtn} type="submit">Nextfdsdsdf</Button>
                                     </Box>
 
-                                </div>
-                            ),
-                        }}
-                    />
-                    <Typography sx={makeStyle.label}>vehicle type</Typography>
-                    <Box sx={{ minWidth: 120 }}>
-                        <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">Vehicle Type</InputLabel>
-                            <Select
-                                // labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={department}
-                                label="Department"
-                                onChange={handleChange}
-                            >
-                                <MenuItem value={10}>Truck</MenuItem>
-                                <MenuItem value={20}>Bus</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Box>
-                    {/*  */}
-                    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                        <Box>
-                        </Box>
-                        {/*  */}
-                        {/* <Box> */}
-                        <Box sx={{ display: "flex", flexDirection: "column", width: "50%" }}>
-                            <Box>
-                                <Typography sx={makeStyle.label}>Truck Length</Typography>
-                            </Box>
-                            <Box>
-                                <Box sx={{ width: "90%", display: "flex" }}>
+                                </form>
+                            )}
+                            {currentForm === 2 && (
+                                <form onSubmit={handleFormSubmit}>
 
-                                    <FormControl fullWidth>
-                                        <InputLabel id="demo-simple-select-label" >Truck length</InputLabel>
-                                        <Select
-                                            // labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            value={length}
-                                            label="Department"
-                                            onChange={handleLength}
-                                        >
-                                            <MenuItem value={10}>14ft</MenuItem>
-                                            <MenuItem value={20}>16ft</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </Box>
-                            </Box>
-                        </Box>
-                        <Box sx={{ display: "flex", flexDirection: "column", width: "50%" }}>
-                            <Box>
+                                    <Box sx={{ position: "relative" }}>
+                                        <ArrowBackIcon sx={makeStyle.arrowBack} onClick={handleReset}
+                                        />
+                                        <Typography sx={makeStyle.title}>Book Your Truck</Typography>
+                                    </Box>
 
-                                <Typography sx={makeStyle.label}>Truck Height</Typography>
+                                    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                                        <Typography sx={makeStyle.city}>
+                                            From:  <Typography variant='span' sx={makeStyle.cityDes}>Mumbai</Typography>
+                                        </Typography>
+                                        <Typography sx={makeStyle.city}>
+                                            To: <Typography variant='span' sx={makeStyle.cityDes}>Delhi</Typography>
+                                        </Typography>
+                                    </Box>
+                                    <Typography sx={makeStyle.label}>Material Weight</Typography>
+                                    <TextField
 
-                            </Box>
-                            <Box>
-                                <Box sx={{ width: "100%" }}>
-                                    <FormControl fullWidth>
+                                        fullWidth
+                                        InputProps={{
+                                            endAdornment: (
+                                                <div >
+                                                    <Box sx={{ display: "flex" }}>
+                                                        <Button variant="contained" color="primary" sx={makeStyle.kgBtn}>
+                                                            KGs
+                                                        </Button>
+                                                        <Button variant="contained" color="secondary" sx={makeStyle.tons}>
+                                                            Tons
+                                                        </Button>
+                                                    </Box>
 
-                                        <InputLabel id="demo-simple-select-label">Truck Height</InputLabel>
-                                        <Select
-                                            // labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            value={Height}
-                                            label="Department"
-                                            onChange={handleHeight}
-                                        >
-                                            <MenuItem value={10}>8ft</MenuItem>
-                                            <MenuItem value={20}>10ft</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </Box>
+                                                </div>
+                                            ),
+                                        }}
+                                    />
+                                    <Typography sx={makeStyle.label}>vehicle type</Typography>
+                                    <Box sx={{ minWidth: 120 }}>
+                                        <FormControl fullWidth>
+                                            <InputLabel id="demo-simple-select-label">Vehicle Type</InputLabel>
+                                            <Select
+                                                // labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                value={department}
+                                                label="Department"
+                                                onChange={handleChange}
+                                            >
+                                                <MenuItem value={10}>Truck</MenuItem>
+                                                <MenuItem value={20}>Bus</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Box>
+                                    {/*  */}
+                                    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                                        <Box>
+                                        </Box>
+                                        {/*  */}
+                                        {/* <Box> */}
+                                        <Box sx={{ display: "flex", flexDirection: "column", width: "50%" }}>
+                                            <Box>
+                                                <Typography sx={makeStyle.label}>Truck Length</Typography>
+                                            </Box>
+                                            <Box>
+                                                <Box sx={{ width: "90%", display: "flex" }}>
 
-                    <Button type="submit" variant="contained" color="primary" sx={makeStyle.formBtn}>
-                        Submit
-                    </Button>
+                                                    <FormControl fullWidth>
+                                                        <InputLabel id="demo-simple-select-label" >Truck length</InputLabel>
+                                                        <Select
+                                                            // labelId="demo-simple-select-label"
+                                                            id="demo-simple-select"
+                                                            value={length}
+                                                            label="Department"
+                                                            onChange={handleLength}
+                                                        >
+                                                            <MenuItem value={10}>14ft</MenuItem>
+                                                            <MenuItem value={20}>16ft</MenuItem>
+                                                        </Select>
+                                                    </FormControl>
+                                                </Box>
+                                            </Box>
+                                        </Box>
+                                        <Box sx={{ display: "flex", flexDirection: "column", width: "50%" }}>
+                                            <Box>
 
-                </form>
-            )}
-            {currentForm === 3 && (
-                <form onSubmit={handleFormSubmit}>
+                                                <Typography sx={makeStyle.label}>Truck Height</Typography>
 
-                    <Box sx={makeStyle.success}>
-                        <img src={success} alt="" style={makeStyle.successImg} />
-                        <Typography sx={makeStyle.txt1}>Submitted Successfully</Typography>
-                        <Typography sx={makeStyle.txt2}>Our executive will get in touch with you at the earliest.</Typography>
-                        <Button type="submit" variant="contained" color="primary" sx={makeStyle.formBtn}>
-                            Close
-                        </Button>
-                    </Box>
-                </form>
-            )}
-            </div>
-            </Grid>
-            </Grid>
-        </Container>
+                                            </Box>
+                                            <Box>
+                                                <Box sx={{ width: "100%" }}>
+                                                    <FormControl fullWidth>
+
+                                                        <InputLabel id="demo-simple-select-label">Truck Height</InputLabel>
+                                                        <Select
+                                                            // labelId="demo-simple-select-label"
+                                                            id="demo-simple-select"
+                                                            value={Height}
+                                                            label="Department"
+                                                            onChange={handleHeight}
+                                                        >
+                                                            <MenuItem value={10}>8ft</MenuItem>
+                                                            <MenuItem value={20}>10ft</MenuItem>
+                                                        </Select>
+                                                    </FormControl>
+                                                </Box>
+                                            </Box>
+                                        </Box>
+                                        
+                                    
+                                    </Box>
+
+
+                                </form>
+                            )}
+                            {currentForm === 3 && (
+                                <form onSubmit={handleFormSubmit}>
+                                    <Box sx={makeStyle.success}>
+                                        <img src={success} alt="" style={makeStyle.successImg} />
+                                        <Typography sx={makeStyle.txt1}>Submitted Successfully</Typography>
+                                        <Typography sx={makeStyle.txt2}>Our executive will get in touch with you at the earliest.</Typography>
+                                        <Button type="submit" variant="contained" color="primary" sx={makeStyle.formBtn}>
+                                            Close
+                                        </Button>
+                                    </Box>
+                                </form>
+                            )}
+
+                        </div>
+                    </Grid>
+                </Grid>
+            </Container>
         </Box>
     );
 }

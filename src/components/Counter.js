@@ -6,10 +6,10 @@ const makeStyle = {
     counterBox: {
         display: "flex",
         justifyContent: "center",
-        alignitem: "center",
+        alignItems: "center",
         textAlign: "center",
         marginTop: "4rem",
-        marginLeft: "6rem",
+        marginLeft: "4rem",
         marginBottom: "4rem",
         "@media (max-width: 550px)": {
             marginLeft: "1rem"
@@ -26,7 +26,7 @@ const makeStyle = {
         alignItem: "center"
     },
     smallBox: {
-        marginTop: "20px",
+        marginTop: "16px",
         height: "17px",
         width: "17px",
         backgroundColor: "#E57E38",
@@ -42,7 +42,7 @@ const makeStyle = {
         color: "#2A4F6D",
         fontFamily: "'Rubik', sans-serif",
         fontWeight: "600",
-        fontSize: "42px",
+        fontSize: "32px",
         "@media (max-width: 768px)": {
             fontSize: "36px",
         },
@@ -58,7 +58,7 @@ const makeStyle = {
         },
     },
     title: {
-        paddingTop: "4px",
+        paddingTop: "2px",
         display: "flex",
         justifyContent: "center",
         alignitems: "center",
@@ -91,7 +91,7 @@ export default function Counter() {
         },
         {
             counter: "25000+",
-            title: "Successful Bookings"
+            title: "Bookings"
         },
         {
             counter: "3000+",

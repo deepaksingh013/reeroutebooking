@@ -17,7 +17,6 @@ const makeStyle = {
         minHeight: "586px",
         marginLeft: "4rem",
         marginRight: "4rem",
-        marginBottom: "2rem",
         "@media (max-width: 599px)": {
             margin: "20px"
         },
@@ -64,10 +63,12 @@ const makeStyle = {
         },
     },
     title: {
+        marginTop:"7px",
         fontWeight: "600",
         fontFamily: "'Rubik', sans-serif",
-        fontSize: "60px",
+        fontSize: "40px",
         width: "80%",
+        lineHeight:"50px",
         "@media (max-width: 599px)": {
             width: "100%",
             fontSize: "30px",

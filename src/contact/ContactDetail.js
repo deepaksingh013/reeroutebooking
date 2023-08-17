@@ -12,14 +12,10 @@ const contactUs = [
     {
         icon: <EmailOutlinedIcon />,
         data: "Contact@logistics.com",
-
-
     },
     {
         icon: <PhoneOutlinedIcon />,
         data: "(00) 112 365 489",
-
-
     },
     {
         icon: <AccessTimeOutlinedIcon />,
@@ -51,6 +47,11 @@ const makeStyle = {
             width: "80%",
         },
         "@media (max-width: 500px)": {
+            width:"90%",
+            pt: "0rem",
+            pl: "0rem",
+            pr: "0rem",
+            pb: "4rem",
             border: "none"
         }
     },

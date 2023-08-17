@@ -7,11 +7,13 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Swal from 'sweetalert2';
+
 import Forms from './Forms';
 import bullets from "../images/bullets.png"
-import truckImg1 from "../images/Photo-bg.png";
-import truckImg2 from "../images/truck.png";
-import truckImg3 from "../images/indian.png";
+import truckImg1 from "../images/truck-4276755.jpg";
+import truckImg2 from "../images/volvo-4396552.jpg";
+import truckImg3 from "../images/woman-1845572.jpg";
 import CircleIcon from '@mui/icons-material/Circle';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -100,15 +102,11 @@ const makeStyle = {
     },
     mainBox: {
         position: "absolute",
-        // marginTop: "-225px",
-        // paddingTop: "10%",
+
         top: "0px",
-        // minHeight: "75vh",
+
         position: "relative",
-        //     backgroundImage: `linear-gradient(90.13deg,
-        //   rgba(0, 0, 0, 0.9) 1.07%,
-        //   rgba(0, 0, 0, 0.6) 99.9%),
-        //   url(${bgImg})`,
+
         backgroundSize: "cover",
         backgroundPosition: "center",
     },
@@ -469,7 +467,7 @@ export default function Banner() {
 
                 //     });
                 // if (currentForm < 2) {
-                    setCurrentForm(2);
+                setCurrentForm(2);
                 // }
                 console.log(formData);
             })
@@ -491,27 +489,32 @@ export default function Banner() {
         validationSchema2
             .validate(formData, { abortEarly: false })
             .then(() => {
-                axios.post('http://18.143.242.23:8002/api/shipper/createrequest', 
-                {   
-                    "from" : from,
-                    "to" : to,
-                    "materialWeight" : weight,
-                    "vehicleType" : vehicleType,
-                    "truckLength": length,
-                    "truckHeight": Height
-                })
-                .then(response => {
-                    console.log('saved');
-                    console.log(response.data); // Handle the login response data
-                    // if (currentForm < 2) {
+                Swal.fire(
+                    'Great!',
+                    'Form Has Been Submitted!',
+                    'success'
+                );
+                axios.post('http://18.143.242.23:8002/api/shipper/createrequest',
+                    {
+                        "from": from,
+                        "to": to,
+                        "materialWeight": weight,
+                        "vehicleType": vehicleType,
+                        "truckLength": length,
+                        "truckHeight": Height
+                    })
+                    .then(response => {
+                        console.log('saved');
+                        console.log(response.data); // Handle the login response data
+                        // if (currentForm < 2) {
                         setCurrentForm(3);
-                    // }
-                })
-                .catch(error => {
-                    console.error('error');
-                    console.error(error); // Handle the error
+                        // }
+                    })
+                    .catch(error => {
+                        console.error('error');
+                        console.error(error); // Handle the error
 
-                });
+                    });
                 // Form data is valid, do something with it
                 console.log(formData);
             })
